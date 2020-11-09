@@ -1,19 +1,20 @@
 before_script:
-    - apt-get update -qq
-    - apt-get install -qq git
-    - apt-get install sshpass
-    # Setup SSH deploy keys
-    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H 'gitlab.com' >> ~/.ssh/known_hosts
+    - apt-get install rsync -y -qq
+    - apt-get install curl -y -qq
 deploy_production:
     type: deploy
     environment:
         name: production
         url: vikione.exchange
     script:
-        - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www/exchange && git checkout master && git pull origin master && exit"
+        - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www/exchange && git clone git@gitlab.com:misddev/exchange.git && exit"
     only:
         - master
