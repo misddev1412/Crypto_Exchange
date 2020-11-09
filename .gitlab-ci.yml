@@ -18,7 +18,7 @@ deploy_production:
         name: production
         url: vikione.exchange
     script:
-        - rm -rf /var/www/exchange
+        # - rm -rf /var/www/exchange
         # - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www && git clone git@gitlab.com:misddev/exchange.git && exit"
         - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www && git pull && exit"
     only:
