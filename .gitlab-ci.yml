@@ -1,3 +1,5 @@
+image: ubuntu:latest
+
 before_script:
     - apt-get update -qq
     - apt-get install -qq git
@@ -8,6 +10,8 @@ before_script:
     - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
+
 deploy_production:
     type: deploy
     environment:
