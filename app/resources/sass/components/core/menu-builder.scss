@@ -1,0 +1,138 @@
+@use '../base/_variables' as _variables;
+
+.lf-backend-navigation-wrapper {
+    line-height: _variables.$line-height-standard !important;
+
+    .mymenu {
+        padding: 0;
+        list-style: none;
+
+        li.individual-menu-item {
+            font-size: _variables.$font-size-2;
+
+            ol {
+                list-style: none;
+
+                .mymgmenu {
+                    display: none;
+                }
+            }
+
+            .innermenu {
+                color: _variables.$gray-3;
+                clear: both;
+                line-height: _variables.$line-height-medium;
+                margin: 9px 0 0;
+                position: relative;
+
+                .innermenuhead {
+                    //border: 1px solid _variables.$gray-10;
+                    height: 37px;
+                    overflow: hidden;
+                    padding: 0;
+                    position: relative;
+                    width: 382px;
+                    word-wrap: break-word;
+                    //background: _variables.$gray-12;
+
+                    > div {
+                        height: 37px;
+                        line-height: 34px !important;
+                        padding: 0 10px;
+                        float: left;
+
+                        &:hover {
+                            color: _variables.$danger-color;
+                        }
+
+                        &:last-child {
+                            float: right;
+                            text-align: right;
+                        }
+                    }
+
+                    .type {
+                        .arrow-icon {
+                            cursor: pointer;
+
+                            .fa {
+                                padding-left: 5px;
+                            }
+                        }
+                    }
+
+                    .title {
+                        font-weight: bold;
+                        cursor: move;
+                    }
+                }
+
+                .innermenubody {
+                    width: 382px;
+                    padding: 5px 10px 10px;
+                    border-top: none;
+                    display: none;
+
+                    p {
+                        margin: 3px;
+                        padding: 0 !important;
+                    }
+
+                    label {
+                        font-style: italic;
+                        margin: 0 !important;
+                    }
+
+                    input[type=text] {
+                        box-shadow: 0 1px 2px rgba(_variables.$black-color, 0.07) inset;
+                        width: 100%;
+                        padding: 5px;
+                    }
+
+                    input[type=checkbox] {
+                        margin-right: 7px;
+                        vertical-align: middle;
+                    }
+
+                    .myhrborder {
+                        margin-bottom: 10px;
+                        margin-top: 17px;
+                    }
+
+                    .deletebutton {
+                        background: none;
+                        border: none;
+                        color: _variables.$danger-color;
+                        cursor: pointer;
+                        font-size: _variables.$font-size-2;
+                        font-style: italic;
+                        padding: 0;
+
+                        &:hover {
+                            color: _variables.$info-color;
+                        }
+                    }
+                }
+            }
+
+            input {
+                color: _variables.$gray-5;
+                font-style: italic;
+            }
+        }
+    }
+
+    /*.innermenu .ui-sortable-placeholder,
+    .mymenuitem .ui-sortable-placeholder {
+        border: 1px dashed #aaa;
+    }*/
+
+
+    #all-routes {
+        line-height: _variables.$line-height-standard !important;
+
+        .checkbox {
+            padding: 8px 6px;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+.cart-loader {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000000;
+    transition: 1s;
+    opacity: 1;
+}
+.cart-loader.hide {
+    opacity: 0;
+    display: none;
+}
+.lds-cart {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-cart div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    animation: lds-cart 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-cart div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+.lds-cart div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+.lds-cart div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0s;
+}
+@keyframes lds-cart {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
+}

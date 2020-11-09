@@ -1,0 +1,147 @@
+@use '../base/_variables' as _variables;
+@use '/exchange_datatable';
+
+.section-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    z-index: 999;
+}
+
+.border-radius-0 {
+    border-radius: initial !important;
+}
+
+.bg-green {
+    background: _variables.$green-color;
+}
+
+.bg-pink {
+    background: _variables.$pink-color;
+}
+
+.bg-yellow {
+    background: _variables.$yellow-color;
+}
+
+.btn.bg-green {
+    &:hover {
+        background-color: rgba(131, 199, 0, 0.5);
+    }
+
+}
+
+.btn.bg-pink {
+    &:hover {
+        background-color: rgba(239, 5, 92, 0.5);
+    }
+}
+
+.text-pink {
+    color: _variables.$pink-color;
+}
+
+.text-green {
+    color: _variables.$green-color;
+}
+
+.text-yellow {
+    color: _variables.$yellow-color;
+}
+
+.h-463px {
+    height: 463px;
+}
+
+.h-586px {
+    height: 586px;
+}
+
+.market-nav {
+    .nav-item {
+        margin-right: 20px;
+
+        .nav-link.active {
+            border-bottom: 2px solid #fff;
+        }
+    }
+}
+
+.link-color-fb {
+    color: #1877F2;
+}
+
+.link-color-twitter {
+    color: #00ABF3;
+}
+
+.link-color-linkedin {
+    color: #0076B4;
+}
+
+.card-nav {
+    .nav-item.active {
+        margin-bottom: -1px;
+
+        .nav-link {
+            color: _variables.$green-color !important;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .lf-market-mt-lg-reverse {
+        margin-top: -131px;
+    }
+
+    .h-lg-586px {
+        height: 586px;
+    }
+
+    .h-lg-584px {
+        height: 584px;
+    }
+
+    .h-lg-100 {
+        height: 100% !important;
+    }
+
+    .lf-lg-fixed-summary-height {
+        height: 123px;
+    }
+
+    .lf-overflow-lg-visible {
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .h-sm-463px {
+        height: 463px;
+    }
+}
+
+@media (max-width: 767px) {
+    .lf-border-sm-bottom {
+        border-bottom: 1px solid;
+    }
+}
+
+@media (min-width: 768px) {
+    .h-md-463px {
+        height: 463px;
+    }
+
+    .lf-border-md-right {
+        border-right: 1px solid;
+    }
+}
+
+.graph-loader {
+    height: 451px;
+    background: url("public/plugins/charting_library/progress-bar.gif") no-repeat center;
+    background-size: 150px;
+}

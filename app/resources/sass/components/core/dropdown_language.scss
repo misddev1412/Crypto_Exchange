@@ -1,0 +1,172 @@
+@use '../base/_variables' as _variables;
+
+.lf-user-menu {
+    line-height: _variables.$line-height-standard !important;
+
+    > li {
+        /*------------------------------------*/
+        /* ::::::::: LANGUAGE STARTS :::::::::*/
+        /*------------------------------------*/
+
+        .lf-language {
+            .dropdown-toggle {
+                color: _variables.$white-color;
+                font-size: _variables.$font-size-2;
+                font-weight: _variables.$font-weight-bold;
+                padding: 16px 0;
+                background: none;
+                border: none;
+
+                &:hover {
+                    color: _variables.$hover-color;
+
+                    .lf-language-text {
+                        &::before {
+                            color: _variables.$hover-color;
+                        }
+                    }
+
+                    .lf-language-image {
+                        img {
+                            border-color: _variables.$hover-color;
+                        }
+                    }
+                }
+
+                &::after {
+                    display: none;
+                }
+
+                .lf-language-image {
+                    img {
+                        height: 20px;
+                        padding: 0;
+                    }
+                }
+
+                .lf-language-text {
+                    padding-left: 24px;
+                    position: relative;
+
+                    &::before {
+                        content: '\f0ac';
+                        font-family: FontAwesome, serif;
+                        position: absolute;
+                        left: 0;
+                        top: -5.5px;
+                        font-size: _variables.$font-size-7;
+                        color: _variables.$white-color;
+                    }
+                }
+            }
+
+            .dropdown-menu {
+                min-width: auto;
+                padding: 0;
+                border: none;
+                box-shadow: 0 0 5px rgba(_variables.$black-color, 0.2);
+
+                .dropdown-item {
+                    padding: 0;
+
+                    &:hover {
+                        overflow: hidden;
+                    }
+
+                    img {
+                        padding: 1px;
+                    }
+                }
+
+                .lf-language-text {
+                    padding: 5px 15px;
+                    font-size: _variables.$font-size-2;
+                }
+            }
+        }
+
+        /*------------------------------------*/
+        /* :::::::::: LANGUAGE ENDS ::::::::::*/
+        /*------------------------------------*/
+    }
+}
+
+
+/*------------------------------------*/
+/* ::: NAVIGATION VARIATION STARTS :::*/
+/*------------------------------------*/
+.lf-template-header {
+    background: _variables.$primary-color;
+    /*LIGHT*/
+    &.header-light {
+        .lf-user-menu {
+            > li {
+                .lf-language {
+                    .dropdown-toggle {
+                        color: _variables.$primary-color;
+
+                        &:hover {
+                            color: _variables.$hover-color;
+
+                            .lf-language-text {
+                                &::before {
+                                    color: _variables.$hover-color;
+                                }
+                            }
+
+                            .lf-language-image {
+                                img {
+                                    border-color: _variables.$hover-color;
+                                }
+                            }
+                        }
+
+                        .lf-language-image {
+                            img {
+                                border-color: _variables.$primary-color;
+                            }
+                        }
+
+                        .lf-language-text {
+                            &::before {
+                                color: _variables.$primary-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*TRANSPARENT*/
+    &.header-transparent {
+        .lf-user-menu {
+            > li {
+                .lf-language {
+                    .dropdown-toggle {
+                        .lf-language-image {
+                            img {
+                                box-shadow: 1px 1px 3px rgba(_variables.$black-color, 0.5);
+                            }
+                        }
+
+                        .lf-language-text {
+                            text-shadow: 1px 1px 3px rgba(_variables.$black-color, 0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------------*/
+/* :::: NAVIGATION VARIATION ENDS ::::*/
+/*------------------------------------*/
+
+
+.lf-language-palet {
+    strong, textarea, .dropdown-item {
+        font-size: _variables.$font-size-2 !important;
+    }
+}

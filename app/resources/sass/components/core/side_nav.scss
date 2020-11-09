@@ -1,0 +1,314 @@
+@use '../base/_variables' as _variables;
+
+/*------------------------------------*/
+/* :::::::: NAVIGATION STARTS ::::::::*/
+/*------------------------------------*/
+.lf-side-nav {
+    line-height: _variables.$line-height-standard !important;
+    width: 280px;
+    position: fixed;
+    top: 0;
+    left: -280px;
+    height: 100%;
+    box-shadow: 0 0 7px rgba(_variables.$black-color, 0.2);
+    z-index: 999999999;
+    transition: all 0.3s linear;
+
+    &.lf-side-nav-open {
+        left: 0;
+
+        .lf-side-nav-handler {
+            right: -35px;
+        }
+    }
+
+    .lf-side-nav-logo {
+        height: 90px;
+        padding: 10px 10px 20px;
+        position: relative;
+        z-index: 2;
+
+        .lf-logo {
+            max-height: 60px;
+            padding: 0;
+        }
+    }
+
+    .mCSB_inside {
+        > .mCSB_container {
+            margin-right: 8px;
+        }
+    }
+
+    .mCS_no_scrollbar {
+        .mCSB_inside {
+            > .mCSB_container {
+                margin-right: 0px;
+            }
+        }
+    }
+
+    .lf-side-nav-handler {
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        right: 5px;
+        background: _variables.darker(_variables.$gray-1, 40%);
+        top: 25px;
+        border-radius: 0 5px 5px 0;
+        z-index: -1;
+        cursor: pointer;
+        font-size: 25px;
+        padding-left: 6px;
+        padding-top: 4px;
+        color: _variables.$white-color;
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s linear;
+
+        &:hover {
+            background: _variables.$info-color;
+        }
+    }
+
+    .lf-side-nav-wrapper {
+        padding-top: 90px;
+        left: 0;
+        top: 0;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        background: _variables.lighter(_variables.$bg-content-dark, 1%);
+        z-index: 1;
+
+        nav {
+            height: 100%;
+
+            ul {
+                padding: 0 8px 10px;
+
+                li {
+                    margin-top: 1px;
+
+                    &.active {
+                        > a {
+                            background: _variables.$info-color;
+                        }
+                    }
+
+                    &.menu-open {
+                        > a {
+                            background: _variables.$info-color;
+
+                            &::after {
+                                content: '\f107';
+                            }
+                        }
+
+                        > ul {
+                            display: block;
+                            background-color: _variables.$black-color-50;
+                        }
+                    }
+
+                    > a {
+                        &:hover {
+                            background: _variables.$info-color;
+                        }
+                    }
+
+                    a {
+                        display: block;
+                        color: _variables.$white-color;
+                        padding: 10px 20px 10px 10px;
+                        position: relative;
+                        font-size: _variables.$font-size-2;
+
+                        &::after {
+                            content: '\f104';
+                            position: absolute;
+                            font-family: FontAwesome;
+                            right: 8px;
+                            top: 50%;
+                            margin-top: -7px;
+                        }
+
+                        &:only-child {
+                            &::after {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    ul {
+                        padding: 0 0 0 15px;
+                        display: none;
+
+                        li {
+                            margin-left: -15px;
+
+                            a {
+                                padding-left: 20px;
+                                padding-top: 8px;
+                                padding-bottom: 8px;
+                            }
+
+                            ul {
+                                li {
+                                    a {
+                                        border-top: 1px solid _variables.darker(_variables.$gray-1, 30%);
+                                        padding-left: 30px;
+                                    }
+
+                                    &:first-child {
+                                        a {
+                                            border-top: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.lf-dark-transparent-side-nav {
+        .lf-side-nav-handler {
+            background: rgba(_variables.$black-color, 0.8);
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+        }
+
+        .lf-side-nav-wrapper {
+            background: rgba(_variables.$black-color, 0.8);
+        }
+    }
+
+    &.lf-white-side-nav {
+        .lf-side-nav-handler {
+            background: _variables.$white-color;
+            color: _variables.$gray-3;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+
+            &:hover {
+                background: _variables.$info-color;
+                color: _variables.$white-color;
+            }
+        }
+
+        .lf-side-nav-wrapper {
+            background: _variables.$white-color;
+
+            nav {
+                ul {
+                    li {
+                        &.active {
+                            > a {
+                                background: _variables.$primary-color;
+                                color: _variables.$white-color;
+                            }
+                        }
+
+                        &.menu-open {
+                            > a {
+                                background: _variables.$primary-color;
+                                color: _variables.$white-color;
+                            }
+                            > ul {
+                                background-color: _variables.$gray-12;
+                            }
+                        }
+
+                        > a {
+                            &:hover {
+                                background: _variables.$primary-color;
+                                color: _variables.$white-color;
+                            }
+                        }
+
+                        a {
+                            color: _variables.$gray-3;
+                        }
+
+                        ul {
+                            li {
+                                ul {
+                                    li {
+                                        a {
+                                            border-top: 1px solid _variables.$gray-12;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    &.lf-white-transparent-side-nav {
+        .lf-side-nav-handler {
+            background: rgba(_variables.$white-color, 0.8);
+            color: _variables.$gray-3;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+
+            &:hover {
+                background: _variables.$info-color;
+                color: _variables.$white-color;
+            }
+        }
+
+        .lf-side-nav-wrapper {
+            background: rgba(_variables.$white-color, 0.8);
+
+            nav {
+                ul {
+                    li {
+                        &.active {
+                            > a {
+                                background: _variables.$primary-color;
+                                color: _variables.$white-color;
+                            }
+                        }
+
+                        &.menu-open {
+                            > a {
+                                background: _variables.$primary-color;
+                                color: _variables.$white-color;
+                            }
+                        }
+
+                        > a {
+                            &:hover {
+                                background: _variables.$primary-color;
+                                color: _variables.$white-color;
+                            }
+                        }
+
+                        a {
+                            color: _variables.$gray-3;
+                        }
+
+                        ul {
+                            li {
+                                ul {
+                                    li {
+                                        a {
+                                            border-top: 1px solid _variables.$gray-12;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------------*/
+/* :::: NAVIGATION VARIATION ENDS ::::*/
+/*------------------------------------*/

@@ -1,0 +1,50 @@
+version: '3.3'
+
+services:
+    nginx:
+        build: ./docker/nginx
+        ports:
+            - "8080:80"
+        depends_on:
+            - php-fpm
+        volumes:
+            # Logging
+            - ./docker/nginx/log:/var/log/nginx/
+            # Volume đến code ứng dụng, giống bên php-fpm nữa
+            - ./app:/var/www/html/
+        links:
+            - "database:mysql"
+    database:
+        image: mysql:8.0
+        restart: always
+        hostname: mysql
+        volumes:
+            - ./db/dbdata:/var/lib/mysql
+            - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+        command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+        environment:
+            MYSQL_DATABASE: exchange
+            MYSQL_USER: 'vikione'
+            MYSQL_PASSWORD: 'HK75*YvR83gNy^U4'
+            MYSQL_ROOT_PASSWORD: 'HK75*YvR83gNy^U4'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    
+        ports:
+            - "33062:3306"
+    adminer:
+        image: adminer
+        ports:
+            - 8081:8080
+        links:
+            - "database:mysql"
+    php-fpm:
+        build:
+            context: ./docker/php-fpm
+            dockerfile: Dockerfile
+        volumes:
+            - ./app:/var/www/html/
+        links:
+            - "database:mysql"
+volumes:
+    dbdata:
+    my.cnf:

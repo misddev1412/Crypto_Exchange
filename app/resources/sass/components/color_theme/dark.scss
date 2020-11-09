@@ -1,0 +1,247 @@
+@use '../base/_variables' as _variables;
+
+body.dark {
+    color: _variables.$bg-content-light;
+    background: _variables.$bg-content-dark;
+}
+
+.dark {
+    a {
+        color: _variables.$white-color;
+
+        &:focus {
+            outline: none;
+            color: _variables.$info-color;
+        }
+        &:hover {
+            color: _variables.$info-color;
+            text-decoration: none;
+        }
+        &.dropdown-item {
+            color: _variables.$gray-2 !important;
+        }
+    }
+    .lf-template-header {
+        background: _variables.$bg-header-dark;
+    }
+
+    .lf-toggle-text-color {
+        color: _variables.$white-color;
+    }
+
+    .lf-toggle-text-color-75 {
+        color: _variables.$white-color-75;
+    }
+    .lf-toggle-text-color-50 {
+        color: _variables.$white-color-50;
+    }
+
+    .form-control {
+        background: _variables.$bg-input-dark !important;
+        color: _variables.$gray-10;
+        border-color: _variables.$border-card-dark !important;
+    }
+
+    .lf-toggle-bg-content, .lf-toggle-bg-input{
+        background: _variables.$bg-content-dark;
+    }
+    .lf-toggle-bg-settings-submenu {
+        background: _variables.$bg-settings-submenu-dark !important;
+    }
+    .form-control.lf-light-input {
+        color: _variables.$gray-2;
+        background: _variables.$gray-12 !important;
+        border-color: _variables.$border-card-light !important;
+    }
+
+    .lf-toggle-bg-card {
+        background: _variables.$bg-card-dark;
+    }
+    .lf-toggle-bg-reverse {
+        background: _variables.$bg-card-light;
+    }
+    .lf-toggle-border-card {
+        border: 1px solid _variables.$border-card-dark;
+
+        .card-header {
+            border-bottom: 1px solid _variables.$border-card-dark;
+        }
+
+        .card-footer {
+            border-top: 1px solid _variables.$border-card-dark;
+        }
+    }
+
+    .lf-toggle-bg-footer {
+        background: _variables.$bg-footer-dark;
+    }
+    .footer-widget {
+        .footer-widget-title {
+            color: _variables.$white-color;
+        }
+    }
+    .lf-toggle-bg-copyright-footer {
+        background: _variables.$bg-copyright-footer-dark;
+    }
+
+    .lf-toggle-border-color {
+        border-color: _variables.$border-card-dark !important;
+    }
+
+    .card-nav {
+        .nav-item.active {
+            background: _variables.$bg-card-dark;
+        }
+    }
+    .lf-kyc-card {
+        &:hover {
+            .card-footer {
+                background-color: _variables.$info-color;
+                color: _variables.$white-color
+            }
+        }
+    }
+
+
+    #open-order-table {
+        thead th, tbody td {
+            border: 1px solid _variables.$border-card-dark;
+        }
+    }
+
+    #market-table-dropdown {
+        .dropdown-menu {
+            background: _variables.$bg-content-dark;
+            border: 1px solid _variables.$border-card-dark;
+
+            .dropdown-item {
+                color: _variables.$white-color;
+
+                &:hover, &:focus {
+                    background: _variables.$black-color-50;
+                }
+            }
+        }
+    }
+
+    .exchange-form-nav {
+        .nav-item.active {
+            background: _variables.$bg-card-dark;
+        }
+    }
+
+    .lf-nav-tab {
+        a {
+            background: _variables.$black-color-07;
+            color: _variables.$white-color;
+            border-left-color: _variables.$border-card-dark;
+            border-bottom-color: _variables.$border-card-dark;
+
+            &:first-child {
+                border-left: none;
+            }
+
+            &:hover, &.active {
+                background: _variables.$bg-card-dark;
+                color: _variables.$info-color;
+                border-bottom: none;
+            }
+        }
+    }
+    .lf-title {
+        background: _variables.$bg-breadcrumb-dark;
+
+        h3 {
+            color: _variables.$white-color;
+        }
+
+        .breadcrumb {
+            background: none;
+        }
+    }
+    table {
+        color: _variables.$white-color;
+        &.lf-data-table{
+            &.dtr-inline {
+                > tbody {
+                    > tr {
+                        &.odd {
+                            background: _variables.$bg-tr-odd-dark;
+                        }
+
+                        &.even {
+                            background: _variables.$bg-tr-even-dark;
+                        }
+                    }
+                }
+            }
+        }
+        a {
+            color: _variables.$info-color;
+        }
+    }
+    .mymenu {
+        li.individual-menu-item {
+            .innermenu {
+                .innermenuhead {
+                    border: 1px solid _variables.$border-card-dark;
+                    background: _variables.$bg-input-dark;
+                    color: _variables.$white-color;
+                }
+                .innermenubody {
+                    border: 1px solid _variables.$border-card-dark;
+                    color: _variables.$white-color;
+
+                    input[type=text] {
+                        border: 1px solid _variables.$border-card-dark;
+                        background-color: _variables.$bg-input-dark;
+                    }
+                    .myhrborder {
+                        border-bottom: 1px inset _variables.$border-card-dark !important;
+                    }
+                }
+            }
+        }
+    }
+
+    #all-routes {
+        .checkbox {
+            background: _variables.$bg-card-dark;
+
+            &:nth-child(even) {
+                background: _variables.$bg-card-dark;
+            }
+        }
+    }
+    .page-item.disabled .page-link {
+        color: _variables.$gray-3;
+        background-color: _variables.$bg-card-dark;
+        border-color: _variables.$border-card-dark;
+    }
+    .page-link {
+        color: _variables.$info-color;
+        background-color: _variables.$bg-card-dark;
+        border-color: _variables.$border-card-dark;
+    }
+    .bootstrap-tagsinput .tag {
+        color: _variables.$gray-10;
+    }
+    .page-form .select2-selection.select2-selection {
+        background-color: _variables.$bg-card-dark;
+        color: _variables.$gray-10;
+        border-color: _variables.$border-card-dark;
+    }
+    .select2-selection__choice {
+        color: _variables.$gray-2;
+    }
+    .ticket-comment-body {
+        background: _variables.$bg-content-dark;
+
+        &::after {
+            border-bottom-color: _variables.$bg-content-dark;
+        }
+    }
+    .img-thumbnail {
+        border-color: _variables.$border-card-dark;
+    }
+}

@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Override\Eloquent\LaraframeModel as Model;
+
+class DummyClass extends Model
+{
+    //
+}

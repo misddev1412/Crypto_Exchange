@@ -1,0 +1,104 @@
+$font-base: Lato, sans-serif;
+$font-weight-narrow: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+
+$primary-color: #222838;
+$secondary-color: #1D1D1D;
+$hover-color: #F1045C;
+
+$danger-color: #EF404A;
+$warning-color: #F79548;
+$info-color: #00B9F2;
+$success-color: #38A169;//#82C700;
+
+
+$black-color: rgb(51, 51, 51);
+$black-color-75: rgba(51, 51, 51, 0.75);
+$black-color-50: rgba(51, 51, 51, 0.5);
+$black-color-07: rgba(51, 51, 51, 0.07);
+$white-color: #fff;
+$white-color-75: rgba(255, 255, 255, 0.75);
+$white-color-50: rgba(255, 255, 255, 0.5);
+$white-color-30: rgba(255, 255, 255, 0.30);
+$white-color-15: rgba(255, 255, 255, 0.15);
+$pink-color: #ef055c;
+$green-color: rgb(112, 168, 0);
+$yellow-color: #d3f80c;
+
+$gray-1: #2F4F4F;
+$gray-2: #454545;
+$gray-3: #696969;
+$gray-4: #708090;
+$gray-5: #778899;
+$gray-6: #808080;
+$gray-7: #A9A9A9;
+$gray-8: #C0C0C0;
+$gray-9: #D3D3D3;
+$gray-10: #DCDCDC;
+$gray-11: #EFEFEF;
+$gray-12: #F5F5F5;
+
+
+$line-height-standard: 1;
+$line-height-medium: 1.5;
+$line-height-maximum: 2;
+
+
+$font-size-1: 10px;
+$font-size-2: 12px;
+$font-size-3: 14px;
+$font-size-4: 16px;
+$font-size-5: 18px;
+$font-size-6: 22px;
+$font-size-7: 24px;
+$font-size-8: 28px;
+$font-size-9: 32px;
+$font-size-10: 36px;
+$font-size-11: 40px;
+$font-size-12: 46px;
+
+$bg-content-dark: #1d1d1d;
+$bg-input-dark: #262626;
+$bg-content-dark-50: rgba(29, 29, 29, 0.5);
+$bg-content-light: #dcd9ee;
+$bg-content-light-50: rgba(220, 217, 238, 0.5);
+$bg-card-dark: #262626;
+$bg-settings-submenu-light: #e7e7e7;
+$bg-settings-submenu-dark: #292b2d;
+$bg-card-light: #ffffff;
+$bg-header-dark: #222838;
+$bg-footer-dark: #282828;
+$bg-copyright-footer-dark: #1b1c1c;
+$bg-breadcrumb-dark: #262626;
+$bg-breadcrumb-light: #EFEFEF;
+$bg-footer-light: #cccccc;
+$bg-tr-odd-dark: #222222;
+$bg-tr-even-dark: #262626;
+$bg-body-dark: #1D1D1D;
+
+
+$border-card-dark: #313131;
+$border-card-light: #cccccc;
+
+@function lighter($value, $amount) {
+    @return scale-color($value, $lightness: $amount);
+}
+
+@function darker($value, $amount) {
+    @return scale-color($value, $lightness: -$amount);
+}
+
+@mixin rgba-bg($hexacolor, $opacity) {
+    background-color: rgba($hexacolor, $opacity);
+}
+
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -moz-transform: $property;
+    -o-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}

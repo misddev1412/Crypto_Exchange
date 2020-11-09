@@ -1,0 +1,146 @@
+@use '../base/_variables' as _variables;
+
+.lf-user-menu {
+    line-height: _variables.$line-height-standard !important;
+
+    > li {
+        /*------------------------------------*/
+        /* ::::::: USER DROPDOWN STARTS ::::::*/
+        /*------------------------------------*/
+        .lf-user-dropdown {
+            .dropdown-toggle {
+                padding: 15px 0;
+                font-size: _variables.$font-size-4;
+                border: none;
+                background: none;
+
+                &::after {
+                    display: none;
+                }
+
+                &:hover {
+                    > i {
+                        background: _variables.$hover-color;
+                        border-color: _variables.$hover-color;
+                    }
+                }
+
+                > i {
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 50%;
+                    background: _variables.$white-color;
+                    color: _variables.$primary-color;
+                    display: block;
+                    line-height: 27px !important;
+                    font-size: _variables.$font-size-6;
+                    overflow: hidden;
+                    border: 2px solid _variables.$white-color;
+                }
+            }
+
+            .dropdown-menu {
+                padding: 0;
+                border: none;
+                box-shadow: 0 0 5px rgba(_variables.$black-color, 0.2);
+
+                .dropdown-header {
+                    padding: 8px 10px;
+
+                    .btn {
+                        font-size: _variables.$font-size-2;
+                        border-radius: 0;
+                        display: block;
+                        width: 100%;
+                    }
+
+                    .avatar {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .user-info {
+                        padding-left: 5px;
+                        font-size: _variables.$font-size-2;
+                    }
+                }
+            }
+
+            .dropdown-item {
+                padding: 6px 10px;
+                font-size: _variables.$font-size-2;
+            }
+
+            i {
+                width: 20px;
+                margin-right: 2px;
+            }
+        }
+    }
+}
+
+
+/*------------------------------------*/
+/* ::: NAVIGATION VARIATION STARTS :::*/
+/*------------------------------------*/
+.lf-template-header {
+    line-height: _variables.$line-height-standard !important;
+    background: _variables.$primary-color;
+    /*LIGHT*/
+    &.header-light {
+        .lf-user-menu {
+            > li {
+                .lf-user-dropdown {
+                    .dropdown-toggle {
+                        &:hover {
+                            i {
+                                background: _variables.$hover-color;
+                                border-color: _variables.$hover-color;
+                            }
+                        }
+
+                        > i {
+                            background: _variables.$primary-color;
+                            color: _variables.$white-color;
+                            border-color: _variables.$primary-color;
+                        }
+                    }
+                }
+
+                .lf-theme-switcher {
+                    border-color: rgba(0,0,0,0.2);
+                    .btn {
+                        color: rgba(0, 0, 0, 0.5);
+                        &:hover{
+                            color: rgba(0, 0, 0, 1);
+                            background: rgba(0,0,0,0.2);
+                        }
+                    }
+                    .active {
+                        color: rgb(43,80,200);
+                        background: rgba(0,0,0,0.2);
+                    }
+                }
+            }
+        }
+    }
+
+    /*TRANSPARENT*/
+    &.header-transparent {
+        .lf-user-menu {
+            > li {
+                .lf-user-dropdown {
+                    .dropdown-toggle {
+                        > i {
+                            box-shadow: 1px 1px 3px rgba(_variables.$black-color, 0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------------*/
+/* :::: NAVIGATION VARIATION ENDS ::::*/
+/*------------------------------------*/

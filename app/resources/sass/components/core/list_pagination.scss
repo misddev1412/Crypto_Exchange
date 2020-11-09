@@ -1,0 +1,52 @@
+@use '../base/_variables' as _variables;
+
+.lf-pagination ul {
+    line-height: _variables.$line-height-standard !important;
+    margin-bottom: 0 !important;
+
+    .page-item {
+        &:first-child {
+            .page-link {
+                border-radius: 0;
+            }
+        }
+
+        &:last-child {
+            .page-link {
+                border-radius: 0;
+            }
+        }
+
+        &.disabled {
+            .page-link {
+                color: _variables.$gray-6;
+                background-color: _variables.$white-color;
+                border-color: _variables.$gray-10;
+            }
+        }
+
+        &.active {
+            .page-link {
+                color: _variables.$white-color;
+                background-color: _variables.$danger-color;
+                border-color: _variables.lighter(_variables.$danger-color, 10%);
+            }
+        }
+
+        .page-link {
+            padding: 4px 8px;
+            font-size: _variables.$font-size-2;
+            line-height: _variables.$line-height-medium !important;
+
+            &:hover {
+                color: _variables.$white-color;
+                background-color: _variables.darker(_variables.$danger-color, 30%);
+                border-color: _variables.darker(_variables.$danger-color, 20%);
+            }
+        }
+    }
+}
+
+.pagination-text {
+    line-height: _variables.$line-height-maximum !important;
+}

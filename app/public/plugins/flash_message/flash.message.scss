@@ -1,0 +1,121 @@
+@use '../../../resources/sass/components/base/_variables' as _variables;
+
+.flash-message {
+    line-height: _variables.$line-height-standard !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999999999999;
+    background: rgba(_variables.$gray-1, 0.8);
+    display: none;
+    top: 0;
+    left: 0;
+
+    &.flash-message-active {
+        display: block;
+    }
+
+    .flash-removable {
+        position: relative;
+    }
+
+    .centralize-content {
+        padding: 30px 15px !important;
+        border-radius: 0px;
+        background: _variables.$white-color;
+        text-align: center !important;
+        box-shadow: 0 0 7px rgba(_variables.$black-color, 0.4);
+        display: none;
+        max-width: 460px;
+
+        &.flash-error {
+            color: _variables.$danger-color;
+            display: block;
+
+            .flash-icon {
+                border: 4px solid _variables.$danger-color;
+
+                &::before {
+                    content: "\F00D";
+                    font-family: FontAwesome;
+                }
+            }
+        }
+
+        &.flash-success {
+            color: _variables.$success-color;
+            display: block;
+
+            .flash-icon {
+                border: 4px solid _variables.$success-color;
+
+                &::before {
+                    content: "\F00C";
+                    font-family: FontAwesome;
+                }
+            }
+        }
+
+        &.flash-warning {
+            color: _variables.$warning-color;
+            display: block;
+
+            .flash-icon {
+                border: 4px solid _variables.$warning-color;
+
+                &::before {
+                    content: "\F071";
+                    font-family: FontAwesome;
+                }
+            }
+        }
+
+        &.flash-confirmation {
+            color: _variables.$info-color;
+            display: block;
+
+            .flash-icon {
+                border: 4px solid _variables.$info-color;
+
+                &::before {
+                    content: "\F128";
+                    font-family: FontAwesome;
+                }
+            }
+
+            .hidden-flash-item {
+                display: initial;
+            }
+        }
+
+        .hidden-flash-item {
+            display: none;
+        }
+
+        .flash-close {
+            &.close {
+                font-size: _variables.$font-size-5;
+                position: absolute;
+                z-index: 999999999;
+                color: #000;
+                top: -22px;
+                right: -4px;
+            }
+        }
+
+        .flash-icon {
+            display: table;
+            margin: 0 auto 15px;
+            font-size: _variables.$font-size-8;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            line-height: 60px !important;
+            background: _variables.$white-color;
+        }
+
+        p {
+            font-size: _variables.$font-size-4;
+        }
+    }
+}

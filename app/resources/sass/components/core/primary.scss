@@ -1,0 +1,392 @@
+@use '../base/_variables' as _variables;
+
+body {
+    font-family: _variables.$font-base;
+    font-size: _variables.$font-size-3;
+}
+
+.min-height-114 {
+    min-height: 114px !important;
+}
+.min-height-354 {
+    min-height: 354px !important;
+}
+.min-height-405 {
+    min-height: 405px !important;
+}
+.min-height-470 {
+    min-height: 470px !important;
+}
+
+button {
+    &:focus {
+        outline: none;
+    }
+}
+.btn {
+    &.lf-card-btn {
+        padding: 12px 25px;
+        line-height: 2.2;
+        font-weight: _variables.$font-weight-bold;
+    }
+    &.form-btn {
+        padding: 0 15px;
+        height: 36px;
+        line-height: 35px;
+    }
+}
+
+
+a {
+    color: _variables.$primary-color;
+
+    &:focus {
+        outline: none;
+        color: _variables.$secondary-color;
+    }
+
+    &:hover {
+        color: _variables.$secondary-color;
+        text-decoration: none;
+    }
+}
+
+h1 {
+    font-size: _variables.$font-size-12;
+    font-weight: _variables.$font-weight-bold;
+    margin: 15px 0;
+}
+
+h2 {
+    font-size: _variables.$font-size-7;
+    font-weight: _variables.$font-weight-bold;
+    margin: 12px 0;
+}
+
+h3 {
+    font-size: _variables.$font-size-5;
+    font-weight: _variables.$font-weight-bold;
+    margin: 10px 0;
+}
+
+h4 {
+    font-size: _variables.$font-size-4;
+    font-weight: _variables.$font-weight-bold;
+    margin: 8px 0;
+}
+
+h5 {
+    font-size: _variables.$font-size-3;
+    font-weight: _variables.$font-weight-bold;
+    margin: 6px 0;
+}
+
+h6 {
+    font-size: _variables.$font-size-2;
+    font-weight: _variables.$font-weight-bold;
+    margin: 4px 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+td, select {
+    outline: 0 !important;
+}
+
+/*CENTRALIZING THE SECTION VERTICALLY AND HORIZONTALLY*/
+.centralize-wrapper {
+    width: 100%;
+    padding: 0;
+    display: table;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+
+    .centralize-inner {
+        padding: 0;
+        vertical-align: middle;
+        display: table-cell;
+        margin: 0;
+
+        .centralize-content {
+            max-width: 360px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 10px;
+        }
+    }
+}
+
+.invalid-feedback {
+    color: _variables.$danger-color;
+    display: block;
+    font-size: _variables.$font-size-2;
+}
+
+.lf-setting-table {
+    border: none;
+
+    td {
+        padding: 15px 0;
+        border: none;
+    }
+}
+
+table {
+    font-size: _variables.$font-size-2;
+}
+
+.lf-nav-tab {
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+        display: inline-block;
+        background: _variables.$warning-color;
+        color: _variables.$gray-3;
+        flex: 1 1 auto;
+        line-height: 2.2;
+        //font-weight: _variables.$font-weight-bold;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        text-align: center;
+
+        //&:first-child {
+        //    border-left: none;
+        //}
+
+        &:hover, &.active {
+            background: _variables.darker(_variables.$warning-color, 30%);
+            color: _variables.$gray-1;
+        }
+    }
+}
+
+.lf-no-header-wrapper {
+    padding: 30px 15px !important;
+    max-width: 550px !important;
+
+    h4 {
+        color: _variables.$white-color;
+    }
+
+    .lf-no-header-inner {
+        padding: 30px 15px;
+
+        .invalid-feedback {
+            color: _variables.darker(_variables.$warning-color, 20%) !important;
+            text-shadow: 0 0 2px rgba(_variables.$black-color, 0.3);
+        }
+
+        a {
+            color: _variables.$warning-color;
+
+            &:hover {
+                color: _variables.darker(_variables.$warning-color, 30%) !important;
+            }
+        }
+    }
+}
+
+.no-header-light {
+    background: _variables.$gray-11;
+
+    .lf-no-header-wrapper {
+        h4 {
+            color: _variables.$primary-color;
+        }
+
+        .lf-no-header-inner {
+            background: _variables.$primary-color;
+            box-shadow: 0 0 5px rgba(_variables.$black-color, 0.3);
+
+            .invalid-feedback {
+                color: _variables.darker(_variables.$warning-color, 20%) !important;
+                text-shadow: 0 0 2px rgba(_variables.$black-color, 0.3);
+            }
+
+            a {
+                color: _variables.$warning-color;
+
+                &:hover {
+                    color: _variables.darker(_variables.$warning-color, 30%) !important;
+                }
+            }
+        }
+
+        .lf-checkbox {
+            input {
+                &:checked + label {
+                    &::before {
+                        background: _variables.lighter(_variables.$primary-color, 20%);
+                        color: _variables.$white-color;
+                    }
+                }
+            }
+
+            label {
+                &.active {
+                    color: _variables.$gray-7;
+
+                    &::before {
+                        background: _variables.lighter(_variables.$primary-color, 50%);
+                        color: _variables.$white-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.line-height-standard {
+    line-height: _variables.$line-height-standard !important;
+}
+
+.line-height-medium {
+    line-height: _variables.$line-height-medium !important;
+}
+
+.line-height-maximum {
+    line-height: _variables.$line-height-maximum !important;
+}
+
+.img-table {
+    width: 30px;
+}
+.img-icon {
+    max-width: 65px;
+}
+
+.lf-post-content {
+    a {
+        color: _variables.$info-color;
+    }
+    ul {
+        padding-left: 15px;
+        li {
+            list-style: square;
+        }
+    }
+    ol {
+        padding-left: 15px;
+        li {
+            list-style: decimal;
+        }
+    }
+    div {
+        margin-bottom: 10px;
+    }
+}
+
+.footer {
+    &.main-footer {
+        padding: 60px 0;
+    }
+    &.lf-toggle-bg-copyright-footer {
+        a {
+            text-decoration: underline;
+
+            &:hover, &:focus {
+                color: _variables.$info-color;
+            }
+        }
+    }
+    .footer-widget {
+        .footer-widget-title {
+            font-weight: _variables.$font-weight-bold;
+            font-size: _variables.$font-size-5;
+            color: _variables.$white-color;
+        }
+        .footer-widget-menu {
+            li {
+                list-style: none;
+                margin-bottom: 8px;
+                font-size: 12px;
+            }
+        }
+        .footer-widget-contact-info {
+            li {
+                margin-bottom: 12px;
+                .fa {
+                    background-color: _variables.$danger-color;
+                    margin-right: 10px;
+                    height: 25px;
+                    width: 25px;
+                    line-height: 25px;
+                    text-align: center;
+                    border-radius: 2px;
+                    color: _variables.$white-color;
+                }
+            }
+        }
+    }
+    .footer-social-media-links {
+        li {
+            display: inline-block;
+            margin: 0 3px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            a {
+                background-color: _variables.$danger-color;
+                height: 25px;
+                width: 25px;
+                line-height: 25px;
+                text-align: center;
+                display: block;
+                color: _variables.$white-color;
+                transition: ease-in 0.3s;
+                border-radius: 2px;
+
+                &:hover, &:focus {
+                    color: _variables.$white-color;
+                    background-color: _variables.$info-color;
+                }
+            }
+        }
+    }
+}
+
+/*Fixed side nav style:starts*/
+@media all and (min-width: 992px) {
+    .lf-fixed-sidenav {
+        &.lf-headerless-body {
+            .wrapper {
+                position: initial;
+                margin-left: 0px;
+
+                .lf-logo {
+                    display: inline-block;
+                }
+            }
+        }
+
+        .lf-side-nav-handler {
+            display: none;
+        }
+
+        .wrapper {
+            position: relative;
+            transition: margin-left 0.3s linear;
+            margin-left: 280px;
+
+            .lf-logo {
+                display: none;
+            }
+        }
+    }
+
+    .img-thumbnail {
+        background-color: transparent;
+    }
+}
+
+/*Fixed side nav style:ends*/

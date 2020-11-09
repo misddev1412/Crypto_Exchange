@@ -1,0 +1,51 @@
+@use '../base/_variables' as _variables;
+
+.coin-box {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border: 3px solid !important;
+    }
+    &.coin-box-info::after {
+        border-color: _variables.$info-color !important;
+    }
+    &.coin-box-danger::after {
+        border-color: _variables.$danger-color !important;
+    }
+    &.coin-box-warning::after {
+        border-color: _variables.$warning-color !important;
+    }
+    &.coin-box-success::after {
+        border-color: _variables.$success-color !important;
+    }
+    &.coin-box-primary::after {
+        border-color: _variables.$primary-color !important;
+    }
+    &.coin-box-secondary::after {
+        border-color: _variables.$secondary-color !important;
+    }
+    .coin-name {
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .available-coin {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+.box-action-btn.dropdown-toggle {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    background: transparent;
+    border: transparent;
+
+    &::after, &::before {
+        display: none;
+    }
+}

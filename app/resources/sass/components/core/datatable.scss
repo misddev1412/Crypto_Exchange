@@ -1,0 +1,189 @@
+@use '../base/_variables' as _variables;
+
+table {
+    &.lf-data-table {
+        line-height: _variables.$line-height-standard !important;
+        width: 100% !important;
+
+        &.dtr-inline {
+            &.collapsed {
+                > tbody {
+                    > tr {
+                        > td {
+                            &:first-child {
+                                padding-left: 30px !important;
+
+                                &::before {
+                                    cursor: pointer;
+                                    border: 3px solid white !important;
+                                    line-height: 16px !important;
+                                    border-radius: 0 !important;
+                                    box-shadow: 0 0 0 1px _variables.$gray-10 !important;
+                                    background-color: _variables.lighter(_variables.$info-color, 10%) !important;
+                                    top: 50%;
+                                    margin-top: -10px;
+                                    left: 5px;
+                                    height: 14px;
+                                    width: 14px;
+                                    display: block;
+                                    position: absolute;
+                                    color: _variables.$white-color;
+                                    box-sizing: content-box;
+                                    text-align: center;
+                                    font-family: "Courier New", Courier, monospace;
+                                    content: "+";
+                                }
+                            }
+
+                            &.child {
+                                padding-left: 5px !important;
+
+                                &::before {
+                                    display: none;
+                                }
+
+                                ul {
+                                    padding-left: 10px !important;
+                                    list-style: none;
+
+                                    li {
+                                        display: inline-block;
+                                        padding: 3px 5px 5px;
+
+                                        .dtr-title {
+                                            font-weight: _variables.$font-weight-bold;
+
+                                            &::after {
+                                                content: ":";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.parent {
+                            > td {
+                                &:first-child {
+                                    &::before {
+                                        background-color: _variables.$danger-color !important;
+                                        content: "-";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            > thead {
+                > tr {
+                    > th {
+                        vertical-align: middle;
+                        border: none !important;
+                        font-size: _variables.$font-size-2;
+                        padding: 20px 20px 20px 10px;
+
+                        &.sorting {
+                            padding-right: 22px;
+                        }
+
+                        &.no-sort {
+                            pointer-events: none;
+                            padding-right: 10px;
+
+                            &::before, &::after {
+                                content: "" !important;
+                            }
+                        }
+
+                        &::before {
+                            top: 50%;
+                            margin-top: -6px;
+                            right: 10px;
+                        }
+
+                        &::after {
+                            top: 50%;
+                            margin-top: -6px;
+                            right: 2px;
+                        }
+                    }
+                }
+            }
+
+            > tbody {
+                > tr {
+                    &.odd {
+                        background: _variables.$gray-12;
+                    }
+
+                    &.even {
+                        background: _variables.$gray-10;
+                    }
+
+                    > td {
+                        padding: 12px 8px !important;
+                        vertical-align: middle;
+                        border: none !important;
+                        font-size: _variables.$font-size-2;
+                        position: relative;
+
+                        &.dataTables_empty {
+                            padding: 20px 8px !important;
+
+                            &::before {
+                                display: none !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+table.dataTable.lf-data-table {
+    margin-top: -2px !important;
+    margin-bottom: 0 !important;
+}
+
+
+.lf-action {
+    line-height: _variables.$line-height-standard !important;
+    text-align: right;
+
+    .dropdown-toggle {
+        padding: 5px 10px;
+        font-size: _variables.$font-size-3;
+
+        &::after {
+            content: none;
+        }
+    }
+
+    .btn-group {
+        .dropdown-menu {
+            border: none;
+            font-size: _variables.$font-size-2;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: 0 0 5px rgba(_variables.$black-color, 0.2);
+        }
+
+        .dropdown-item {
+            padding: 12px 10px;
+
+            &:focus, &:hover {
+                background-color: _variables.$gray-10;
+            }
+        }
+    }
+}
+
+
+div.dataTables_paginate {
+    line-height: _variables.$line-height-standard !important;
+    margin-top: 30px !important;
+}

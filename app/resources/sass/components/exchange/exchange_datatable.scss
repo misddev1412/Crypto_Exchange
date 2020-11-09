@@ -1,0 +1,155 @@
+@use '../base/variables' as _variables;
+
+.dataTables_scrollHeadInner {
+    width: 100% !important;
+    padding-right: 0 !important;
+}
+
+.dataTables_scrollBody thead {
+    display: none !important;
+}
+
+.mCSB_scrollTools {
+    width: 5px !important;
+}
+
+.mCSB_inside > .mCSB_container {
+    margin-right: 0 !important;
+}
+
+/* ask order table */
+#ask-order-table.dataTable {
+    tbody {
+        tr:hover {
+            background-color: rgba(214, 10, 83, 0.2);
+            cursor: pointer !important;
+        }
+
+        tr.inserted, tr.updated {
+            background-color: rgba(214, 10, 83, 0.2);
+        }
+    }
+}
+
+/* bid order table */
+#bid-order-table.dataTable {
+    tbody {
+        tr:hover {
+            background-color: rgba(131, 199, 0, 0.2);
+            cursor: pointer !important;
+        }
+
+        tr.inserted, tr.updated {
+            background-color: rgba(131, 199, 0, 0.2);
+        }
+    }
+}
+
+/* Customize the label (the container) */
+.custom-radio-box {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.custom-radio-box input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.custom-radio-box:hover input ~ .checkmark {
+    border-color: _variables.$green-color;
+}
+
+/* When the radio button is checked, add a blue background */
+.custom-radio-box input:checked ~ .checkmark {
+    border-color: _variables.$green-color;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.custom-radio-box input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.custom-radio-box .checkmark:after {
+    top: 4px;
+    left: 4px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: _variables.$green-color;
+}
+
+.search-label {
+    width: 30%;
+}
+
+.search-label input[type="search"] {
+    width: 100%;
+}
+
+table.dataTable thead .sorting::before,
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::before,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting_desc::before,
+table.dataTable thead .sorting_desc::after,
+table.dataTable thead .sorting_asc_disabled::before,
+table.dataTable thead .sorting_asc_disabled::after,
+table.dataTable thead .sorting_desc_disabled::before,
+table.dataTable thead .sorting_desc_disabled::after {
+    top: 3px;
+}
+
+#market-table tbody tr:hover {
+    cursor: pointer;
+    background: rgba(211, 248, 12, 0.2);
+}
+
+#market-table tbody tr.selected {
+    cursor: initial;
+    background: rgba(211, 248, 12, 0.2);
+}
+
+.inserted-sell {
+    background-color: rgba(214, 10, 83, 0.2);
+}
+
+.inserted-buy {
+    background-color: rgba(131, 199, 0, 0.2);
+}
+
+@media (max-width: 991px) {
+    #market-table_wrapper .dataTables_scrollBody {
+        height: 315px !important;
+    }
+}

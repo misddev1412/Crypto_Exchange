@@ -1,0 +1,235 @@
+@use '../base/_variables' as _variables;
+
+.btn, .btn-danger, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-secondary,
+.btn-info:not(:disabled):not(.disabled):active,
+.btn-info:not(:disabled):not(.disabled).active,
+.show > .btn-info.dropdown-toggle,
+.form-control {
+    &.focus, &:focus {
+        box-shadow: none;
+    }
+}
+
+.btn {
+    border-radius: 0 !important;
+    font-weight: _variables.$font-weight-normal;
+    color: _variables.$gray-1;
+    padding: 10px 15px;
+    font-size: _variables.$font-size-2;
+    line-height: _variables.$line-height-medium !important;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+    padding: 10px 12px;
+    font-size: _variables.$font-size-3;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+    padding: 0.25rem 0.5rem !important;
+}
+
+/*------------------------------------*/
+/* ::::: BOOTSTRAP STYLE STARTS ::::::*/
+/*------------------------------------*/
+
+.text-danger {
+    color: _variables.$danger-color !important;
+}
+
+.bg-danger {
+    background: _variables.$danger-color !important;
+}
+
+.btn-danger {
+    color: _variables.$white-color !important;
+    background-color: _variables.$danger-color;
+    border-color: _variables.$danger-color;
+}
+.btn-dark {
+    color: _variables.$white-color !important;
+}
+
+.btn-light {
+    color: _variables.$gray-2 !important;
+}
+
+.text-warning {
+    color: _variables.$warning-color !important;
+}
+
+.bg-warning {
+    background: _variables.$warning-color !important;
+}
+
+.btn-warning {
+    color: _variables.$white-color !important;;
+    background-color: _variables.$warning-color;
+    border-color: _variables.$warning-color;
+}
+
+.text-info {
+    color: _variables.$info-color !important;
+}
+
+.bg-info {
+    background: _variables.$info-color !important;
+    color: _variables.$white-color;
+}
+
+.btn-info {
+    color: _variables.$white-color !important;;
+    background-color: _variables.$info-color;
+    border-color: _variables.$info-color;
+}
+
+.text-success {
+    color: _variables.$success-color !important;
+}
+
+.bg-success {
+    background: _variables.$success-color !important;
+}
+
+.btn-success {
+    color: _variables.$white-color !important;
+    background-color: _variables.$success-color;
+    border-color: _variables.$success-color;
+}
+
+.btn-outline-success {
+    color: _variables.$success-color;
+    border-color: _variables.$success-color;
+}
+
+.text-primary {
+    color: _variables.$primary-color !important;
+}
+
+.bg-primary {
+    background: _variables.$primary-color !important;
+}
+
+.btn-primary {
+    color: _variables.$white-color !important;
+    background-color: _variables.$primary-color;
+    border-color: _variables.$primary-color;
+}
+
+.text-secondary {
+    color: _variables.$secondary-color !important;
+}
+
+.bg-secondary {
+    background: _variables.$secondary-color !important;
+}
+
+.btn-secondary {
+    color: _variables.$white-color !important;
+    background-color: _variables.$secondary-color;
+    border-color: _variables.$secondary-color;
+}
+
+.btn-danger {
+    &:hover, &:focus {
+        color: _variables.$white-color !important;;
+        background-color: _variables.darker(_variables.$danger-color, 30%);
+    }
+}
+
+.btn-warning {
+    &:hover, &:focus {
+        color: _variables.$gray-1 !important;
+        background-color: _variables.darker(_variables.$warning-color, 30%);
+    }
+}
+
+.btn-info {
+    &:hover, &:focus {
+        color: _variables.$white-color !important;
+        background-color: _variables.darker(_variables.$info-color, 30%);
+    }
+}
+
+.btn-success {
+    &:hover, &:focus {
+        color: _variables.$white-color !important;
+        background-color: _variables.darker(_variables.$success-color, 30%);
+    }
+}
+
+.btn-primary {
+    &:hover, &:focus {
+        color: _variables.$white-color !important;;
+        background-color: _variables.darker(_variables.$primary-color, 30%);
+    }
+}
+
+.btn-secondary {
+    &:hover, &:focus {
+        color: _variables.$gray-1 !important;;
+        background-color: _variables.darker(_variables.$secondary-color, 30%);
+    }
+}
+
+/*------------------------------------*/
+/* ::::::: BOOTSTRAP STYLE ENDS ::::::*/
+/*------------------------------------*/
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child),
+.input-group > .input-group-append:not(:last-child) > .btn,
+.input-group > .input-group-append:not(:last-child) > .input-group-text,
+.input-group > .input-group-prepend > .btn,
+.input-group > .input-group-prepend > .input-group-text,
+.card, .card-header:first-child, .card-footer:last-child,
+.nav-pills .nav-link {
+    border-radius: 0;
+}
+
+.nav-link {
+    padding: 12px 10px;
+}
+
+.form-control {
+    height: 40px;
+    padding: 8px 10px;
+    font-size: _variables.$font-size-3;
+    font-weight: _variables.$font-weight-normal;
+    line-height: _variables.$line-height-medium !important;
+    color: _variables.$gray-2;
+    background-color: _variables.$white-color;
+    border: 1px solid _variables.$gray-8;
+    border-radius: 0;
+}
+.form-control.lf-light-input {
+    background: _variables.$gray-9 !important;
+}
+
+.card {
+    .card-header {
+        padding: 20px;
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+    }
+
+    .card-body {
+        padding: 25px 20px;
+    }
+
+    .card-footer {
+        padding: 12px 10px;
+    }
+}
+.pagination .page-item.active .page-link {
+    background-color: _variables.$danger-color;
+    border-color: _variables.$danger-color;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: _variables.$info-color;
+}
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    background-color: _variables.$info-color;
+}

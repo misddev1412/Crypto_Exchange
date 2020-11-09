@@ -1,0 +1,131 @@
+.lf-backend-navigation-wrapper {
+  line-height: 1 !important;
+  /*.innermenu .ui-sortable-placeholder,
+  .mymenuitem .ui-sortable-placeholder {
+      border: 1px dashed #aaa;
+  }*/
+}
+
+.lf-backend-navigation-wrapper .mymenu {
+  padding: 0;
+  list-style: none;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item {
+  font-size: 12px;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item ol {
+  list-style: none;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item ol .mymgmenu {
+  display: none;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu {
+  color: #696969;
+  clear: both;
+  line-height: 1.5;
+  margin: 9px 0 0;
+  position: relative;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenuhead {
+  height: 37px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 382px;
+  word-wrap: break-word;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenuhead > div {
+  height: 37px;
+  line-height: 34px !important;
+  padding: 0 10px;
+  float: left;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenuhead > div:hover {
+  color: #EF404A;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenuhead > div:last-child {
+  float: right;
+  text-align: right;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenuhead .type .arrow-icon {
+  cursor: pointer;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenuhead .type .arrow-icon .fa {
+  padding-left: 5px;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenuhead .title {
+  font-weight: bold;
+  cursor: move;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody {
+  width: 382px;
+  padding: 5px 10px 10px;
+  border-top: none;
+  display: none;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody p {
+  margin: 3px;
+  padding: 0 !important;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody label {
+  font-style: italic;
+  margin: 0 !important;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody input[type=text] {
+  box-shadow: 0 1px 2px rgba(51, 51, 51, 0.07) inset;
+  width: 100%;
+  padding: 5px;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody input[type=checkbox] {
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody .myhrborder {
+  margin-bottom: 10px;
+  margin-top: 17px;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody .deletebutton {
+  background: none;
+  border: none;
+  color: #EF404A;
+  cursor: pointer;
+  font-size: 12px;
+  font-style: italic;
+  padding: 0;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item .innermenu .innermenubody .deletebutton:hover {
+  color: #00B9F2;
+}
+
+.lf-backend-navigation-wrapper .mymenu li.individual-menu-item input {
+  color: #778899;
+  font-style: italic;
+}
+
+.lf-backend-navigation-wrapper #all-routes {
+  line-height: 1 !important;
+}
+
+.lf-backend-navigation-wrapper #all-routes .checkbox {
+  padding: 8px 6px;
+}
+

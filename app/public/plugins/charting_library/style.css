@@ -1,0 +1,48 @@
+.chart-controls-clock, .chart-controls-tz, .chart-controls-bar-buttons.chart-series-controls a:first-child {
+	display: none !important;
+}
+#tv_chart_container html.theme-dark .group-wWM3zP_M- {
+	background: #313131 !important;
+}
+
+html.feature-no-touch.theme-dark .chart-controls-bar-buttons a:not(.disabled):hover {
+    color: #ff0;
+    background-color: #1d1d1d;
+}
+
+html.theme-dark .container-3_8ayT2Q- .background-Q1Fcmxly- {
+    /*stroke: #313131;*/
+    stroke: rgba(117,134,150,.6);
+    fill: #1d1d1d;
+}
+
+html.feature-no-touch.theme-dark .container-3_8ayT2Q-:hover .background-Q1Fcmxly- {
+    stroke: rgba(117,134,150,.6);
+    fill: #000000;
+}
+
+html.feature-no-touch.theme-dark .container-3_8ayT2Q-:hover .arrow-WcYWFXUn- {
+    stroke: #d1d1d1;
+}
+
+html.theme-dark .button-13wlLwhJ-.isOpened-1939ai3F- {
+    background-color: #1d1d1d;
+}
+
+html.theme-dark .menuWrap-23ejLU7n- {
+    background-color: #1d1d1d;
+    box-shadow: 0 2px 5px 0 #000;
+}
+
+html.theme-dark .item-2xPVYue0- {
+    color: #758696;
+    background-color: #1d1d1d;
+}
+
+html.theme-dark .button-2ioYhFEY-.isInteractive-20uLObIc-.isOpened-p-Ume5l9- {
+    background-color: #1d1d1d;
+}
+
+html.theme-dark .tv-dialog {
+    background-color: #1d1d1d;
+}

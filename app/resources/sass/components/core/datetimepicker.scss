@@ -1,0 +1,62 @@
+@use '../base/_variables' as _variables;
+
+.bootstrap-datetimepicker-widget {
+    line-height: _variables.$line-height-standard !important;
+
+    &.dropdown-menu {
+        width: 13em !important;
+
+        table {
+            th {
+                padding: 2px !important;
+                width: auto !important;
+                font-size: _variables.$font-size-2 !important;
+                color: _variables.$bg-content-dark !important;
+            }
+
+            td {
+                padding: 2px !important;
+                width: auto !important;
+                font-size: _variables.$font-size-2 !important;
+                color: _variables.$bg-content-dark !important;
+
+                span {
+                    width: 40px !important;
+                    height: 27px !important;
+                    line-height: 27px !important;
+                    font-size: _variables.$font-size-2 !important;
+                }
+            }
+        }
+
+        .datepicker-decades {
+            table {
+                td {
+                    span {
+                        width: 92px !important;
+                    }
+                }
+            }
+        }
+
+        .timepicker {
+            table {
+                td {
+                    padding: 0 !important;
+                    height: 30px !important;
+                    line-height: 30px !important;
+                    color: _variables.$bg-content-dark !important;
+
+                }
+
+                th {
+                    padding: 0 !important;
+                    height: 30px !important;
+                    line-height: 30px !important;
+                    color: _variables.$bg-content-dark !important;
+
+                }
+            }
+        }
+    }
+}

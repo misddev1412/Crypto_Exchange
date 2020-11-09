@@ -1,0 +1,50 @@
+"use strict";
+
+var cValMessages = {
+    'alpha' : 'The :attribute may only contain letters.',
+    'alphaDash' : 'The :attribute may only contain letters, numbers, dashes and underscores.',
+    'alphaNum' : 'The :attribute may only contain letters and numbers.',
+    'alphaSpace' : 'The :attribute may only contain letters and space.',
+    'between' :{
+        'array' : 'The :attribute must have between :min and :max items.',
+        'file' : 'The :attribute must be between :min and :max kilobytes.',
+        'integer' : 'The :attribute must be between :min and :max.',
+        'numeric' : 'The :attribute must be between :min and :max.',
+        'string' : 'The :attribute must be between :min and :max characters.',
+    },
+    'date' : 'The :attribute is not a valid date format.',
+    'dateTime' : 'The :attribute is not a valid date time format.',
+    'decimalScale' : 'The :attribute must be an appropriately formatted decimal:other',
+    'digitsOnly' : 'The :attribute must contain digits only.',
+    'email' : 'The :attribute must be a valid email address.',
+    'image' : 'The :attribute must be an image.',
+    'in' : 'The selected :attribute is invalid.',
+    'integer' : 'The :attribute must be an integer.',
+    'max' : {
+        'array' : 'The :attribute may not have more than :max items.',
+        'file' : 'The :attribute may not be greater than :max kilobytes.',
+        'integer' : 'The :attribute may not be greater than :max.',
+        'numeric' : 'The :attribute may not be greater than :max.',
+        'string' : 'The :attribute may not be greater than :max characters.',
+    },
+    'mimetypes' : 'The :attribute must be a file of type: :values.',
+    'min' : {
+        'array' : 'The :attribute must have at least :min items.',
+        'file' : 'The :attribute must be at least :min kilobytes.',
+        'integer' : 'The :attribute must be at least :min.',
+        'numeric' : 'The :attribute must be at least :min.',
+        'string' : 'The :attribute must be at least :min characters.',
+    },
+    'notIn' : 'The selected :attribute is invalid.',
+    'numeric' : 'The :attribute must be a number.',
+    'required' : 'The :attribute field is required.',
+    'requiredIf' : {
+        'field' : 'The :attribute field is required when :other field is not empty.',
+        'fieldWithValue' : 'The :attribute field is required when :other field is equal to :value.'
+    },
+    'requiredWithout' : 'The :attribute field is required when :other field is empty.',
+    'same' : 'The :attribute and :other must match.',
+    'strongPassword' : 'The :attribute must contain at least 1 uppercase, 1 lowercase, 1 number and 1 special characters.',
+    'time' : 'The :attribute is not a valid time format.',
+    'url' : 'The :attribute is not a valid url.',
+}

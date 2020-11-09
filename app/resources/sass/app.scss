@@ -1,0 +1,26 @@
+/*SYSTEM*/
+@use 'node_modules/bootstrap/scss/bootstrap.scss';
+@use 'node_modules/font-awesome/scss/font-awesome.scss';
+
+/* CORE */
+@use 'components/core/primary';
+@use 'components/core/bootstrap_custom';
+@use 'components/core/top_nav';
+@use 'components/core/side_nav';
+@use 'components/core/dropdown_notification';
+@use 'components/core/dropdown_user';
+@use 'components/core/dropdown_language';
+@use 'components/core/breadcrumb';
+@use 'components/core/custom_inputs';
+@use '../../public/plugins/flash_message/flash.message';
+@use 'components/core/datetimepicker';
+@use 'components/core/filters';
+@use 'components/core/advance_filters';
+@use 'components/core/list_pagination';
+@use 'components/core/datatable';
+@use 'components/exchange/exchange';
+@use 'components/exchange/font_size';
+@use 'components/dashboard/coin_box';
+@use 'components/dashboard/cart_loader';
+@use 'components/color_theme/light';
+@use 'components/color_theme/dark';

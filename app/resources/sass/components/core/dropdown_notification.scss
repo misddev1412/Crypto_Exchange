@@ -1,0 +1,151 @@
+@use '../base/_variables' as _variables;
+
+.lf-user-menu {
+    line-height: _variables.$line-height-standard !important;
+
+    > li {
+        /*------------------------------------*/
+        /* ::::: USER NOTIFICATION STARTS ::::*/
+        /*------------------------------------*/
+        .lf-user-notification {
+            .dropdown-toggle {
+                margin-right: 2px;
+                border: none;
+                background: none;
+                padding: 17px 0;
+                position: relative;
+
+                &::after {
+                    display: none;
+                }
+
+                &:hover {
+                    .notification-icon {
+                        color: _variables.$hover-color;
+                    }
+                }
+
+                .notification-icon {
+                    font-size: _variables.$font-size-6;
+                    line-height: 18px !important;
+                    color: _variables.$white-color;
+                }
+
+                .lf-notification-count {
+                    position: absolute;
+                    bottom: 50%;
+                    left: 100%;
+                    font-size: 10px;
+                    text-align: left;
+                    background: _variables.$hover-color;
+                    color: _variables.$white-color;
+                    padding: 2px;
+                    border-radius: 6px;
+                    font-weight: _variables.$font-weight-bold;
+                    margin-left: -8px;
+                    margin-bottom: 0px;
+                    line-height: 9px !important;
+                }
+            }
+
+            .dropdown-menu {
+                width: 308px;
+                padding: 0;
+                border: none;
+                box-shadow: 0 0 5px rgba(_variables.$black-color, 0.2);
+
+                .dropdown-header {
+                    padding: 10px 10px;
+                    text-align: center;
+                }
+
+                .dropdown-item {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    cursor: default;
+                    padding: 12px 10px;
+                    font-size: _variables.$font-size-2;
+                    border-top: 1px solid _variables.$gray-11;
+
+                    &:hover {
+                        color: _variables.$white-color;
+                        background: _variables.$primary-color;
+                    }
+                }
+
+                .all-notification {
+                    width: 100%;
+                    border-radius: 0;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        /*------------------------------------*/
+        /* ::::: USER NOTIFICATION ENDS ::::::*/
+        /*------------------------------------*/
+    }
+}
+
+
+/*------------------------------------*/
+/* ::: NAVIGATION VARIATION STARTS :::*/
+/*------------------------------------*/
+.lf-template-header {
+    line-height: _variables.$line-height-standard !important;
+    background: _variables.$primary-color;
+    /*LIGHT*/
+    &.header-light {
+        .lf-user-menu {
+            > li {
+                .lf-user-notification {
+                    .dropdown-toggle {
+                        .notification-icon {
+                            color:_variables.$primary-color
+                        ;
+                        }
+
+                        &:hover {
+                            .notification-icon {
+                                color:_variables.$hover-color
+                            ;
+                            }
+
+                            .lf-notification-count {
+                                background: _variables.$hover-color;
+                            }
+                        }
+
+                        .lf-notification-count {
+                            background: _variables.$primary-color;
+                            color: _variables.$white-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*TRANSPARENT*/
+    &.header-transparent {
+        .lf-user-menu {
+            > li {
+                .lf-user-notification {
+                    .dropdown-toggle {
+                        .notification-icon {
+                            text-shadow: 1px 1px 3px rgba(_variables.$black-color, 0.5);
+                        }
+
+                        .lf-notification-count {
+                            box-shadow: 1px 1px 3px rgba(_variables.$black-color, 0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------------*/
+/* :::: NAVIGATION VARIATION ENDS ::::*/
+/*------------------------------------*/

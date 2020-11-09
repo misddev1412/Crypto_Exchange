@@ -1,0 +1,76 @@
+@use '../base/_variables' as _variables;
+
+.lf-d-none {
+    display: none;
+}
+
+.lf-filter-container {
+    line-height: _variables.$line-height-standard !important;
+    border: 1px solid _variables.$gray-9;
+    padding: 0 10px 10px;
+
+    .lf-filter-wrapper {
+        .lf-filter-checkbox {
+            display: none;
+
+            &:checked {
+                + .lf-filter-checkbox-label {
+                    &::after {
+                        left: 14px;
+                        background: _variables.lighter(_variables.$info-color, 20%);
+                        box-shadow: -2px 0 3px rgba(_variables.$black-color, 0.2);
+                    }
+
+                    &::before {
+                        padding-left: 1px;
+                        background: _variables.darker(_variables.$info-color, 30%);
+                    }
+                }
+            }
+        }
+
+        .lf-filter-checkbox-label {
+            position: relative;
+            padding-left: 38px;
+            line-height: 20px !important;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-weight: _variables.$font-weight-normal !important;
+
+            &::after {
+                position: absolute;
+                left: 0;
+                top: 0;
+                content: '';
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: _variables.$gray-11;
+                box-shadow: 1px 1px 4px rgba(_variables.$black-color, 0.5);
+                transition: all 0.1s linear;
+            }
+
+            &::before {
+                transition: all 0.1s linear;
+                position: absolute;
+                left: 2px;
+                top: 4px;
+                content: '';
+                width: 30px;
+                height: 12px;
+                background: _variables.$gray-6;
+                border-radius: 6px;
+                line-height: 15px !important;
+                text-align: center;
+                font-size: _variables.$font-size-2;
+            }
+        }
+    }
+
+    .btn[type="submit"] {
+        padding: 2px 8px !important;
+        height: 34px;
+        text-align: center;
+        border-radius: 0 !important;
+    }
+}
