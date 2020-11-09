@@ -177,3 +177,5 @@
 172.21.0.1 - - [09/Nov/2020:08:46:00 +0000] "GET /js/app.js HTTP/1.1" 200 872844 "http://thinh.local:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 172.21.0.1 - - [09/Nov/2020:08:46:00 +0000] "GET /js/vendor.js HTTP/1.1" 200 881686 "http://thinh.local:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
 172.21.0.1 - - [09/Nov/2020:08:46:02 +0000] "GET /storage/images/logo.png HTTP/1.1" 404 3079 "http://thinh.local:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+172.21.0.1 - - [09/Nov/2020:09:01:07 +0000] "GET / HTTP/1.1" 200 3546 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+172.21.0.1 - - [09/Nov/2020:09:01:08 +0000] "GET /storage/images/logo.png HTTP/1.1" 404 3079 "http://thinh.local:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
