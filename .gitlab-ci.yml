@@ -7,7 +7,7 @@ before_script:
     # Setup SSH deploy keys
     - 'which ssh-agent || ( apt-get install -qq openssh-client )'
     - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - ssh-add <(echo "$SSH_PRIVATE_KEY_NEW")
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
@@ -20,6 +20,7 @@ deploy_production:
     script:
         # - rm -rf /var/www/exchange
         # - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www && git clone git@gitlab.com:misddev/exchange.git && exit"
-        - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www/exchange && docker-compose stop && git pull && docker-compose start && exit"
+        # - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www/exchange && docker-compose stop && git pull && docker-compose start && exit"
+        - ssh thinh@34.123.12.16 "cd /var/www/exchange && docker-compose stop && git pull && docker-compose start && exit"
     only:
         - master
