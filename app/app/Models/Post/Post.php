@@ -4,6 +4,7 @@ namespace App\Models\Post;
 
 use App\Models\Core\User;
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
@@ -11,6 +12,8 @@ use Stevebauman\Purify\Facades\Purify;
 
 class Post extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = 'string';
     protected $fillable = [

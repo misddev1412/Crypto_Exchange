@@ -20,7 +20,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = '';
+    protected $namespace = null;
 
     /**
      * Define your route model bindings, pattern filters, etc.

@@ -361,6 +361,18 @@ return [
                     'exchange.get-wallet-summary'
                 ]
             ],
+            'personal_access_token' => [
+                ROUTE_GROUP_READER_ACCESS => [
+                    'personal-access-tokens.index',
+                ],
+                ROUTE_GROUP_CREATION_ACCESS => [
+                    'personal-access-tokens.create',
+                    'personal-access-tokens.store',
+                ],
+                ROUTE_GROUP_DELETION_ACCESS => [
+                    'personal-access-tokens.destroy',
+                ],
+            ],
         ],
     ],
     'role_based_routes' => [

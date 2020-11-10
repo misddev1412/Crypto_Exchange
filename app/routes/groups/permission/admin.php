@@ -82,9 +82,7 @@ Route::group(['prefix' => 'admin'], function () {
         ->name('roles.status');
 
     //Application Setting
-    Route::get('application-settings', [ApplicationSettingController::class, 'index'])
-        ->name('application-settings.index');
-    Route::get('application-settings/{type}/{sub_type}', [ApplicationSettingController::class, 'edit'])
+    Route::get('application-settings/{type?}/{sub_type?}', [ApplicationSettingController::class, 'edit'])
         ->name('application-settings.edit');
     Route::put('application-settings/{type}/update/{sub_type?}', [ApplicationSettingController::class, 'update'])
         ->name('application-settings.update');

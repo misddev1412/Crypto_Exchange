@@ -328,7 +328,7 @@
 
     /*TRANSPARENT*/
     &.header-transparent {
-        background: none;
+        background: none !important;
         position: absolute;
         left: 0;
         top: 0;

@@ -38,7 +38,7 @@ class ProfileService
 
     public function avatarUpload(UserAvatarRequest $request)
     {
-        $uploadedAvatar = app(FileUploadService::class)->upload($request->file('avatar'), config('commonconfig.path_profile_image'), 'avatar', 'user', Auth::id(), 'public', 300, 300);
+        $uploadedAvatar = app(FileUploadService::class)->upload($request->file('avatar'), config('commonconfig.path_profile_image'), 'avatar', 'user', Auth::id(), 'public', 300, null, false);
 
         if ($uploadedAvatar) {
             $parameters = ['avatar' => $uploadedAvatar];

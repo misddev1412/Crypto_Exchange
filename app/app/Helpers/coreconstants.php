@@ -12,9 +12,10 @@ const USER_ROLE_ADMIN = 'admin';
 const USER_ROLE_USER = 'user';
 
 //Response keys
-const RESPONSE_STATUS_KEY = 'status';
+const RESPONSE_STATUS_KEY = 'success';
 const RESPONSE_MESSAGE_KEY = 'message';
 const RESPONSE_DATA = 'data';
+const RESPONSE_LOCALE_KEY = 'locale';
 
 //Response Types
 const RESPONSE_TYPE_SUCCESS = 'success';

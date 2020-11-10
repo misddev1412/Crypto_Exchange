@@ -10,8 +10,13 @@ use App\Http\Controllers\Post\BlogController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 //Test
+Route::get('thinh', function() {
+    return 'ss';
+});
+  
 Route::get('test', [TestController::class, 'test'])
     ->name('test');
+
 Route::get('/', HomeController::class)
     ->name('home');
 Route::post('google-2fa/verify', [VerifyGoogle2faController::class, 'verify'])

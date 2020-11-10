@@ -26,6 +26,7 @@ class ProductActiveController extends Controller
                 'server_addr' => $request->server('SERVER_ADDR'),
                 'http_host' => $request->server('HTTP_HOST'),
             ]);
+            
             if ($response->successful()) {
                 file_put_contents($filePath, $response->body());
             } else {

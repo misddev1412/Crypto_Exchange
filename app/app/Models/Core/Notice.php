@@ -4,11 +4,14 @@ namespace App\Models\Core;
 
 use App\Override\Eloquent\LaraframeModel as Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class Notice extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
 
     protected $keyType = 'string';

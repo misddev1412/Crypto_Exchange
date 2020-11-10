@@ -14,6 +14,7 @@ use App\Services\Withdrawal\WithdrawalService;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +44,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        Paginator::defaultView('vendor.pagination.bootstrap-4');
+
+        Paginator::useBootstrap();
 
         if (env("APP_PROTOCOL", 'http') == 'https') {
             URL::forceScheme('https');
@@ -204,6 +206,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('logger', LaraframeLogger::class);
+
         //API Service Binding
         $this->app->bind("BitcoinForkedApi", function ($app, $parameters) {
             return new BitcoinForkedApi($parameters[0]);
@@ -231,7 +234,6 @@ class AppServiceProvider extends ServiceProvider
 
         //Cache admin settings
         $this->loadApplicationSettings();
-
     }
 
     private function dateComparison($attribute, $value, $parameters)
@@ -267,13 +269,9 @@ class AppServiceProvider extends ServiceProvider
 
     private function loadApplicationSettings()
     {
-
         $applicationSettings = settings();
-
         if (empty($applicationSettings)) {
-
             try {
-
                 $applicationSettings = ApplicationSetting::pluck('value', 'slug')->toArray();
                 foreach ($applicationSettings as $key => $val) {
                     if (is_json($val)) {
@@ -282,7 +280,6 @@ class AppServiceProvider extends ServiceProvider
                 }
                 Cache::forever('appSettings', $applicationSettings);
             } catch (Exception $exception) {
-
                 return false;
             }
         }

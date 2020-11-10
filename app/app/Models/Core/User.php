@@ -16,18 +16,21 @@ use Illuminate\Contracts\{Auth\Access\Authorizable as AuthorizableContract,
     Auth\Authenticatable as AuthenticatableContract,
     Auth\CanResetPassword as CanResetPasswordContract
 };
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
+use Laravel\Sanctum\Sanctum;
 
 class User extends Model implements
     AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail;
+    use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail, HasApiTokens, HasFactory;
 
     public $incrementing = false;
     protected $keyType = 'string';
@@ -127,5 +130,15 @@ class User extends Model implements
     public function isSuperAdmin()
     {
         return $this->is_super_admin;
+    }
+
+    /**
+     * Get the access tokens that belong to model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function tokens()
+    {
+        return $this->morphMany(Sanctum::$personalAccessTokenModel, 'tokenable');
     }
 }

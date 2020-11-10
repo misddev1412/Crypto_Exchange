@@ -5,10 +5,13 @@ namespace App\Models\Core;
 use App\Jobs\Wallet\GenerateUserWalletsJob;
 use App\Override\Eloquent\LaraframeModel as Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 
 class Notification extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = 'string';
 

@@ -3,11 +3,14 @@
 namespace App\Models\Post;
 
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class PostCategory extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $primaryKey = 'slug';
     protected $keyType = 'string';

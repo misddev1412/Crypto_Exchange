@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BankAccount\ChangeUserBankAccountStatusController;
 use App\Http\Controllers\BankAccount\UserBankManagementController;
+use App\Http\Controllers\PersonalAccessTokens\PersonalAccessTokensController;
 use App\Http\Controllers\TradeHistory\MyTradeHistoryController;
 use App\Http\Controllers\Core\{NotificationController, PreferenceController, ProfileController};
 use App\Http\Controllers\Deposit\UserDepositController;
@@ -94,7 +95,7 @@ Route::post('user/orders/store', [CreateOrderController::class, 'store'])
     ->name('user.order.store');
 
 //Cancel Order
-Route::delete('user/order/{order}/destroy', [CancelOrderController::class, 'destroy'])
+Route::delete('user/orders/{order}/destroy', [CancelOrderController::class, 'destroy'])
     ->name('user.order.destroy');
 
 //Open Orders
@@ -131,3 +132,8 @@ Route::get('activities', [UserActivityController::class, 'index'])->name('my-act
 //Trade History
 Route::get('trade-history', MyTradeHistoryController::class)
     ->name('my-trade-history');
+
+// personal access token
+Route::resource('personal-access-tokens', PersonalAccessTokensController::class)
+    ->only('index', 'create', 'store', 'destroy')
+    ->names('personal-access-tokens');

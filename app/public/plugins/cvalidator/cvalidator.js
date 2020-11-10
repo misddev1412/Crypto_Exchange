@@ -824,6 +824,11 @@
             getErrorMessage: function () {
                 return errorMessage;
             },
+            setErrorMessage: function(messages){
+                messages.forEach(function (key, value) {
+                    $('#'+cValidateSingle).find('[name="'+key+'"]').closest('.' + options.formGroupClass).find('.' + options.messageClass).text(value[0])
+                })
+            },
             resetRules: function (newRules) {
                 options.rules = newRules;
             },

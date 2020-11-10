@@ -4,12 +4,15 @@ namespace App\Models\Ticket;
 
 use App\Models\Core\User;
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Ticket extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = 'string';
     protected $fillable = ['user_id', 'assigned_to', 'ticket_id', 'title', 'content', 'attachment', 'status'];

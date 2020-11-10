@@ -8,6 +8,7 @@ use App\Models\Deposit\WalletDeposit;
 use App\Models\Order\Order;
 use App\Models\Withdrawal\WalletWithdrawal;
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,8 @@ use Illuminate\Support\Str;
 
 class Wallet extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = 'string';
     protected $casts = [

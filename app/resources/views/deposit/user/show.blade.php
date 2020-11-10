@@ -70,7 +70,7 @@
                                     <tr>
                                         <th class="pl-0">{{ __('Account Holder') }}</th>
                                         <td>{{ $deposit->bankAccount->account_holder }}</td>
-                                        <th class="pl-0">{{ __('Account Number') }}</th>
+                                        <th class="pl-0">{{ __('Reference Number') }}</th>
                                         <td>{{ $deposit->bankAccount->reference_number }}</td>
                                     </tr>
                                     <tr>
@@ -140,7 +140,7 @@
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th>{{  __("Account Number") }}</th>
+                                                                        <th>{{  __("Reference Number") }}</th>
                                                                         <td>
                                                                             <span class="mx-3">:</span> {{ $systemBank->reference_number }}
                                                                         </td>
@@ -237,7 +237,7 @@
                                         <tr>
                                             <th class="pl-0">{{ __('Account Holder') }}</th>
                                             <td>{{ $deposit->systemBankAccount->account_holder }}</td>
-                                            <th class="pl-0">{{ __('Account Number') }}</th>
+                                            <th class="pl-0">{{ __('Reference Number') }}</th>
                                             <td>{{ $deposit->systemBankAccount->reference_number }}</td>
                                         </tr>
                                         <tr>

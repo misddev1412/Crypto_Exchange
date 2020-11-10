@@ -9,12 +9,15 @@ use App\Models\Deposit\WalletDeposit;
 use App\Models\Wallet\Wallet;
 use App\Models\Withdrawal\WalletWithdrawal;
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Coin extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $primaryKey = 'symbol';
     protected $keyType = 'string';

@@ -4,9 +4,12 @@ namespace App\Models\Core;
 
 use App\Override\Eloquent\LaraframeModel as Model;
 use Exception;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ApplicationSetting extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $primaryKey = 'slug';
     protected $keyType = 'string';

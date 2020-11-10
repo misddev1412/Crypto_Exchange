@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
 
     public function __invoke(): View
-    {   
+    {
         return view('regular_pages.home');
     }
 }

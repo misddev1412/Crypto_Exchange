@@ -29,29 +29,23 @@ class AdminDashboardController extends Controller
 
     public function getFeaturedCoins(): JsonResponse
     {
-        $featuredCoins = $this->_getFeaturedCoins([
-            settings('dashboard_coin_1'),
-            settings('dashboard_coin_2'),
-            settings('dashboard_coin_3'),
-            settings('dashboard_coin_4'),
-        ]);
-        if (count($featuredCoins) <= 0) {
-            return response()->json([RESPONSE_STATUS_KEY => RESPONSE_TYPE_ERROR, RESPONSE_DATA => []]);
-        }
-        for ($i = 1; $i <= 4; $i++) {
-            $featuredCoin = $featuredCoins->where('symbol', settings('dashboard_coin_' . $i))->first();
-            $data['dashboardCoins']['coin_' . $i]['name'] = $featuredCoin->name;
-            $data['dashboardCoins']['coin_' . $i]['symbol'] = $featuredCoin->symbol;
-            $data['dashboardCoins']['coin_' . $i]['revenue_cart_url'] = route('coins.revenue-graph', $featuredCoin->symbol);
-            $data['dashboardCoins']['coin_' . $i]['icon'] = get_coin_icon($featuredCoin->icon);
-            $data['dashboardCoins']['coin_' . $i]['primary_balance'] = $featuredCoin->systemWallet->primary_balance;
-        }
-        return response()->json([RESPONSE_STATUS_KEY => RESPONSE_TYPE_SUCCESS, RESPONSE_DATA => $data]);
-    }
 
-    public function _getFeaturedCoins($symbols)
-    {
-        return Coin::whereIn('symbol', $symbols)->with('systemWallet')->select('symbol', 'name', 'icon')->get();
+        $status = RESPONSE_TYPE_ERROR;
+        $data = [];
+
+        for ($i = 1; $i <= 4; $i++) {
+            $featuredCoin = Coin::where('symbol', settings('dashboard_coin_' . $i))->first();
+
+            if(!empty($featuredCoin)) {
+               $status = RESPONSE_TYPE_SUCCESS;
+               $data['dashboardCoins']['coin_' . $i]['name'] = $featuredCoin->name;
+               $data['dashboardCoins']['coin_' . $i]['symbol'] = $featuredCoin->symbol;
+               $data['dashboardCoins']['coin_' . $i]['revenue_cart_url'] = route('coins.revenue-graph', $featuredCoin->symbol);
+               $data['dashboardCoins']['coin_' . $i]['icon'] = get_coin_icon($featuredCoin->icon);
+               $data['dashboardCoins']['coin_' . $i]['primary_balance'] = $featuredCoin->systemWallet->primary_balance;
+           }
+        }
+        return response()->json([RESPONSE_STATUS_KEY => $status, RESPONSE_DATA => $data]);
     }
 
     public function getUserReports(): JsonResponse

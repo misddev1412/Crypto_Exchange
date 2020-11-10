@@ -3,7 +3,7 @@
 
 {{ __("Please click on the following link to reset password -" ) }}
 
-@component('mail::button', ['url' => url()->temporarySignedRoute('reset-password.index', now()->addMinutes(30), ['id' => $user->id])])
+@component('mail::button', ['url' => url()->temporarySignedRoute('reset-password.index', now()->addMinutes(30), ['user' => $user->id])])
     {{ __('Reset Password') }}
 @endcomponent
 

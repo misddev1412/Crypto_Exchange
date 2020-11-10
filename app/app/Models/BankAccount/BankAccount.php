@@ -5,12 +5,15 @@ namespace App\Models\BankAccount;
 use App\Models\Core\Country;
 use App\Models\Deposit\WalletDeposit;
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class BankAccount extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = 'string';
 

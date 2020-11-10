@@ -12,6 +12,7 @@ use App\Models\Wallet\Wallet;
 use App\Services\Logger\Logger;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use function auth;
 
@@ -61,7 +62,7 @@ class CreateOrderService
             ];
         }
 
-        if (settings('enable_kyc_verification_in_exchange') && $this->user->is_id_verified != STATUS_VERIFIED) {
+        if (settings('enable_kyc_verification_in_exchange') && $this->user->is_id_verified != VERIFIED) {
             return [
                 RESPONSE_STATUS_KEY => false,
                 RESPONSE_MESSAGE_KEY => __("Your account must be KYC verified to place an order.")

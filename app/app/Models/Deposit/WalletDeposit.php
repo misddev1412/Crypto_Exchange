@@ -7,11 +7,14 @@ use App\Models\Coin\Coin;
 use App\Models\Core\User;
 use App\Models\Wallet\Wallet;
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class WalletDeposit extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = 'string';
 

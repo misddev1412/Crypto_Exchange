@@ -10,17 +10,18 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.2",
         "maximebf/debugbar": "^1.16.3",
-        "illuminate/routing": "^5.5|^6|^7",
-        "illuminate/session": "^5.5|^6|^7",
-        "illuminate/support": "^5.5|^6|^7",
-        "symfony/debug": "^3|^4|^5",
-        "symfony/finder": "^3|^4|^5"
+        "illuminate/routing": "^6|^7|^8",
+        "illuminate/session": "^6|^7|^8",
+        "illuminate/support": "^6|^7|^8",
+        "symfony/debug": "^4.3|^5",
+        "symfony/finder": "^4.3|^5"
     },
     "require-dev": {
-        "orchestra/testbench": "^3.5|^4.0|^5.0",
-        "phpunit/phpunit": "^6.0|^7.0|^8.5|^9.0"
+        "orchestra/testbench-dusk": "^4|^5|^6",
+        "phpunit/phpunit": "^8.5|^9.0",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "autoload": {
         "psr-4": {
@@ -39,7 +40,7 @@
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "dev-master": "3.2-dev"
+            "dev-master": "3.5-dev"
         },
         "laravel": {
             "providers": [
@@ -49,5 +50,10 @@
                 "Debugbar": "Barryvdh\\Debugbar\\Facade"
             }
         }
+    },
+    "scripts": {
+        "check-style": "phpcs -p --standard=PSR12 config/ src/ tests/",
+        "fix-style": "phpcbf -p --standard=PSR12 config/ src/ tests/",
+        "test": "phpunit"
     }
 }

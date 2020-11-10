@@ -1,17 +1,26 @@
 <style>
+    #profileAvatar {
+        width: 100%;
+        padding-top: 100%;
+        background-position: top center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     #changeAvatar, #changeIcon {
         position: absolute;
         top: 0;
         right: 0;
         z-index: 100000006;
-        width: 50px;
-        height: 50px;
-        background-color: rgba(0,0,0,0.5);
-        border: 1px solid;
-        color: #ffffff;
+        width: 30px;
+        height: 30px;
+        border: none;
+        color: #fff;
         font-size: 18px;
-        opacity: 0.35;
+        opacity: 0.5;
         transition: 0.3s;
+        padding: 0;
+        background: transparent;
+        text-shadow: 0 0 3px rgba(0,0,0,0.7);
     }
     #changeAvatar:hover, #changeIcon:hover {
         opacity: 1;

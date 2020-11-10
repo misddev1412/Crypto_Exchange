@@ -41,9 +41,15 @@ class ExcelServiceProvider extends ServiceProvider
             }
         }
 
-        $this->app->booted(function () {
+        if ($this->app instanceof \Illuminate\Foundation\Application) {
+            // Laravel
+            $this->app->booted(function () {
+                $this->app->make(SettingsProvider::class)->provide();
+            });
+        } else {
+            // Lumen
             $this->app->make(SettingsProvider::class)->provide();
-        });
+        }
     }
 
     /**

@@ -1,9 +1,7 @@
 {{ Form::open(['route' => ['profile.avatar.update'],  'method' => 'post', 'class'=>'form-horizontal validator', 'enctype'=>'multipart/form-data']) }}
 <div class="avatar-box lf-toggle-bg-card lf-toggle-border-color border text-center border-bottom-0">
-    <div class="position-relative">
-        <img src="{{ get_avatar($user->avatar) }}"
-             alt="{{ __('Profile Image') }}"
-             class="img-rounded img-fluid" id="profileAvatar">
+    <div class="position-relative" id="profileAvatar" style="background-image: url({{ get_avatar($user->avatar) }})">
+        {{--        <img src="" alt="{{ __('Profile Image') }}" class="img-rounded img-fluid" id="profileAvatar">--}}
         <div class="ajax-loader">
             <div class="sk-cube-grid m-auto">
                 <div class="sk-cube sk-cube1"></div>
@@ -28,9 +26,7 @@
     </div>
 </div>
 <p class="lf-toggle-bg-card text-center p-3 m-0 lf-toggle-border-color border">{{ $user->profile->full_name }}</p>
-<p class="request-message text-center"></p>
 {{ Form::close() }}
-
 
 @section('extra-script')
     <script>
@@ -42,7 +38,6 @@
             var profileAvatar = $("#profileAvatar");
             // var avatarSrc = profileAvatar.attr("src");
             var loader = $(".ajax-loader");
-            var message = $(".request-message");
 
             changeAvatarBtn.on("click", function (e) {
                 e.preventDefault();
@@ -51,14 +46,6 @@
 
             // upload avatar instantly using ajax
             avatarInput.on("change", function () {
-                message.text("");
-                if (message.hasClass("text-danger")) {
-                    message.removeClass("text-danger");
-                }
-                if (message.hasClass("text-success")) {
-                    message.removeClass("text-success");
-                }
-
                 loader.css("display", "flex");
 
                 var form = $(this).parents("form");
@@ -71,30 +58,25 @@
                 // send request
                 axios.post(url, formData)
                     .then(function (response) {
-                        console.log(response.data);
                         if (response.data.{{ RESPONSE_STATUS_KEY }} == "{{ RESPONSE_TYPE_SUCCESS }}") {
                             if (response.data.avatar) {
                                 var date = new Date();
-                                profileAvatar.attr("src", response.data.avatar + "?" + date.getTime());
+                                profileAvatar.css({
+                                    "background-image": 'url(' + response.data.avatar + "?" + date.getTime() + ')'
+                                });
                             }
-                            message.addClass("text-success");
+                            flashBox('success', '{{ __('Avatar has been updated successfully.') }}');
                         } else {
-                            message.addClass("text-danger");
+                            flashBox('error', '{{ __('Failed to update avatar.') }}');
                         }
-                        message.text(response.data.{{RESPONSE_MESSAGE_KEY}});
-                        message.show();
                     })
                     .catch(function (error) {
                         if (error.response.data.errors.avatar[0]) {
-                            message.addClass("text-danger");
-                            message.text(error.response.data.errors.avatar[0]);
-                            message.show();
+                            flashBox('error', error.response.data.errors.avatar[0])
                         }
                     }).finally(function () {
-                        loader.css("display", "none");
-                        message.hide();
-                        message.text('');
-                    });
+                    loader.css("display", "none");
+                });
             });
         });
     </script>

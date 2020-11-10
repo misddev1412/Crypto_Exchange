@@ -59,7 +59,7 @@ class ProfileController extends Controller
     {
         $response = $this->service->updatePassword($request);
 
-        if ($response[RESPONSE_STATUS_KEY]){
+        if ($response[RESPONSE_STATUS_KEY]) {
             if (app(UserActivityService::class)->store(Auth::id(), 'update password')){
                 Auth::logout();
                 return redirect()->route('login')->with(RESPONSE_TYPE_SUCCESS, $response[RESPONSE_MESSAGE_KEY]);

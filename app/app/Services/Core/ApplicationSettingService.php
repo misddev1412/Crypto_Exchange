@@ -26,7 +26,11 @@ class ApplicationSettingService
         $this->type = $type;
         $this->subType = $subType;
         $settingsRequest = $request->settings;
+        if(empty($settingsRequest)){
+            $settingsRequest = [];
+        }
         $uploadAbleImages = [];
+
         foreach ($settingsRequest as $field => $value) {
             $this->validate($field, $value);
             if (is_array($value)) {
@@ -52,18 +56,20 @@ class ApplicationSettingService
 
         $existingSettingsFromDatabase = ApplicationSetting::whereIn('slug', array_keys($settingsRequest))->get()->toArray();
         $updateAbleSettings = array_diff_assoc($settingsRequest, $existingSettingsFromDatabase);
+        $imageUploadCount = 0;
         if (!empty($uploadAbleImages)) {
-            $this->uploadImages($uploadAbleImages, $updateAbleSettings);
+            $this->uploadImages($uploadAbleImages, $updateAbleSettings, $imageUploadCount);
         }
 
 
         if (!empty($updateAbleSettings)) {
-            $updateCount = 0;
+            $updateCount = $imageUploadCount;
             foreach ($updateAbleSettings as $field => $value) {
                 $attributes = ['slug' => $field, 'value' => $value];
                 $conditions = ['slug' => $field];
                 if ($isUpdate = ApplicationSetting::updateOrCreate($conditions, $attributes)) {
                     if ($isUpdate->wasRecentlyCreated || $isUpdate->wasChanged()) {
+
                         $updateCount++;
                     }
                 }
@@ -80,6 +86,7 @@ class ApplicationSettingService
                 Cache::forever("appSettings", $cachedSettings);
 
                 $message = __(':updateCount setting(s) have been updated!', ['updateCount' => $updateCount]);
+
                 return [
                     RESPONSE_STATUS_KEY => true,
                     RESPONSE_MESSAGE_KEY => $message,
@@ -192,7 +199,7 @@ class ApplicationSettingService
         }
     }
 
-    private function uploadImages($uploadAbleImages, &$updateAbleSettings)
+    private function uploadImages($uploadAbleImages, &$updateAbleSettings, &$imageUploadCount)
     {
         $fileUploadService = app(FileUploadService::class);
         foreach ($uploadAbleImages as $field => $file) {
@@ -206,8 +213,9 @@ class ApplicationSettingService
                 unset($updateAbleSettings[$uploadedFileName]);
                 continue;
             }
-
+            $imageUploadCount++;
             $updateAbleSettings[$field] = $uploadedFileName;
+            session()->flash('image_updated', true);
         }
     }
 
@@ -335,7 +343,7 @@ class ApplicationSettingService
         $image = '<div class="fileinput fileinput-new" data-provides="fileinput">
                           <div class="fileinput fileinput-new" data-provides="fileinput">
                               <div class="fileinput-new img-thumbnail lf-w-200px">
-                                <img src="' . get_image($value_data) . '"  alt="">
+                                <img src="' . get_image($value_data) .'"  alt="">
                               </div>
                           <div class="fileinput-preview fileinput-exists img-thumbnail lf-w-200px"></div>
                           <div>

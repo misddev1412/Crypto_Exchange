@@ -28,4 +28,11 @@ class UserAvatarRequest extends FormRequest
             'avatar' => 'required|image|max:2048'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'avatar.uploaded' =>  __('Failed to upload avatar.'),
+        ];
+    }
 }

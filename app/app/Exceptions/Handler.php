@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -58,7 +59,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof TokenMismatchException) {
-            if ($request->ajax()) {
+            if ($request->ajax() || $request->is('api/*')) {
                 return response()->json([
                     'dismiss' => __('Session expired due to inactivity. Please reload page'),
                 ]);
@@ -68,7 +69,7 @@ class Handler extends ExceptionHandler
         } elseif ($exception instanceof UnauthorizedException) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    RESPONSE_STATUS_KEY => 'auth',
+                    RESPONSE_STATUS_KEY => false,
                     RESPONSE_MESSAGE_KEY => Str::title(str_replace('_', ' ', $exception->getMessage()))
                 ], $exception->getCode());
             } else {
@@ -76,6 +77,11 @@ class Handler extends ExceptionHandler
             }
         } elseif (env('APP_ENV') == 'production' && !$exception instanceof ValidationException && !$exception instanceof AuthenticationException) {
             return response()->view('errors.404');
+        } elseif ($exception instanceof ModelNotFoundException && $request->is('api/*')) {
+            return response()->json([
+                RESPONSE_STATUS_KEY => false,
+                RESPONSE_MESSAGE_KEY => __('The relevant data is not found.')
+            ], 404);
         }
 
         return parent::render($request, $exception);

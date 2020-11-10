@@ -4,10 +4,13 @@ namespace App\Models\Core;
 
 use App\Models\Coin\CoinPair;
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 
 class UserPreference extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     public $timestamps = false;
     protected $keyType = 'string';

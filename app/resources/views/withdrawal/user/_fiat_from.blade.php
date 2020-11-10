@@ -1,7 +1,7 @@
 {{--api--}}
 <div class="form-group {{ $errors->has('api') ? 'has-error' : '' }}">
     <label for="api"
-           class="control-label required">{{ __('Deposit with') }}</label>
+           class="control-label required">{{ __('Withdrawal with') }}</label>
     <div>
         {{ Form::select('api', $apis, old('api', null), ['class'=>'form-control lf-toggle-bg-input lf-toggle-border-color', 'id' => 'api', 'placeholder' => __('Select API'), '@change' => 'changePaymentMethod']) }}
 

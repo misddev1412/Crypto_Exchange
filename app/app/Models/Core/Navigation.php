@@ -3,9 +3,12 @@
 namespace App\Models\Core;
 
 use App\Override\Eloquent\LaraframeModel as Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Navigation extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = "string";
     protected $primaryKey = "slug";

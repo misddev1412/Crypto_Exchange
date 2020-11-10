@@ -1,4 +1,6 @@
-<?php namespace Barryvdh\Debugbar;
+<?php
+
+namespace Barryvdh\Debugbar;
 
 use DebugBar\DebugBar;
 use DebugBar\JavascriptRenderer as BaseJavascriptRenderer;
@@ -42,7 +44,6 @@ class JavascriptRenderer extends BaseJavascriptRenderer
      */
     public function setUrlGenerator($url)
     {
-
     }
 
     /**
@@ -51,7 +52,8 @@ class JavascriptRenderer extends BaseJavascriptRenderer
     public function renderHead()
     {
         $cssRoute = route('debugbar.assets.css', [
-            'v' => $this->getModifiedTime('css')
+            'v' => $this->getModifiedTime('css'),
+            'theme' => config('debugbar.theme', 'auto'),
         ]);
 
         $jsRoute = route('debugbar.assets.js', [

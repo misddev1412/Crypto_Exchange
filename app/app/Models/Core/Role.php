@@ -4,10 +4,13 @@ namespace App\Models\Core;
 
 use App\Override\Eloquent\LaraframeModel as Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 
 class Role extends Model
 {
+    use HasFactory;
+
     public $incrementing = false;
     protected $keyType = 'string';
     protected $primaryKey = 'slug';

@@ -620,23 +620,23 @@ class Style
                 continue;
             }
 
-            if (($i = mb_strpos($l, "px")) !== false) {
+            if (($i = mb_stripos($l, "px")) !== false) {
                 $dpi = $this->_stylesheet->get_dompdf()->getOptions()->getDpi();
                 $ret += ((float)mb_substr($l, 0, $i) * 72) / $dpi;
                 continue;
             }
 
-            if (($i = mb_strpos($l, "pt")) !== false) {
+            if (($i = mb_stripos($l, "pt")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i);
                 continue;
             }
 
-            if (($i = mb_strpos($l, "%")) !== false) {
+            if (($i = mb_stripos($l, "%")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i) / 100 * (float)$ref_size;
                 continue;
             }
 
-            if (($i = mb_strpos($l, "rem")) !== false) {
+            if (($i = mb_stripos($l, "rem")) !== false) {
                 if ($this->_stylesheet->get_dompdf()->getTree()->get_root()->get_style() === null) {
                     // Interpreting it as "em", see https://github.com/dompdf/dompdf/issues/1406
                     $ret += (float)mb_substr($l, 0, $i) * $this->__get("font_size");
@@ -646,33 +646,33 @@ class Style
                 continue;
             }
 
-            if (($i = mb_strpos($l, "em")) !== false) {
+            if (($i = mb_stripos($l, "em")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i) * $this->__get("font_size");
                 continue;
             }
 
-            if (($i = mb_strpos($l, "cm")) !== false) {
+            if (($i = mb_stripos($l, "cm")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i) * 72 / 2.54;
                 continue;
             }
 
-            if (($i = mb_strpos($l, "mm")) !== false) {
+            if (($i = mb_stripos($l, "mm")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i) * 72 / 25.4;
                 continue;
             }
 
             // FIXME: em:ex ratio?
-            if (($i = mb_strpos($l, "ex")) !== false) {
+            if (($i = mb_stripos($l, "ex")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i) * $this->__get("font_size") / 2;
                 continue;
             }
 
-            if (($i = mb_strpos($l, "in")) !== false) {
+            if (($i = mb_stripos($l, "in")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i) * 72;
                 continue;
             }
 
-            if (($i = mb_strpos($l, "pc")) !== false) {
+            if (($i = mb_stripos($l, "pc")) !== false) {
                 $ret += (float)mb_substr($l, 0, $i) * 12;
                 continue;
             }
@@ -1220,6 +1220,17 @@ class Style
     }
 
     /**
+     * Returns the background image URI, or "none"
+     * 
+     * @link https://www.w3.org/TR/CSS21/colors.html#propdef-background-image
+     * @return string
+     */
+    function get_background_image()
+    {
+        return $this->_image($this->_props_computed["background_image"]);
+    }
+
+    /**
      * Returns the background position as an array
      *
      * The returned array has the following format:
@@ -1561,6 +1572,17 @@ class Style
     }
 
     /**
+     * Returns the list style image URI, or "none"
+     * 
+     * @link http://www.w3.org/TR/CSS21/generate.html#propdef-list-style-image
+     * @return string
+     */
+    function get_list_style_image()
+    {
+        return $this->_image($this->_props_computed["list_style_image"]);
+    }
+
+    /**
      * @param $val
      */
     function get_counter_increment()
@@ -1782,31 +1804,25 @@ class Style
         $DEBUGCSS = $this->_stylesheet->get_dompdf()->getOptions()->getDebugCss();
         $parsed_url = "none";
 
-        if (mb_strpos($val, "url") === false) {
+        if (empty($val) || $val === "none") {
+            $path = "none";
+        } else if (mb_strpos($val, "url") === false) {
             $path = "none"; //Don't resolve no image -> otherwise would prefix path and no longer recognize as none
         } else {
             $val = preg_replace("/url\(\s*['\"]?([^'\")]+)['\"]?\s*\)/", "\\1", trim($val));
 
             // Resolve the url now in the context of the current stylesheet
             $parsed_url = Helpers::explode_url($val);
+            $path = Helpers::build_url($this->_stylesheet->get_protocol(),
+                $this->_stylesheet->get_host(),
+                $this->_stylesheet->get_base_path(),
+                $val);
             if ($parsed_url["protocol"] == "" && $this->_stylesheet->get_protocol() == "") {
-                if ($parsed_url["path"][0] === '/' || $parsed_url["path"][0] === '\\') {
-                    $path = $_SERVER["DOCUMENT_ROOT"] . '/';
-                } else {
-                    $path = $this->_stylesheet->get_base_path();
-                }
-
-                $path .= $parsed_url["path"] . $parsed_url["file"];
                 $path = realpath($path);
                 // If realpath returns FALSE then specifically state that there is no background image
                 if (!$path) {
                     $path = 'none';
                 }
-            } else {
-                $path = Helpers::build_url($this->_stylesheet->get_protocol(),
-                    $this->_stylesheet->get_host(),
-                    $this->_stylesheet->get_base_path(),
-                    $val);
             }
         }
         if ($DEBUGCSS) {
@@ -1861,14 +1877,14 @@ class Style
 
     /**
      * Set the background image url
-     * @link     http://www.w3.org/TR/CSS21/colors.html#background-properties
+     * @link https://www.w3.org/TR/CSS21/colors.html#propdef-background-image
      *
      * @param string $val
      */
     function set_background_image($val)
     {
         $this->_props["background_image"] = $val;
-        $this->_props_computed["background_image"] = $this->_image($val);
+        $this->_props_computed["background_image"] = "url(" . $this->_image($val) . ")";
         $this->_prop_cache["background_image"] = null;
     }
 
@@ -2895,7 +2911,7 @@ class Style
     function set_list_style_image($val)
     {
         $this->_props["list_style_image"] = $val;
-        $this->_props_computed["list_style_image"] = $this->_image($val);
+        $this->_props_computed["list_style_image"] = "url(" . $this->_image($val) . ")";
         $this->_prop_cache["list_style_image"] = null;
     }
 
@@ -2940,7 +2956,7 @@ class Style
             //Internet Explorer 7/8 and dompdf is right.
 
             if (mb_substr($value, 0, 3) === "url") {
-                $this->_set_style("list_style_image", $this->_image($value), $important);
+                $this->_set_style("list_style_image", $value, $important);
                 continue;
             }
 

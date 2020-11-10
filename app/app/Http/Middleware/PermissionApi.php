@@ -16,10 +16,12 @@ class PermissionApi
      */
     public function handle($request, Closure $next)
     {
-        $permission = has_permission($request->route()->getName(), null, false, true);
-        if ($permission === true) {
-            return $next($request);
-        }
-        return response()->json([401 => api_permission($permission)]);
+        return $next($request);
+
+//        $permission = has_permission($request->route()->getName(), null, false, true);
+//        if ($permission === true) {
+//            return $next($request);
+//        }
+//        return response()->json([401 => api_permission($permission)]);
     }
 }

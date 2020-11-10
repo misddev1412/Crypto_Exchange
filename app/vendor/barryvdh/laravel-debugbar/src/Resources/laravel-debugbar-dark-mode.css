@@ -100,6 +100,12 @@ div.phpdebugbar code.phpdebugbar-widgets-sql span.hljs-operator {
     color: var(--color-gray-100);
 }
 
+div.phpdebugbar pre.sf-dump .sf-dump-public,
+div.phpdebugbar pre.sf-dump .sf-dump-protected,
+div.phpdebugbar pre.sf-dump .sf-dump-private {
+    color: var(--color-gray-100) !important;
+}
+
 div.phpdebugbar div.phpdebugbar-panel div.phpdebugbar-widgets-status > span:first-child:before,
 div.phpdebugbar-openhandler a {
     color: var(--color-gray-500);
@@ -196,6 +202,16 @@ div.phpdebugbar-openhandler .phpdebugbar-openhandler-actions > form select,
 div.phpdebugbar input[type='text'],
 div.phpdebugbar input[type='password'] {
     color: var(--color-gray-300);
+}
+
+div.phpdebugbar div.phpdebugbar-widgets-exceptions li.phpdebugbar-widgets-list-item.phpdebugbar-widgets-sql-duplicate span.phpdebugbar-widgets-filename,
+div.phpdebugbar div.phpdebugbar-widgets-sqlqueries li.phpdebugbar-widgets-list-item.phpdebugbar-widgets-sql-duplicate span.phpdebugbar-widgets-database,
+div.phpdebugbar div.phpdebugbar-widgets-sqlqueries li.phpdebugbar-widgets-list-item.phpdebugbar-widgets-sql-duplicate span.phpdebugbar-widgets-duration,
+div.phpdebugbar div.phpdebugbar-widgets-sqlqueries li.phpdebugbar-widgets-list-item.phpdebugbar-widgets-sql-duplicate span.phpdebugbar-widgets-memory,
+div.phpdebugbar div.phpdebugbar-widgets-sqlqueries li.phpdebugbar-widgets-list-item.phpdebugbar-widgets-sql-duplicate span.phpdebugbar-widgets-row-count,
+div.phpdebugbar div.phpdebugbar-widgets-sqlqueries li.phpdebugbar-widgets-list-item.phpdebugbar-widgets-sql-duplicate span.phpdebugbar-widgets-copy-clipboard,
+div.phpdebugbar div.phpdebugbar-widgets-sqlqueries li.phpdebugbar-widgets-list-item.phpdebugbar-widgets-sql-duplicate span.phpdebugbar-widgets-stmt-id {
+    color: var(--color-gray-500);
 }
 
 div.phpdebugbar a.phpdebugbar-minimize-btn {
