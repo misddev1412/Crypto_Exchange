@@ -31,7 +31,7 @@ if (!function_exists('company_logo')) {
         $isLight = is_light_mode(true, false);
         $logoPath = 'storage/' . config('commonconfig.path_image');
         $companyLogo = settings($isLight ? 'company_logo_light' : 'company_logo') ?: settings('company_logo');
-        $avatar = valid_image($logoPath, $companyLogo) ? $logoPath . $companyLogo : $logoPath . 'logo.png';
+        $avatar = valid_image($logoPath, $companyLogo) ? $logoPath . $companyLogo . '?t=' . time() : $logoPath . 'logo.png';
         return asset($avatar);
     }
 }
