@@ -11,19 +11,19 @@
                     avatar: "{{ get_regular_site_image('client-1.jpg') }}",
                     client: "Mark Robert Smith",
                     clientRole: "Chief Executive Officer",
-                    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid consequatur eum hic odio, odit placeat quia sed sit voluptatum."
+                    message: "Veteran investor Bill Miller says that all major banks, investment banks, and high net worth firms will eventually have some exposure to Bitcoin or something like it. He said that Bitcoin’s staying power is getting better every day."
                 },
                 {
                     avatar: "{{ get_regular_site_image('team-1.jpg') }}",
                     client: "Client Robert Smith",
                     clientRole: "Chief Executive Officer",
-                    message: "Consectetur adipisicing elit. Adipisci aliquid consequatur eum hic odio, odit placeat quia sed sit voluptatum. Adipisci aliquid consequatur eum hic odio."
+                    message: "Veteran investor Bill Miller says that all major banks, investment banks, and high net worth firms will eventually have some exposure to Bitcoin or something like it. He said that Bitcoin’s staying power is getting better every day."
                 },
                 {
                     avatar: "{{ get_regular_site_image('team-2.jpg') }}",
                     client: "Jonathan Smith",
                     clientRole: "Chief Executive Officer",
-                    message: "Adipisci aliquid consequatur Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid consequatur eum hic odio, odit placeat quia sed sit voluptatum."
+                    message: "Veteran investor Bill Miller says that all major banks, investment banks, and high net worth firms will eventually have some exposure to Bitcoin or something like it. He said that Bitcoin’s staying power is getting better every day."
                 }
             ],
             activeTestimonial: []
@@ -74,7 +74,7 @@
                     url: "#",
                     date: 18,
                     month: "FEB",
-                    message: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid consequatur eum hic odio, odit placeat quia sed sit voluptatum.",
+                    message: "If someone ask you what the emergence of cryptocurrency would contribute to the financial world, for sure the main thing that will cross your mind would be what is cryptocurrency? Primarily this would be the first thought of most people especially those who are not familiar with the currently existing digital currencies. However, if you are someone who’s knowledgeable enough with regards to cryptocurrencies, even with your eyes closed, for sure you can answer the question very well.",
                 },
                 {
                     avatar: "{{ get_regular_site_image('team-2.jpg') }}",
@@ -84,7 +84,7 @@
                     url: "#",
                     date: 28,
                     month: "FEB",
-                    message: "Consectetur adipisicing elit. Adipisci aliquid consequatur eum hic odio, odit placeat quia sed sit voluptatum. Adipisci aliquid consequatur eum hic odio."
+                    message: "If someone ask you what the emergence of cryptocurrency would contribute to the financial world, for sure the main thing that will cross your mind would be what is cryptocurrency? Primarily this would be the first thought of most people especially those who are not familiar with the currently existing digital currencies. However, if you are someone who’s knowledgeable enough with regards to cryptocurrencies, even with your eyes closed, for sure you can answer the question very well.",
                 },
                 {
                     avatar: "{{ get_regular_site_image('team-3.jpg') }}",
@@ -94,7 +94,7 @@
                     url: "#",
                     date: 29,
                     month: "JAN",
-                    message: "Adipisci aliquid consequatur Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid consequatur eum hic odio, odit placeat quia sed sit voluptatum."
+                    message: "If someone ask you what the emergence of cryptocurrency would contribute to the financial world, for sure the main thing that will cross your mind would be what is cryptocurrency? Primarily this would be the first thought of most people especially those who are not familiar with the currently existing digital currencies. However, if you are someone who’s knowledgeable enough with regards to cryptocurrencies, even with your eyes closed, for sure you can answer the question very well.",
                 }
             ],
             activeNews: []
