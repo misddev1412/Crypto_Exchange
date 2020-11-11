@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <!-- logo and about -->
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-sm-6 col-lg-4">
                 <div class="footer-widget">
                     <div class="footer-widget-logo mb-2 lf-logo{{is_light_mode(settings('company_logo_light')? '': ' lf-logo-inversed')}}">
                         <img src="{{ company_logo() }}"
@@ -41,7 +41,12 @@
             <!-- menu -->
             @for($i = 1; $i <= 3; $i++)
                 @if(!empty(settings('footer_menu_title_'.$i)) || !empty(settings('footer_widget_two_nav')))
-                    <div class="col-sm-6 col-lg-3">
+                    @if($i == 3)
+                        @php $col = 2 @endphp
+                    @else 
+                        @php $col = 3 @endphp
+                    @endif
+                    <div class="col-sm-6 col-lg-{{$col}}">
                         <div class="footer-widget">
                         @if(!empty(settings('footer_menu_title_'.$i)))
                             <h3 class="footer-widget-title">

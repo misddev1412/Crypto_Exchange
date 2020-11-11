@@ -8,7 +8,7 @@
             <div
                 class="col-lg-{{in_array(settings('navigation_type'), [0,2]) ? 9 : 9}} col-md-12 order-lg-0 order-2 py-lg-0 py-3">
                 <div class="d-flex align-items-center">
-                    <div class="flex-grow-1 flex-lg-grow-0">
+                    <div class="flex-grow-1 flex-lg-grow-1 text-center">
                         <a href="{{route('home')}}"
                            class="lf-logo{{isset($inversedLogo) ? ($inversedLogo  ? ' lf-logo-inversed' : '') : is_light_mode(settings('company_logo_light')? '': ' lf-logo-inversed')}}">
                             <!-- lf-logo-inversed -->
