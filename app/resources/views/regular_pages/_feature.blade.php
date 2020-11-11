@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-7">
                 @component('regular_pages.components.section_title', ['align' => 'center'])
-                    <span class='text-danger'>M</span> {{ __("ore than 160k+ assets supported") }}
+                    <span class='text-danger'>M</span>ore {{ __("than 160k+ assets supported") }}
                     @slot('subtite')
                         {{ __('More than 160k+ assets supported. Store all your coins and tokens in a single, secure wallet. The app suppports 39 blockchains and 180k+ assets.') }}
                     @endslot
