@@ -21,6 +21,6 @@ deploy_production:
         # - rm -rf /var/www/exchange
         # - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www && git clone git@gitlab.com:misddev/exchange.git && exit"
         # - sshpass -p giongnhuiD ssh thinh@34.123.12.16 "cd /var/www/exchange && docker-compose stop && git pull && docker-compose start && exit"
-        - ssh thinh@34.123.12.16 "cd /var/www/exchange && docker-compose stop && git pull && docker-compose start && exit"
+        - ssh thinh@34.123.12.16 "cd /var/www/exchange && docker-compose stop && docker-compose up --build -d && git pull && docker-compose start && exit"
     only:
         - master

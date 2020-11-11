@@ -15,4 +15,4 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install gd
 
-EXPOSE 9001
+EXPOSE 9000

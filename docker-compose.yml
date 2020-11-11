@@ -13,6 +13,7 @@ services:
             - ./docker/nginx/log:/var/log/nginx/
             # Volume đến code ứng dụng, giống bên php-fpm nữa
             - ./app:/var/www/html/
+            - ./vikione.com:/var/www/html/vikione.com
         links:
             - "database:mysql"
     database:
@@ -44,6 +45,14 @@ services:
             dockerfile: Dockerfile
         volumes:
             - ./app:/var/www/html/
+        links:
+            - "database:mysql"
+    php-web2:
+        build:
+            context: ./docker/php-fpm2
+            dockerfile: Dockerfile
+        volumes:
+            - ./vikione.com:/var/www/html/vikione.com
         links:
             - "database:mysql"
 volumes:
