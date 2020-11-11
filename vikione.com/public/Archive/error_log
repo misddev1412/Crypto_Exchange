@@ -1,0 +1,7 @@
+[19-Aug-2020 19:51:31 Asia/Dhaka] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nptckece_vikioneos2.migrations' doesn't exist in /home/nptckece/tokenlite_app/vendor/laravel/framework/src/Illuminate/Database/Connection.php:326
+Stack trace:
+#0 /home/nptckece/tokenlite_app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(326): PDO->prepare('select * from `...')
+#1 /home/nptckece/tokenlite_app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(657): Illuminate\Database\Connection->Illuminate\Database\{closure}('select * from `...', Array)
+#2 /home/nptckece/tokenlite_app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\Database\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#3 /home/nptckece/tokenlite_app/vendor/laravel/framework/src/Illuminate/Database/Connection.php(333): Illuminate\Database\Connection->run('select * from `...', Array, Object(Closure))
+#4 /home/nptckece/tokenlite_app/vendor/laravel/framework/src/Illuminate/ in /home/nptckece/tokenlite_app/vendor/laravel/framework/src/Illuminate/Database/Connection.php on line 664

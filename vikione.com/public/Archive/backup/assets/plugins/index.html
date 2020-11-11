@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- Include stylesheet -->
+	<link href="trumbowyg/ui/trumbowyg.min.css" rel="stylesheet">
+	<script type="text/javascript" src="../js/admin.jquery.bundle.js"></script>
+</head>
+<body>
+
+	<!-- Create the editor container -->
+	<!-- Create the toolbar container -->
+	<!-- <div id="toolbar">
+		<button class="ql-bold">Bold</button>
+		<button class="ql-italic">Italic</button>
+	</div> -->
+	<textarea name="editor" id="editor" cols="30" rows="10" class="editor"></textarea>
+
+	<!-- Include the Quill library -->
+	<script src="trumbowyg/trumbowyg.min.js"></script>
+
+	<!-- Initialize Quill editor -->
+	<script>
+		$('.editor').trumbowyg({autogrow: true});
+	</script>
+</body>
+</html>

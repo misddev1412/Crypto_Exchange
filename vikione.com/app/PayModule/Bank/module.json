@@ -1,0 +1,15 @@
+{
+    "name": "Bank",
+    "alias": "Bank",
+    "description": "Bank Payment Module for TokenLite to accept payments from contributors.",
+    "status": true,
+    "type": "core",
+    "requires": {
+		"app": "^1.1.5",
+		"laravel": "~5.7"
+	},
+	"author": "Softnio",
+	"package": "TokenLite",
+	"version": "1.2.4",
+	"update": "20191125"
+}

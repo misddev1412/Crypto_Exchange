@@ -47,14 +47,14 @@ services:
             - ./app:/var/www/html/
         links:
             - "database:mysql"
-    # php-web2:
-    #     build:
-    #         context: ./docker/php-fpm2
-    #         dockerfile: Dockerfile
-    #     volumes:
-    #         - ./vikione.com:/var/www/html/vikione.com
-    #     links:
-    #         - "database:mysql"
+    php-web2:
+        build:
+            context: ./docker/php-fpm2
+            dockerfile: Dockerfile
+        volumes:
+            - ./vikione.com:/var/www/html/vikione.com
+        links:
+            - "database:mysql"
 volumes:
     dbdata:
     my.cnf:
