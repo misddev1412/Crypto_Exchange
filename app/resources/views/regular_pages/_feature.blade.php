@@ -3,9 +3,9 @@
         <div class="row justify-content-center">
             <div class="col-md-7">
                 @component('regular_pages.components.section_title', ['align' => 'center'])
-                    <span class='text-danger'>O</span>ur {{ __("Features") }}
+                    <span class='text-danger'>M</span> {{ __("ore than 160k+ assets supported") }}
                     @slot('subtite')
-                        {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis doloremque dolores doloribus esse iusto laborum mollitia porro rem sapiente') }}
+                        {{ __('More than 160k+ assets supported. Store all your coins and tokens in a single, secure wallet. The app suppports 39 blockchains and 180k+ assets.') }}
                     @endslot
                 @endcomponent
             </div>
@@ -53,7 +53,7 @@
             <div class="col-md-12 mt-3">
                 <div class="tab-content">
                     <div id="tab-dashboard" class="tab-pane fade in active show border lf-toggle-border-color p-4 text-center">
-                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolore eos modi, molestiae mollitia quia saepe voluptatem? A ab aperiam architecto commodi consequuntur debitis delectus, distinctio dolorem eligendi eum eveniet ex facere hic in incidunt laboriosam minima non nulla odio quos, ratione saepe sapiente soluta suscipit ullam vero vitae voluptatum!</p>
+                        <p class="m-0">Multi Cryptocurrency Wallet App. Securely carry your favorite cryptocurrencies on your Android and Apple devices with VIKIONE Wallet. With an average user review of 4.7 / 5.0, you can feel confident your Digital Assets are private and safe.</p>
                     </div>
                     <div id="tab-wallet" class="tab-pane fade in border lf-toggle-border-color p-4 text-center">
                         <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolore eos modi, molestiae mollitia quia saepe voluptatem? A ab aperiam architecto commodi consequuntur debitis delectus, distinctio dolorem eligendi eum eveniet ex facere hic in incidunt laboriosam minima</p>
