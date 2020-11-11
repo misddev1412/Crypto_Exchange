@@ -5,7 +5,7 @@
                 @component('regular_pages.components.section_title', ['align' => 'center'])
                     <span class='text-danger'>C</span>urrency {{ __("Investment") }}
                     @slot('subtite')
-                        {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis doloremque dolores doloribus esse iusto laborum mollitia porro rem sapiente') }}
+                        {{ __('Instant access to investing, anytime and anywhere. Investing has never been easier. Everything you are looking for in an ultimate investment platform — on the device of your choice.') }}
                     @endslot
                 @endcomponent
             </div>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="content mt-4">
                             <h4 class="title font-size-22">{{ __('Bitcoin Transaction') }}</h4>
-                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit.') }}</p>
+                            <p>{{ __('Bitcoin (BTC) was created to function as peer-to-peer electronic cash. Whether you are spending or accepting BTC as payment it is prudent to understand how a transaction works') }}</p>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="content mt-4">
                             <h4 class="title font-size-22">{{ __('Dollar Investment') }}</h4>
-                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit.') }}</p>
+                            <p>{{ __('The Dollar Investment Management Account arrangement is ideal for high networth individuals looking for higher yields compared to traditional bank deposits but do not have the time to manage their own funds or have limited investment options accessible to them.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="content mt-4">
                             <h4 class="title font-size-22">{{ __('Euro Exchange') }}</h4>
-                            <p>{{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit.') }}</p>
+                            <p>{{ __('InforEuro provides the European Commission’s official monthly accounting rates for the euro, the corresponding conversion rates for other currencies and historic conversion rates from 1994.') }}</p>
                         </div>
                     </div>
                 </div>
