@@ -49,7 +49,7 @@
                 </div>
                 <div class="ml-3">
                     <h4 class="mt-0">{{ __('Expert Support') }}</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore eaque.</p>
+                    <p>With over 18 years we are still here because we are the real true Experts! Period!</p>
                     <p><a href="#"
                           class="btn btn-sm btn-danger">{{ __('Visit Now') }}</a></p>
                 </div>

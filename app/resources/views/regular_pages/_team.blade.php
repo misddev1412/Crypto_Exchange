@@ -5,7 +5,7 @@
                 @component('regular_pages.components.section_title', ['align' => 'center'])
                     <span class='text-danger'>O</span>ur {{ __("Team") }}
                     @slot('subtite')
-                        {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis doloremque dolores doloribus esse iusto laborum mollitia porro rem sapiente') }}
+                        {{ __('A gathering of some of the greatest talent in their chosen field, carefully assembled to make  VIKIONE Exchange the very best news and information website serving the global blockchain and cryptocurrency community. This is our team…') }}
                     @endslot
                 @endcomponent
             </div>

@@ -5,7 +5,7 @@
                 @component('regular_pages.components.section_title', ['align' => 'center'])
                     <span class='text-danger'>L</span>atest {{ __("News") }}
                     @slot('subtite')
-                        {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis doloremque dolores doloribus esse iusto laborum mollitia porro rem sapiente') }}
+                        {{ __('What Pfizer\'s COVID-19 Vaccine Means for the Bitcoin Price Outlook.') }}
                     @endslot
                 @endcomponent
             </div>
