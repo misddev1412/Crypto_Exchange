@@ -5,7 +5,11 @@ RUN apt-get update && apt-get install -y \
   libzip-dev \
   libpng-dev \
   zip \
-  && docker-php-ext-install mysqli pdo_mysql zip bcmath
+  libfreetype6-dev \
+  libjpeg62-turbo-dev \
+  libpng-dev \
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install mysqli pdo_mysql zip bcmath -j$(nproc) gd
 
 # RUN adduser -D dockuser
 # USER dockuser
