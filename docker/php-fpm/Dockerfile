@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
   libzip-dev \
   libpng-dev \
   zip \
-  && docker-php-ext-install mysqli pdo_mysql zip
+  && docker-php-ext-install mysqli pdo_mysql zip bcmath
 
 # RUN adduser -D dockuser
 # USER dockuser
