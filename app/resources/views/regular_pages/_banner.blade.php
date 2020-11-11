@@ -7,7 +7,7 @@
                     {{ __('Marketplace') }}
                 </h2>
                 <p class="font-size-15 my-lg-5 my-sm-3 my-md-4 text-white">
-                    {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, earum enim eos, et explicabo harum impedit magnam minus modi nam nemo optio sapiente tenetur velit voluptatem.') }}
+                    {{ __('VIKIONE Exchange New Users Class Launched. Quickly master the trading skills of Spot, Contracts, Leveraged ETF, and OTC') }}
                 </p>
 
                 <div class="banner-btn-group">
