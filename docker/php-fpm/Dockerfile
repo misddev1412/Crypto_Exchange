@@ -67,7 +67,7 @@ RUN pecl install mcrypt-1.0.3
 RUN docker-php-ext-enable mcrypt
 
 # configure, install and enable all php packages
-RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp 
 RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
 RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
 RUN docker-php-ext-configure intl
