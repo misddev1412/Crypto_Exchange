@@ -6,7 +6,7 @@
                     @component('regular_pages.components.section_title', ['align' => 'left'])
                         {{ __("What is Bitcoin Currency") }}
                         @slot('subtite')
-                            {{ __('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis doloremque dolores doloribus esse iusto laborum mollitia porro rem sapiente') }}
+                            {{ __('Bitcoin is a cryptocurrency created in 2009. Marketplaces called “bitcoin exchanges” allow people to buy or sell bitcoins using different currencies.') }}
                         @endslot
                     @endcomponent
                 </div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="ml-3">
                     <h4 class="mt-0">{{ __('Security Wallet') }}</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore eaque.</p>
+                    <p>Buy, store, exchange & earn crypto. Join 5 million+ people using VIKIONE Wallet.</p>
                     <p><a href="#"
                           class="btn btn-sm btn-danger">{{ __('Visit Now') }}</a></p>
                 </div>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="ml-3">
                     <h4 class="mt-0">{{ __('Instant Exchange') }}</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolore eaque.</p>
+                    <p>The best place to purchase bitcoin, ethereum and altcoins instantly.</p>
                     <p><a href="#"
                           class="btn btn-sm btn-danger">{{ __('Visit Now') }}</a></p>
                 </div>
