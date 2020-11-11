@@ -9,7 +9,7 @@
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                 </div>
                 <input type="text" class="form-control" name="username"
-                       placeholder="Username" value="{{ old('username') }}">
+                       placeholder="Username/Email" value="{{ old('username') }}">
                 <span class="invalid-feedback" data-name="username">{{ $errors->first('username') }}</span>
             </div>
             <div class="input-group mb-md-3 mb-2">
