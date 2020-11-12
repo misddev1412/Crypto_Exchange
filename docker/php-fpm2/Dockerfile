@@ -69,4 +69,4 @@ RUN cd /tmp \
 # clean image
 RUN apt-get clean
 
-EXPOSE 9001
+EXPOSE 9009
