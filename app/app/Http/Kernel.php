@@ -71,7 +71,7 @@ class Kernel extends HttpKernel
             VerifyCsrfToken::class,
             SubstituteBindings::class,
             Language::class,
-            MaintenancePermission::class,
+            // MaintenancePermission::class,
             StripTags::class,
         ],
 
