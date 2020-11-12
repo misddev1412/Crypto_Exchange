@@ -8,6 +8,7 @@ services:
             - "443:443"
         depends_on:
             - php-fpm
+            - php-web2
         volumes:
             # Logging
             - ./docker/nginx/log:/var/log/nginx/

@@ -11,6 +11,7 @@ RUN apt-get install -y --no-install-recommends \
     build-essential \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
+    libjpeg-dev \
     libmcrypt-dev \
     libpng-dev \
     libwebp-dev \
@@ -26,7 +27,9 @@ RUN apt-get install -y --no-install-recommends \
     unzip \
     libzip-dev \
     zip \
-    nano;
+    nano;\
+    apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
 
 # memcached
 RUN pecl install memcached-3.1.5
@@ -37,7 +40,9 @@ RUN pecl install mcrypt-1.0.3
 RUN docker-php-ext-enable mcrypt
 
 # configure, install and enable all php packages
-RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp 
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg=/usr/include/ --enable-gd
+RUN docker-php-ext-install -j$(nproc) gd
+
 RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
 RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
 RUN docker-php-ext-configure intl
@@ -47,7 +52,6 @@ RUN docker-php-ext-install -j$(nproc) opcache
 RUN docker-php-ext-install -j$(nproc) pdo_mysql
 RUN docker-php-ext-install -j$(nproc) mysqli
 RUN docker-php-ext-install -j$(nproc) pdo
-RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install -j$(nproc) intl
 RUN docker-php-ext-install -j$(nproc) zip
 RUN docker-php-ext-install -j$(nproc) bcmath
