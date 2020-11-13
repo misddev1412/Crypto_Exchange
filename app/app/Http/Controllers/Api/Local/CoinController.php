@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Local;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Deposit\BankReceiptUploadRequest;
 use App\Http\Requests\Deposit\UserDepositRequest;
-use App\Http\Requests\Deposit\TokenExchangeRequest;
+use App\Http\Requests\Api\Deposit\TokenExchangeRequest;
 use App\Models\BankAccount\BankAccount;
 use App\Models\Deposit\WalletDeposit;
 use App\Models\Wallet\Wallet;
