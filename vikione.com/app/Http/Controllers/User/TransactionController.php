@@ -103,6 +103,7 @@ class TransactionController extends Controller
                 $tnx->save();
                 if ($old == 'pending' || $old == 'onhold') {
                     IcoStage::token_add_to_account($tnx, 'sub');
+                    User::rollbackOneExchange(Auth::user()->id, $tnx->tnx_id);
                 }
                 $ret['msg'] = 'error';
                 $ret['message'] = __('messages.delete.delete', ['what' => 'Transaction']);
@@ -140,11 +141,11 @@ class TransactionController extends Controller
             
             $tranx->verify_code         = 0;
             $feeToken                   = $tranx->total_tokens * 0.004;
-               
-            $user->tokenBalance2        = number_format(((float) $user->tokenBalance2 + $tranx->total_tokens), min_decimal(), '.', '');
+
+            $oneBlueTransfer            = number_format(((float) $user->tokenBalance2 + $tranx->total_tokens), min_decimal(), '.', '');
+            $user->tokenBalance2        = $oneBlueTransfer;
             $user->tokenTransaction     = number_format(((float) $user->tokenTransaction - $feeToken), min_decimal(), '.', '');
             $user->save();
-
             //Update Token for User Receive
             $userReceiver               = User::where(['id' => $tranx->user_receive, 'status' => 'active'])->first();
             if ($tranx->status == 'approved') {
@@ -153,6 +154,7 @@ class TransactionController extends Controller
             }
             
             $iid = $this->create_transaction($userReceiver, $request, -($tranx->total_tokens - $feeToken) , $transStatus, $user, 0);
+            User::syncOneExchange($user->id, $tranx->tnx_id);
 
             if($iid) {
                 $tranx->save();

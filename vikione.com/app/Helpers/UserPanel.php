@@ -782,6 +782,8 @@ class UserPanel
         <h5>' . (round($user->affiliate_token,2) ?? 0) .'</h5>
         <h6 class="card-sub-title">' . __('Current basic rate of return: ') .  '</h6>
         <h5>'.($percent / 100) * (round($user->tokenPoint,2) ?? 0).'</h5>
+        <h6 class="card-sub-title">' . __('One Exchange: ') .  '</h6>
+        <h5>'.(round($user->one_exchange,2) ?? 0).'</h5>
         </div>
         
         </div>';
