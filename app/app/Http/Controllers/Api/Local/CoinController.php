@@ -36,6 +36,10 @@ class CoinController extends Controller
         if ($checkProfile && $checkUser) {
             try {
                 $result     = $walletService->depositToWallet($checkUser->id, $amount);
+                return response()->json([
+                    'status'    => 200,
+                    'message'   => 'Successfully'
+                ]);
             } catch (\Exception $e) {
                 $log->error($e);
                 return response()->json([
