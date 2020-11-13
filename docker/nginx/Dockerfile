@@ -8,3 +8,5 @@ COPY ./nginx.crt /etc/ssl/vikiexchange
 COPY ./nginx.key /etc/ssl/vikiexchange
 COPY ./vikione_com.crt /etc/ssl/vikione/nginx.crt
 COPY ./vikione_com.key /etc/ssl/vikione/nginx.key
+COPY ./vikioneos_com.crt /etc/ssl/vikioneos/nginx.crt
+COPY ./vikioneos_com.key /etc/ssl/vikioneos/nginx.key
