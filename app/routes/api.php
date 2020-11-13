@@ -20,6 +20,7 @@ Route::get('public', PublicApiController::class);
 Route::get('coins/{coin}/payment-methods', PaymentMethodController::class);
 Route::group(['prefix' => 'local', 'middleware' => ['api_local']], function () {
     Route::get('test', [CoinController::class, 'test']);
+    Route::post('coin/deposit', [CoinController::class, 'depositTokenExchange']);
 });
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // user orders

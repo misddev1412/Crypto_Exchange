@@ -5,12 +5,16 @@ namespace App\Http\Controllers\Api\Local;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Deposit\BankReceiptUploadRequest;
 use App\Http\Requests\Deposit\UserDepositRequest;
+use App\Http\Requests\Deposit\TokenExchangeRequest;
 use App\Models\BankAccount\BankAccount;
 use App\Models\Deposit\WalletDeposit;
 use App\Models\Wallet\Wallet;
+use App\Services\Core\UserService;
+use App\Services\Wallet\WalletService;
 use App\Services\Core\FileUploadService;
 use App\Services\Wallet\GenerateWalletAddressImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CoinController extends Controller
 {
@@ -18,6 +22,33 @@ class CoinController extends Controller
     {
         $response = ['sss' => 'ss'];
         return response()->json($response, 200);
+    }
+
+    public function depositTokenExchange(TokenExchangeRequest $request, UserService $userService, WalletService $walletService, Log $log)
+    {
+        $email          = $request->email;
+        $phone          = $request->phone;
+        $username       = $request->username;
+        $amount         = $request->amount;
+        $checkUser      = $userService->getDataDeposit($email, $username);
+        $checkProfile   = $userService->getDataProfileDeposit($phone, $checkUser->id);
+        $result         = false;
+        if ($checkProfile && $checkUser) {
+            try {
+                $result     = $walletService->depositToWallet($checkUser->id, $amount);
+            } catch (\Exception $e) {
+                $log->error($e);
+                return response()->json([
+                    'status'    => 500,
+                    'message'   => 'Something went wrong, please contact the admin'
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status'    => 404,
+                'message'   => 'We couldn\'t find your information'
+            ]);
+        }
     }
 
     public function store(UserDepositRequest $request, Wallet $wallet)

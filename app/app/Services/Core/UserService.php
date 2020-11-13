@@ -3,6 +3,7 @@
 namespace App\Services\Core;
 
 use App\Models\Core\User;
+use App\Models\Core\UserProfile;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -62,5 +63,15 @@ class UserService
                 'user' => $user
             ],
         ];
+    }
+
+    public function getDataDeposit($email, $username)
+    {
+        return User::where('email', $email)->where('username', $username)->first();
+    }
+
+    public function getDataProfileDeposit($phone, $userId)
+    {
+        return UserProfile::where('phone', $phone)->where('user_id', $userId)->first();
     }
 }
