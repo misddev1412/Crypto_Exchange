@@ -65,6 +65,8 @@ RUN docker-php-ext-enable imagick
 RUN cd /tmp \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
+RUN chown -R $USER:$USER /var/www/html
+# RUN chmod -R 777 /var/www/html/storage /var/www/html/bootstrap /var/www/html/public/storage
 
 # clean image
 RUN apt-get clean
