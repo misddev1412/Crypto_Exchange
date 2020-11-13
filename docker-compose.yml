@@ -53,7 +53,7 @@ services:
             - ./app:/var/www/html/
         links:
             - "database:mysql"
-        user: ${CURRENT_UID}
+        # user: ${CURRENT_UID}
     php-web2:
         build:
             context: ./docker/php-fpm2
@@ -63,5 +63,7 @@ services:
         links:
             - "database:mysql"
 volumes:
+    app:
+    vikione.com:
     dbdata:
     my.cnf:
