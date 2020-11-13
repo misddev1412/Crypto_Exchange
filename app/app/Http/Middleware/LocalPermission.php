@@ -18,9 +18,7 @@ class LocalPermission
      */
     public function handle($request, Closure $next)
     {
-        dd($request->header());
-        $token = $request->header('local_token') ?? null;
-        dd($token);
+        $token = $request->header('local-token') ?? null;
         if ($token == 'dC38Xaq0YO03A3fRbaitx78zmYhvIPSjsOjVB4VGpfOtNLar37gPphE1tlfJIZxs') {
             return $next($request);
         }
