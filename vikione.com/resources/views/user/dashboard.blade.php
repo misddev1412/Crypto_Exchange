@@ -250,7 +250,7 @@ $base_currency = base_currency();
                             <div class="input-item input-with-label">
                                 <label class="input-item-label">Number of Token</label>
                                 <div class="input-wrap">
-                                    <input class="input-bordered" required="required" name="token" type="text" placeholder="0.1">
+                                    <input class="input-bordered" required="required" name="token" type="number" min="0" placeholder="0.1">
                                 </div>
                                 <div class="note note-plane note-info pdb-1x">
 									<em class="fas fa-info-circle"></em>
