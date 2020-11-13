@@ -53,6 +53,7 @@ services:
             - ./app:/var/www/html/
         links:
             - "database:mysql"
+        user: ${CURRENT_UID}
     php-web2:
         build:
             context: ./docker/php-fpm2
