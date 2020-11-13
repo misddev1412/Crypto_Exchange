@@ -21,6 +21,7 @@ use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\VerificationPermission;
 use App\Http\Middleware\VerificationPermissionApi;
 use App\Http\Middleware\VerifyCsrfToken;
+use App\Http\Middleware\LocalPermission;
 use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
@@ -109,6 +110,7 @@ class Kernel extends HttpKernel
         'verification.permission.api' => VerificationPermissionApi::class,
         'registration.permission' => RegistrationPermission::class,
         '2fa' => Middleware::class,
+        'api_local' => LocalPermission::class
     ];
 
     /**
