@@ -65,7 +65,7 @@ class UserService
         ];
     }
 
-    public function getDataDeposit($email, $username)
+    public function getDataDeposit($email)
     {
         return User::where('email', $email)->first();
     }
