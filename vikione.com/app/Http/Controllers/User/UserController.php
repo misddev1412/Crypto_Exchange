@@ -646,7 +646,7 @@ class UserController extends Controller
     ]);
 
     $data       = [
-        'email'     => Auth::user()->email . 'sss',
+        'email'     => Auth::user()->email,
         'phone'     => Auth::user()->mobile,
         'amount'    => Auth::user()->one_exchange ?? 0
     ];
