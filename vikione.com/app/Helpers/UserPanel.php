@@ -782,13 +782,16 @@ class UserPanel
         <h5>' . (round($user->affiliate_token,2) ?? 0) .'</h5>
         <h6 class="card-sub-title">' . __('Current basic rate of return: ') .  '</h6>
         <h5>'.($percent / 100) * (round($user->tokenPoint,2) ?? 0).'</h5>
+        <div class="bordered">
         <h6 class="card-sub-title">' . __('One Exchange: ') .  '</h6>
         <h5>'.(round($user->one_exchange,2) ?? 0).'</h5>
+        </div>
         </div>
         
         </div>';
         // $return .= self::user_account_point_status();
-        $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary float-right" data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
+        $return .= '<a  onclick="pushOneExchange('.(round($user->one_exchange,2) ?? 0).')" class="btn btn-sm btn-auto btn-info mr-1 " ><em class="fas fa-paper-plane"></em><span>Push Exchange</span></a>';
+        $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary " data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
         $return .= '</div></div>';
 
         return $return;

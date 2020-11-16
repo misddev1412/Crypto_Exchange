@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset(style_theme('vendor')) }}">
     <link rel="stylesheet" href="{{ asset(style_theme('user')) }}">
     <link rel="stylesheet" href="{{ asset(style_theme('custom')) }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/swal/sweetalert2.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
     @stack('header')
@@ -192,6 +193,7 @@
     <script src="{{ asset('assets/js/app.js').css_js_ver() }}"></script>
     <script src="{{ asset('assets/js/tree.js').css_js_ver() }}"></script>
     <script src="{{ asset('assets/js/custom.js').css_js_ver() }}"></script>
+    <script src="{{ asset('assets/plugins/swal/sweetalert2.all.min.js').css_js_ver() }}"></script>
     {{-- <script src="{{ asset('assets/js/sweetalert2.all.min.js').css_js_ver() }}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
     @yield('script')
@@ -200,6 +202,26 @@
         @if (session('resent'))
         show_toast("success","{{ __('A fresh verification link has been sent to your email address.') }}");
         @endif
+    </script>
+
+    <script>
+        var pushOneExchange = (one) => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: `Do you want transfer ${one} ONE to Vikione.Exchange?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    var url = "{{route('user.one.exchange.deposit')}}"
+                    window.location.href = url;
+                }
+            })
+
+        }
     </script>
     @if(get_setting('site_footer_code', false))
     {{ html_string(get_setting('site_footer_code')) }}

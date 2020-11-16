@@ -51,7 +51,7 @@ class CoinController extends Controller
         } else {
             return response()->json([
                 'status'    => 404,
-                'message'   => 'We couldn\'t find your information'
+                'message'   => 'We couldn\'t find your information, please register on vikione.exchange first with same your information.'
             ]);
         }
     }

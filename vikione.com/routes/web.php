@@ -67,6 +67,7 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
     Route::get('/referral', 'User\UserController@referral')->name('referral');
     // My Token v1.1.2
     Route::get('/account/balance', 'User\UserController@mytoken_balance')->name('token.balance');
+    Route::get('token/push/exchange', 'User\UserController@depositOneBlueToExchange')->name('one.exchange.deposit');
 
     // User Ajax Request
     Route::name('ajax.')->prefix('ajax')->group(function () {
@@ -81,6 +82,7 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
         Route::post('/kyc/submit', 'User\KycController@submit')->name('kyc.submit');
         Route::post('/account/activity', 'User\UserController@account_activity_delete')->name('account.activity.delete')->middleware('demo_user');
         Route::post('/account/point', 'User\UserController@point')->name('account.point.multiply')->middleware('demo_user');
+
     });
 });
 

@@ -386,11 +386,24 @@ class User extends Authenticatable // implements MustVerifyEmail
         return $result;
     }
 
-    public static function pushOneExchange($userId)
+    public static function pushOneExchange($userId, $value)
     {
         $sql = "UPDATE users
-        SET users.one_exchange = $value,
-        users.tokenBalance2 = $value
+        SET users.one_exchange = users.one_exchange - $value,
+        users.tokenBalance2 = users.tokenBalance2 - $value
+        WHERE users.id = $userId
+        ";
+        
+        $result = DB::update($sql);
+        
+        return $result;
+    }
+
+    public static function revertOneExchange($userId, $value)
+    {
+        $sql = "UPDATE users
+        SET users.one_exchange = users.one_exchange + $value,
+        users.tokenBalance2 = users.tokenBalance2 + $value
         WHERE users.id = $userId
         ";
         
