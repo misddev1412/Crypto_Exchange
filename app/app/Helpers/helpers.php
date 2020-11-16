@@ -711,6 +711,7 @@ if (!function_exists('get_minimum_total')) {
 if (!function_exists('get_coin_icon')) {
     function get_coin_icon($image = null)
     {
+        dd(asset($emojiPath . $image));
         $emojiPath = 'storage/' . config('commonconfig.path_coin_icon');
 
         if (valid_image($emojiPath, $image)) {
