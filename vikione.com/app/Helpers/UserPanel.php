@@ -701,7 +701,7 @@ class UserPanel
                 <label>Your Email: </label> <span> ' . $user->email . ' </span>
             </div>
             <div class="user-information-row">
-                <label>You′re with us: </label> <span> ' . Auth::user()->created_at->diffForHumans() . ' </span>
+                <label>You′re with us: </label> <span> ' . Auth::user()->created_at->diffInDays() . ' day(s) </span>
             </div>
             <div class="user-information-row">
                 <div class="referral-form">
@@ -783,8 +783,8 @@ class UserPanel
         <h6 class="card-sub-title">' . __('Current basic rate of return: ') .  '</h6>
         <h5>'.($percent / 100) * (round($user->tokenPoint,2) ?? 0).'</h5>
         <div class="bordered">
-        <h6 class="card-sub-title">' . __('One Exchange: ') .  '</h6>
-        <h5>'.(round($user->one_exchange,2) ?? 0).'</h5>
+        <h6 class="card-sub-title text-white font-weight-bold">' . __('One Exchange: ') .  '</h6>
+        <h5 class="text-white font-weight-bold">'.(round($user->one_exchange,2) ?? 0).'</h5>
         </div>
         </div>
         
