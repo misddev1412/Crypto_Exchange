@@ -38,7 +38,7 @@ class ProfileController extends Controller
 
     public function update(UserRequest $request): RedirectResponse
     {
-        $parameters = $request->only(['first_name', 'last_name', 'address']);
+        $parameters = $request->only(['first_name', 'last_name', 'address', 'phone']);
         if (Auth::user()->profile()->update($parameters)) {
             app(UserActivityService::class)->store(Auth::id(), 'update profile');
             return redirect()->route('profile.edit')->with(RESPONSE_TYPE_SUCCESS, __('Profile has been updated successfully.'));

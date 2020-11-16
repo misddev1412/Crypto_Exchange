@@ -56,6 +56,14 @@
         <span class="invalid-feedback" data-name="address">{{ $errors->first('address') }}</span>
     </div>
 </div>
+{{-- Phone --}}
+<div class="form-group row">
+    <label for="phone" class="col-md-4 control-label required">{{ __('Phone') }}</label>
+    <div class="col-md-8">
+        {{ Form::text('phone', null, ['class'=>form_validation($errors, 'phone'), 'id' => 'phone']) }}
+        <span class="invalid-feedback" data-name="phone">{{ $errors->first('phone') }}</span>
+    </div>
+</div>
 
 {{--submit button--}}
 <div class="form-group row">

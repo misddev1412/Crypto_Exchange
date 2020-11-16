@@ -27,7 +27,8 @@ class UserRequest extends FormRequest
         $rules = [
             "first_name" => "required|alpha_space|between:2,255",
             "last_name" => "required|alpha_space|between:2,255",
-            "address" => "max:500",
+            "address"   => "max:500",
+            "phone"     => "required|numeric"
         ];
 
         if ($this->isMethod('POST')) {
