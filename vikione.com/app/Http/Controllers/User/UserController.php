@@ -655,10 +655,10 @@ class UserController extends Controller
       return redirect()->back();
     }
 
-    // if ($data['amount'] == 0) {
-    //   Session::flash('error', 'Your balance is not enough.');
-    //   return redirect()->back();
-    // }
+    if ($data['amount'] == 0) {
+      Session::flash('error', 'Your balance is not enough.');
+      return redirect()->back();
+    }
     User::pushOneExchange(Auth::user()->id, $data['amount']);
     try {
       $result     = $client->post($apiUrl,  ['form_params'=> $data]);
