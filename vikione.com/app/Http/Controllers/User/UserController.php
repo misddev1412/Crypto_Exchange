@@ -671,6 +671,7 @@ class UserController extends Controller
         $this->create_transaction($systemInfo, $request, -$data['amount'], 'approved', Auth::user(), 0, 0);
         return redirect()->back();
       } else if (isset($body->status) && $body->status == 404) {
+        User::revertOneExchange(Auth::user()->id, $data['amount']);
         Session::flash('error', $body->message);
         return redirect()->back();
       }
