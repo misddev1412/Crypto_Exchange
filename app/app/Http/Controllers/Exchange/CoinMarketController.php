@@ -79,7 +79,7 @@
 
         public function _getCoinIcon($coin): string
         {
-            $coinIconSlug = '_' . $coin . COIN_ICON_EXTENSION;
+            $coinIconSlug = '__' . $coin . COIN_ICON_EXTENSION;
 
             return get_coin_icon($coinIconSlug);
         }

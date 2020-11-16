@@ -715,8 +715,8 @@ if (!function_exists('get_coin_icon')) {
         $emojiPath = 'storage/' . config('commonconfig.path_coin_icon');
 
         if (valid_image($emojiPath, $image)) {
+            return asset($emojiPath . $image);
         }
-        return asset($emojiPath . $image);
         return asset($emojiPath . 'default.png');
     }
 }
