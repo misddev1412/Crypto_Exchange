@@ -32,7 +32,7 @@ class CoinController extends Controller
         $amount         = $request->amount;
         // $checkUser      = $userService->getDataDeposit($email, $username);
         $checkUser      = $userService->getDataDeposit($email);
-        $checkProfile   = $userService->getDataProfileDeposit($phone, $checkUser->id);
+        $checkProfile   = $userService->getDataProfileDeposit($phone, $checkUser->id ?? null);
         $result         = false;
         if ($checkProfile && $checkUser) {
             try {
