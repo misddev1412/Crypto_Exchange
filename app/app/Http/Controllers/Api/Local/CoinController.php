@@ -28,9 +28,10 @@ class CoinController extends Controller
     {
         $email          = $request->email;
         $phone          = $request->phone;
-        $username       = $request->username;
+        // $username       = $request->username;
         $amount         = $request->amount;
-        $checkUser      = $userService->getDataDeposit($email, $username);
+        // $checkUser      = $userService->getDataDeposit($email, $username);
+        $checkUser      = $userService->getDataDeposit($email);
         $checkProfile   = $userService->getDataProfileDeposit($phone, $checkUser->id);
         $result         = false;
         if ($checkProfile && $checkUser) {

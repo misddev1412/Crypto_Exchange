@@ -29,7 +29,7 @@ class TokenExchangeRequest extends FormRequest
         $rules = [
             'email'     => 'required',
             'phone'     => 'required',
-            'username'  => 'required',
+            // 'username'  => 'required',
             'amount'    => 'required'
         ];
 
