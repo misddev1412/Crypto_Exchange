@@ -13,13 +13,14 @@ services:
         depends_on:
             - php-fpm
             - php-web2
-        
+            - php-vikioneio
         volumes:
             # Logging
             - ./docker/nginx/log:/var/log/nginx/
             # Volume đến code ứng dụng, giống bên php-fpm nữa
             - ./app:/var/www/html/
             - ./vikione.com:/var/www/html/vikione.com
+            - ../vikioneio:/var/www/html/vikione.io
         links:
             - "database:mysql"
     database:
@@ -62,8 +63,17 @@ services:
             - ./vikione.com:/var/www/html/vikione.com
         links:
             - "database:mysql"
+    php-vikioneio:
+        build:
+            context: ./docker/php-vikioneio
+            dockerfile: Dockerfile
+        volumes:
+            - ../vikioneio:/var/www/html/vikione.io
+        links:
+            - "database:mysql"
 volumes:
     app:
     vikione.com:
+    vikioneio:
     dbdata:
     my.cnf:

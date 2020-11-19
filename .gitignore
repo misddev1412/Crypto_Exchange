@@ -1,3 +1,9 @@
 /db/dbdata
 /storage
-/docker/ngix/log
+/docker/nginx/log
+/app/.env
+/app/vendor
+/app/storage
+/vikione.com/.env
+/vikione.com/vendor
+/vikione.com/storage
