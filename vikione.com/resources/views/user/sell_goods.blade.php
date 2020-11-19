@@ -52,8 +52,8 @@
             <thead>
                 <tr class="data-item data-head">
                     <th class="data-col">{{ __('no') }}</th>
-                    <th class="data-col">{{ __('from') }}</th>
-                    <th class="data-col">{{ __('to') }}</th>
+                    <th class="data-col">{{ __('seller') }}</th>
+                    <th class="data-col">{{ __('buyer') }}</th>
                     <th class="data-col">{{ __('Amount') }}</th>
                     <th class="data-col">{{ __('detail') }}</th>
                     <th class="data-col">{{__('status') }}</th>
