@@ -10,7 +10,7 @@
                 {
                     avatar: "{{ get_regular_site_image('client-1.jpg') }}",
                     client: "Mark Robert Smith",
-                    clientRole: "Chief Executive Officer",
+                    clientRole: "Chief Technical Officer",
                     message: "Veteran investor Bill Miller says that all major banks, investment banks, and high net worth firms will eventually have some exposure to Bitcoin or something like it. He said that Bitcoin’s staying power is getting better every day."
                 },
                 {
@@ -68,7 +68,7 @@
             newsData: [
                 {
                     avatar: "{{ get_regular_site_image('team-1.jpg') }}",
-                    author: "Mark Robert Smith",
+                    author: "Marco Jon. D",
                     authorRole: "Chief Executive Officer",
                     title : "How to Cryptocurrency Begun and It's Impact To Financial Transactions? ",
                     url: "#",
