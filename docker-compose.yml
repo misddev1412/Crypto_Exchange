@@ -19,7 +19,7 @@ services:
             - ./docker/nginx/log:/var/log/nginx/
             # Volume đến code ứng dụng, giống bên php-fpm nữa
             - ./app:/var/www/html/
-            - ./vikioneoscom:/var/www/html/vikione.com
+            - ../vikioneoscom:/var/www/html/vikione.com
             - ../vikioneio:/var/www/html/vikione.io
         links:
             - "database:mysql"
