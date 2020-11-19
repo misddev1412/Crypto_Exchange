@@ -786,7 +786,8 @@ class UserPanel
         
         </div>';
         // $return .= self::user_account_point_status();
-        $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary float-right" data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
+        $return .= '<div class="one-blue-button"><a href="#" class="btn btn-sm btn-auto btn-primary" data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a></div>';
+        $return .= '<div class="one-blue-button"><a href="#" class="btn btn-sm btn-auto btn-danger " data-toggle="modal" data-target="#addSellGoods"><em class="fas fa-hand-holding-usd"></em><span>Sell Goods</span></a></div>';
         $return .= '</div></div>';
 
         return $return;

@@ -77,6 +77,7 @@
                         @if(gws('main_website_url') != NULL)
                         <li><a href="{{gws('main_website_url')}}" target="_blank"><em class="ikon ikon-home-link"></em> {{__('Main Site')}}</a></li>
                         @endif
+                        <li><a href="{{  route('user.sell_goods.show') }}"><em class="fas fa-hand-holding-usd"></em> {{__('Sell Goods')}}</a></li>
                     </ul>
                    
                     <ul class="navbar-btns">

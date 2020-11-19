@@ -112,6 +112,9 @@
                             </ul>
                         </li>
                         @endif
+                        <li{!! ((is_page('sellgoods/*'))? ' class="active"' : '') !!}>
+                            <a href="{{ route('admin.sellgoods') }}"><em class="fas fa-hand-holding-usd"></em> Sell goods</a>
+                        </li>
                     </ul>
                     @if(is_super_admin())
                     <ul class="navbar-btns">

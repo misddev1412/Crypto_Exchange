@@ -399,3 +399,8 @@
 .token-balance-icon {
     align-self: flex-start;
 }
+
+.one-blue-button{
+  text-align: right; 
+  padding:10px 0px;
+}

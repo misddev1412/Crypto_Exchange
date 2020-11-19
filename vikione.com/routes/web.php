@@ -68,6 +68,9 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
     // My Token v1.1.2
     Route::get('/account/balance', 'User\UserController@mytoken_balance')->name('token.balance');
 
+    Route::get('/sell_goods/show', 'User\SellGoodController@show')->name('sell_goods.show');
+    Route::post('/sell_goods/update', 'User\SellGoodController@update')->name('sell_goods.update');
+
     // User Ajax Request
     Route::name('ajax.')->prefix('ajax')->group(function () {
         Route::post('/account/wallet-form', 'User\UserController@get_wallet_form')->name('account.wallet');
@@ -81,6 +84,9 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
         Route::post('/kyc/submit', 'User\KycController@submit')->name('kyc.submit');
         Route::post('/account/activity', 'User\UserController@account_activity_delete')->name('account.activity.delete')->middleware('demo_user');
         Route::post('/account/point', 'User\UserController@point')->name('account.point.multiply')->middleware('demo_user');
+
+        Route::post('/sell_goods/send', 'User\SellGoodController@send')->name('sell_goods.send');
+
     });
 });
 
@@ -116,6 +122,9 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'g2fa', 'ico'])->name('admi
     Route::get('/export/{table?}/{format?}', 'ExportController@export')->middleware(['ico', 'demo_user', 'super_admin'])->name('export'); // v1.1.0
     Route::get('/languages', 'Admin\LanguageController@index')->middleware(['ico'])->name('lang.manage'); // v1.1.3
     Route::get('/languages/translate/{code}', 'Admin\LanguageController@translator')->middleware(['ico'])->name('lang.translate'); // v1.1.3
+
+    Route::get('/sellgoods/{status?}', 'Admin\SellGoodController@index')->middleware('ico')->name('sellgoods');
+    Route::post('/sellgoods/update', 'Admin\SellGoodController@update')->middleware('ico')->name('sellgoods.update');
 
     /* Admin Ajax Route */
     Route::name('ajax.')->prefix('ajax')->middleware(['ico'])->group(function () {
