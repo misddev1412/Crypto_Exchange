@@ -13,7 +13,7 @@ services:
         depends_on:
             - php-fpm
             - php-web2
-            - php-vikioneio
+            # - php-vikioneio
         volumes:
             # Logging
             - ./docker/nginx/log:/var/log/nginx/
