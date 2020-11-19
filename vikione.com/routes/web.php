@@ -69,6 +69,9 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
     Route::get('/account/balance', 'User\UserController@mytoken_balance')->name('token.balance');
     Route::get('token/push/exchange', 'User\UserController@depositOneBlueToExchange')->name('one.exchange.deposit');
 
+    //Thien Dev 19/11/2020
+    Route::get('/invests', 'User\InvestController@index')->name('invests');
+
     // User Ajax Request
     Route::name('ajax.')->prefix('ajax')->group(function () {
         Route::post('/account/wallet-form', 'User\UserController@get_wallet_form')->name('account.wallet');
@@ -83,6 +86,11 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
         Route::post('/account/activity', 'User\UserController@account_activity_delete')->name('account.activity.delete')->middleware('demo_user');
         Route::post('/account/point', 'User\UserController@point')->name('account.point.multiply')->middleware('demo_user');
 
+
+        Route::post('/invest/send', 'User\InvestController@send')->name('invest.send');
+        Route::post('/invest/sell', 'User\InvestController@sell')->name('invest.sell');
+        Route::post('/invest/view', 'User\InvestController@view')->name('invest.view');
+        Route::post('/invest/cancel', 'User\InvestController@cancel')->name('invest.cancel');
     });
 });
 
