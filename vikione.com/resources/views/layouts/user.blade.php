@@ -78,6 +78,7 @@
                         @if(gws('main_website_url') != NULL)
                         <li><a href="{{gws('main_website_url')}}" target="_blank"><em class="ikon ikon-home-link"></em> {{__('Main Site')}}</a></li>
                         @endif
+                        <li><a href="{{route('user.invests')}}"><em class="fa fa-handshake mr-1"></em> {{__('Invests')}} <span class="badge badge-info ml-1" style="min-width: 0px;">{{App\Http\Controllers\User\InvestController::count()}}</span></a></li>
                     </ul>
                    
                     <ul class="navbar-btns">
