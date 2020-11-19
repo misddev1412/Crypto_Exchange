@@ -2,12 +2,18 @@ version: '3.3'
 
 services:
     nginx:
-        build: ./docker/nginx
+        build: 
+            context: ./docker/nginx
+            args:
+                CONFIG_VHOST_PATH: ${CONFIG_VHOST_PATH}    
         ports:
             - "80:80"
+            - "8182:82"
             - "443:443"
         depends_on:
             - php-fpm
+            - php-web2
+        
         volumes:
             # Logging
             - ./docker/nginx/log:/var/log/nginx/
@@ -47,6 +53,7 @@ services:
             - ./app:/var/www/html/
         links:
             - "database:mysql"
+        # user: ${CURRENT_UID}
     php-web2:
         build:
             context: ./docker/php-fpm2
@@ -56,5 +63,7 @@ services:
         links:
             - "database:mysql"
 volumes:
+    app:
+    vikione.com:
     dbdata:
     my.cnf:

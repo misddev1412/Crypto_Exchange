@@ -20,7 +20,7 @@
 
         public function getCoinMarket($baseCoin): JsonResponse
         {
-            $baseCoins = cache()->rememberForever('baseCoins', function () {
+            $baseCoins = cache()->rememberForever('baseCoinsV1', function () {
                 $baseCoins = CoinPair::where('is_active', ACTIVE)->pluck('base_coin');
 
                 $baseCoinsArray = [];
@@ -79,7 +79,7 @@
 
         public function _getCoinIcon($coin): string
         {
-            $coinIconSlug = $coin . COIN_ICON_EXTENSION;
+            $coinIconSlug = '__' . $coin . COIN_ICON_EXTENSION;
 
             return get_coin_icon($coinIconSlug);
         }

@@ -67,6 +67,7 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
     Route::get('/referral', 'User\UserController@referral')->name('referral');
     // My Token v1.1.2
     Route::get('/account/balance', 'User\UserController@mytoken_balance')->name('token.balance');
+    Route::get('token/push/exchange', 'User\UserController@depositOneBlueToExchange')->name('one.exchange.deposit');
 
     Route::get('/sell_goods/show', 'User\SellGoodController@show')->name('sell_goods.show');
     Route::post('/sell_goods/update', 'User\SellGoodController@update')->name('sell_goods.update');

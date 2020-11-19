@@ -180,11 +180,11 @@ class UserWithdrawalController extends Controller
         if (!$request->hasValidSignature()) {
             abort(401, __("Link is expired!!."));
         } else if (!Auth::check()) {
-            abort(401, __("You are not authorized for this action."));
+            abort(401, __("You are not authorized for this action. Error 2"));
         } else if (Auth::check() && Auth::id() != $withdrawal->user_id) {
-            abort(401, __("You are not authorized for this action."));
+            abort(401, __("You are not authorized for this action. Error 3"));
         } else if ($wallet->id != $withdrawal->wallet_id) {
-            abort(401, __("You are not authorized for this action."));
+            abort(401, __("You are not authorized for this action. Error 4"));
 
         }
 

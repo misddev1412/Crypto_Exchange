@@ -631,6 +631,6 @@
     "messages.point.muity.warning": "Your token exchange has failed, please contact the administrator",
     "messages.point.muity.success": "Your token is successfully redeemed",
     "messages.transaction.user_failed":  "Insufficient recipient information needs additional or incorrect information",
-    "messages.trnx.send.success" : "Successful transaction",
+    "messages.trnx.send.success" : "Your transaction has been save, please wait Admin approve this transaction!",
 	"messages.trnx.not_enough_tokens_fee" : "Your balance is not enough for public transactions for a fee of 0.4%"
 }

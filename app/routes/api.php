@@ -11,13 +11,17 @@ use App\Http\Controllers\Api\Wallet\UserWalletController;
 use App\Http\Controllers\Api\Webhook\BitcoinIpnController;
 use App\Http\Controllers\Api\Webhook\CoinpaymentsIpnController;
 use App\Http\Controllers\Api\Withdrawal\UserWithdrawalController;
+use App\Http\Controllers\Api\Local\CoinController;
 use Illuminate\Support\Facades\Route;
 
 Route::any('/ipn/coinpayments', CoinpaymentsIpnController::class);
 Route::any('/ipn/bitcoin/{currency}', BitcoinIpnController::class);
 Route::get('public', PublicApiController::class);
 Route::get('coins/{coin}/payment-methods', PaymentMethodController::class);
-
+Route::group(['prefix' => 'local', 'middleware' => ['api_local']], function () {
+    Route::get('test', [CoinController::class, 'test']);
+    Route::post('coin/deposit', [CoinController::class, 'depositTokenExchange']);
+});
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // user orders
     Route::get('user/orders/{coinPair}/open', UserOrderController::class);

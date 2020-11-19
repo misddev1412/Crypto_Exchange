@@ -38,7 +38,7 @@ class User extends Authenticatable // implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'lastLogin', 'role',
+        'name', 'email', 'password', 'lastLogin', 'role', 'one_exchange'
     ];
 
     /**
@@ -340,16 +340,110 @@ class User extends Authenticatable // implements MustVerifyEmail
         return (object) $data;
     }
 	
-	public static function updateToken24Hour()
-	{
-		$sql = "UPDATE users
-		SET users.tokenBalance2 = IFNULL(users.tokenBalance2, 0) + ROUND(users.tokenPoint * 0.002),
-		users.tokenPoint = users.tokenPoint - ROUND(users.tokenPoint * 0.002)
-		WHERE users.id > 0
-		";
-		
-		$result = DB::update($sql);
-		
-		return $result;
-	}
+    public static function updateToken24Hour()
+    {
+        $sql = "UPDATE users
+        SET users.tokenBalance2 = IFNULL(users.tokenBalance2, 0) + ROUND(users.tokenPoint * 0.002),
+        users.tokenPoint = users.tokenPoint - ROUND(users.tokenPoint * 0.002),
+        users.one_exchange = IF(DATEDIFF(NOW(), users.created_at) >= 90, IFNULL(users.one_exchange, 0) + ROUND(users.tokenPoint * 0.002), users.one_exchange)
+        WHERE users.id > 0
+        ";
+        
+        $result = DB::update($sql);
+        
+        return $result;
+    }
+
+    public static function syncOneExchange($userId, $tnxId)
+    {
+        $difference = "SELECT IF(users.tokenBalance2 < users.one_exchange, users.one_exchange - users.tokenBalance2, 0) as difference
+            FROM users
+            WHERE users.id = $userId
+        ";
+
+        $resultNumber   = 0;
+        $resultDiff     = DB::select($difference);
+        if ($resultDiff) {
+            $resultNumber = $resultDiff[0]->difference;
+        } 
+
+        $sqlTrans       = "UPDATE transactions
+        SET transactions.one_exchange_pending = $resultNumber
+        /* transactions.one_exchange_pending = IF(users.tokenBalance2 < users.one_exchange, (users.one_exchange - users.tokenBalance2), 0) */
+        WHERE transactions.tnx_id = '$tnxId'
+        ";
+
+        $resultTrans    = DB::update($sqlTrans);
+        
+        $sql        = "UPDATE users
+            SET users.one_exchange = IF(users.tokenBalance2 < users.one_exchange, users.one_exchange - (users.one_exchange - users.tokenBalance2), users.one_exchange)
+            /* transactions.one_exchange_pending = IF(users.tokenBalance2 < users.one_exchange, (users.one_exchange - users.tokenBalance2), 0) */
+            WHERE users.id = $userId
+            ";
+        
+        $result = DB::update($sql);
+        
+        return $result;
+    }
+
+    public static function pushOneExchange($userId, $value)
+    {
+        $sql = "UPDATE users
+        SET users.one_exchange = users.one_exchange - $value,
+        users.tokenBalance2 = users.tokenBalance2 - $value
+        WHERE users.id = $userId
+        ";
+        
+        $result = DB::update($sql);
+        
+        return $result;
+    }
+
+    public static function revertOneExchange($userId, $value)
+    {
+        $sql = "UPDATE users
+        SET users.one_exchange = users.one_exchange + $value,
+        users.tokenBalance2 = users.tokenBalance2 + $value
+        WHERE users.id = $userId
+        ";
+        
+        $result = DB::update($sql);
+        
+        return $result;
+    }
+    
+
+    public static function rollbackOneExchange($userId, $tnxId)
+    {
+        $transaction = "SELECT one_exchange_pending 
+        FROM transactions 
+        WHERE transactions.tnx_id = '$tnxId'
+        AND transactions.user = '$userId'
+        AND transactions.status = 'pending'
+        ";
+
+        $resultTransaction = DB::select($transaction);
+        $rollback   = 0;
+        if ($resultTransaction) {
+            $rollback = $resultTransaction[0]->one_exchange_pending;
+        }
+
+        if ($rollback > 0) {
+            $sql        = "UPDATE users
+            SET users.one_exchange = users.one_exchange + $rollback
+            WHERE users.id = $userId
+            ";
+        
+            $result = DB::update($sql);
+        }
+
+    }
+    // public static function updateTokenExchange()
+    // {
+    //     $sql = "UPDATE users
+	// 	SET users.tokenBalance2 = IFNULL(users.tokenBalance2, 0) + ROUND(users.tokenPoint * 0.002),
+	// 	users.tokenPoint = users.tokenPoint - ROUND(users.tokenPoint * 0.002)
+	// 	WHERE users.id > 0
+	// 	";
+    // }
 }

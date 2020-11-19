@@ -694,7 +694,7 @@ class UsersController extends Controller
 	
 	public function updateTokenOne(Request $request)
 	{
-		$result = User::updateToken24Hour();
+        $result             = User::updateToken24Hour();
 		return redirect()->back();
 	}
 }

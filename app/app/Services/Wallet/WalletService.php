@@ -126,4 +126,9 @@ class WalletService
 
         $this->select = $select;
     }
+
+    public function depositToWallet($userId, $value)
+    {
+        return Wallet::where('user_id', $userId)->where('symbol', 'ONE')->where('is_active', 1)->increment('primary_balance', $value);
+    }
 }

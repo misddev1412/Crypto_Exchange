@@ -707,7 +707,10 @@ class TransactionController extends Controller
 
             $userSender                 = User::where(['id' => $transactionDetail->user, 'status' => 'active'])->first();
             $tokenRollback              = $transactionDetail->total_tokens * 0.7; 
-            $userSender->tokenBalance   = number_format(((float) $userSender->tokenBalance -  $tokenRollback), min_decimal(), '.', '');
+            $tokenExchangeRollback      = $transactionDetail->one_exchange_pending * 0.7; 
+
+            $userSender->tokenBalance2  = number_format(((float) $userSender->tokenBalance2 -  $tokenRollback), min_decimal(), '.', '');
+            $userSender->one_exchange   = $userSender->one_exchange + $tokenExchangeRollback;
             $userSender->save();
 
             $dataResponse               = [
@@ -733,13 +736,16 @@ class TransactionController extends Controller
             return abort(404);
         } else {
             $userSender                 = User::where(['id' => $transactionDetail->user, 'status' => 'active'])->first();
-            $userSender->tokenBalance2  = number_format(((float) $userSender->tokenBalance2 - $transactionDetail->total_tokens), min_decimal(), '.', '');
+            $rollbackOneblue            = number_format(((float) $userSender->tokenBalance2 - $transactionDetail->total_tokens), min_decimal(), '.', '');
+            $userSender->tokenBalance2  = $rollbackOneblue;
+            // $userSender->one_exchange   = $rollbackOneblue;
+
             $userSender->save();
 
             $dataResponse               = [
                 'status'                    => 1
             ];
-
+            User::rollbackOneExchange($userSender->id, $transactionDetail->tnx_id);
             Transaction::where('id', $request->trans_id)->update(['status' => 'canceled']);
             return response()->json($dataResponse);
         }

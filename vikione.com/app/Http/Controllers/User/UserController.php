@@ -30,6 +30,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Setting;
 use App\Models\Referral;
+use GuzzleHttp\Client;
+use Session;
+use App\Helpers\TokenCalculate as TC;
+
 class UserController extends Controller
 {
   protected $handler;
@@ -628,4 +632,115 @@ class UserController extends Controller
       return response()->json($ret);
     }
   }
+
+  public function depositOneBlueToExchange(Request $request)
+  {
+    $apiUrl = 'https://vikione.exchange/api/local/coin/deposit';
+    $headers = [
+        'Content-Type'  => 'application/json',
+        'local-token'   => 'dC38Xaq0YO03A3fRbaitx78zmYhvIPSjsOjVB4VGpfOtNLar37gPphE1tlfJIZxs',
+    ];
+    
+    $client = new Client([
+        'headers'   => $headers
+    ]);
+
+    $data       = [
+        'email'     => Auth::user()->email,
+        'phone'     => Auth::user()->mobile,
+        'amount'    => Auth::user()->one_exchange ?? 0
+    ];
+    if (Auth::user()->mobile == null) {
+      Session::flash('error', 'Please update your phone before continue to do!');
+      return redirect()->back();
+    }
+
+    if ($data['amount'] == 0) {
+      Session::flash('error', 'Your balance is not enough.');
+      return redirect()->back();
+    }
+    User::pushOneExchange(Auth::user()->id, $data['amount']);
+    try {
+      $result     = $client->post($apiUrl,  ['form_params'=> $data]);
+      $body       = json_decode($result->getBody()->getContents());
+      if (isset($body->status) && $body->status == 200) {
+        Session::flash('info', 'Your conversion was successful!');
+        $systemInfo = new \stdClass();
+        $systemInfo->name ='Exchange';
+        $systemInfo->id   = -1;
+        $this->create_transaction($systemInfo, $request, -$data['amount'], 'approved', Auth::user(), 0, 0);
+        return redirect()->back();
+      } else if (isset($body->status) && $body->status == 404) {
+        User::revertOneExchange(Auth::user()->id, $data['amount']);
+        Session::flash('error', $body->message);
+        return redirect()->back();
+      }
+    } catch (\Exception $e) {
+      User::revertOneExchange(Auth::user()->id, $data['amount']);
+      Session::flash('error', 'Something went wrong, please try again later!');
+      return redirect()->back();
+    }
+
+  
+  }
+
+  private function create_transaction($user,$request, $token, $status = 'onhold', $userNotSuppend = null, $verify_code = "", $fee = 0)
+    {
+        $tc = new TC();
+        $bonus_calc = false;
+        $tnx_type = 'exchange';
+        $currency = 'usd';
+        $currency_rate = 0;
+        $base_currency = strtolower(base_currency());
+        $base_currency_rate = Setting::exchange_rate($tc->get_current_price(), $base_currency);
+        $all_currency_rate = json_encode(Setting::exchange_rate($tc->get_current_price(), 'except'));
+        $added_time = Carbon::now()->toDateTimeString();
+        $tnx_date   = (($request->tnx_date) ? $request->tnx_date : date('m/d/y') ). ' ' . date('H:i');
+
+        $trnx_data = [
+            'token' => ($status == 'onhold') ? -round($token, min_decimal()) : round($token, min_decimal()),
+            'bonus_on_base' => 0,
+            'bonus_on_token' => 0,
+            'total_bonus' => 0,
+            'total_tokens' => ($status == 'onhold') ? -round($token, min_decimal()) : round($token, min_decimal()),
+            'base_price' => 0,
+            'amount' => 0,
+        ];
+
+        $save_data          = [
+            'created_at'            => $added_time,
+            'tnx_id'                => set_id(rand(100, 999), 'trnx'),
+            'tnx_type'              => $tnx_type,
+            'tnx_time'              => ($request->tnx_date) ? _cdate($tnx_date)->toDateTimeString() : $added_time,
+            'tokens'                => $trnx_data['token'],
+            'bonus_on_base'         => $trnx_data['bonus_on_base'],
+            'bonus_on_token'        => $trnx_data['bonus_on_token'],
+            'total_bonus'           => $trnx_data['total_bonus'],
+            'total_tokens'          => $trnx_data['total_tokens'],
+            'stage'                 => 0,
+            'user'                  => (int)$user->id,
+            'user_receive'          => ($status == 'onhold') ? ($userNotSuppend ? (int) $userNotSuppend->id : 0) : 0,
+            'amount'                => $trnx_data['amount'],
+            'receive_amount'        => $trnx_data['amount'],
+            'receive_currency'      => $currency,
+            'base_amount'           => $trnx_data['base_price'],
+            'base_currency'         => $base_currency,
+            'base_currency_rate'    => $base_currency_rate,
+            'currency'              => $currency,
+            'currency_rate'         => $currency_rate,
+            'all_currency_rate'     => $all_currency_rate,
+            'payment_method'        => $request->input('payment_method', 'manual'),
+            'payment_to'            => '',
+            'payment_id'            => rand(1000, 9999),
+            'details'               => ($status == 'onhold') ? (__('Receiver: ') . '<i><b>' . $userNotSuppend->name .'</b></i>') : (__('Received from: ') .  '<i><b>' . $userNotSuppend->name .'</b></i>'),
+            'status'                => $status,
+            'verify_code'           => ($status == 'onhold') ? $verify_code : 0,
+            'fee'                   => $fee
+        ];
+
+        $iid = Transaction::insertGetId($save_data);
+
+        return $iid;
+    }
+
 }

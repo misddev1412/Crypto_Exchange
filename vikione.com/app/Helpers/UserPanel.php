@@ -129,7 +129,7 @@ class UserPanel
         $return = '<div' . $g_id . ' class="token-statistics card card-token token-balance-original-container' . $g_cls . '">
             <div class="card-innr"><div class="token-balance' . $ver_cls . '">' . $ver_icon . '
             <div class="token-balance-text text-center"><h6 class="card-sub-title">' . __('Token Balance') . '</h6>
-            <span class="lead text-danger font-weight-bold" style="font-size:1.7em">' . to_num_token($user->tokenBalance) . ' <span>' . token('symbol') . ' <em class="fas fa-info-circle fs-11" data-toggle="tooltip" data-placement="right" title="' . __('Equivalent to') . ' ' . token_price($user->tokenBalance, base_currency()) . ' ' . base_currency(true) . '"></em></span></span>
+            <span class="lead text-white font-weight-bold" style="font-size:1.7em">' . to_num_token($user->tokenBalance) . ' <span>' . token('symbol') . ' <em class="fas fa-info-circle fs-11" data-toggle="tooltip" data-placement="right" title="' . __('Equivalent to') . ' ' . token_price($user->tokenBalance, base_currency()) . ' ' . base_currency(true) . '"></em></span></span>
             </div>
             <div class="gaps-1-5x"></div>
             </div>' . $contribute . '
@@ -701,7 +701,7 @@ class UserPanel
                 <label>Your Email: </label> <span> ' . $user->email . ' </span>
             </div>
             <div class="user-information-row">
-                <label>You′re with us: </label> <span> ' . Auth::user()->created_at->diffForHumans() . ' </span>
+                <label>You′re with us: </label> <span> ' . Auth::user()->created_at->diffInDays() . ' day(s) </span>
             </div>
             <div class="user-information-row">
                 <div class="referral-form">
@@ -782,10 +782,15 @@ class UserPanel
         <h5>' . (round($user->affiliate_token,2) ?? 0) .'</h5>
         <h6 class="card-sub-title">' . __('Current basic rate of return: ') .  '</h6>
         <h5>'.($percent / 100) * (round($user->tokenPoint,2) ?? 0).'</h5>
+        <div class="bordered">
+        <h6 class="card-sub-title text-white font-weight-bold">' . __('One Exchange: ') .  '</h6>
+        <h5 class="text-white font-weight-bold">'.(round($user->one_exchange,2) ?? 0).'</h5>
+        </div>
         </div>
         
         </div>';
         // $return .= self::user_account_point_status();
+        $return .= '<div class="one-blue-button"><a  onclick="pushOneExchange('.(round($user->one_exchange,2) ?? 0).')" class="btn btn-sm btn-auto btn-info mr-1 " ><em class="fas fa-paper-plane"></em><span>Push Exchange</span></a></div>';
         $return .= '<div class="one-blue-button"><a href="#" class="btn btn-sm btn-auto btn-primary" data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a></div>';
         $return .= '<div class="one-blue-button"><a href="#" class="btn btn-sm btn-auto btn-danger " data-toggle="modal" data-target="#addSellGoods"><em class="fas fa-hand-holding-usd"></em><span>Sell Goods</span></a></div>';
         $return .= '</div></div>';

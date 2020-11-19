@@ -36,6 +36,10 @@
                         <td><strong class="pr-3">:</strong> {{ $user->profile->address }}</td>
                     </tr>
                     <tr>
+                        <td>{{ __('Phone') }}</td>
+                        <td><strong class="pr-3">:</strong> {{ $user->profile->phone }}</td>
+                    </tr>
+                    <tr>
                         <td>{{ __('Account Status') }}</td>
                         <td><strong class="pr-3">:</strong>
                             <small

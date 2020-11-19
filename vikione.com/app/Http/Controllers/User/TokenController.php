@@ -24,6 +24,7 @@ use App\Models\PaymentMethod;
 use App\Notifications\TnxStatus;
 use App\Http\Controllers\Controller;
 use App\Helpers\TokenCalculate as TC;
+use GuzzleHttp\Client;
 
 class TokenController extends Controller
 {
@@ -286,4 +287,7 @@ class TokenController extends Controller
         }
         return redirect(route('user.token'))->with(['danger'=>$name, 'modal'=>'danger']);
     }
+
+
+    
 }
