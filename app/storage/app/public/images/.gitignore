@@ -1,0 +1,15 @@
+*
+!.gitignore
+!_favicon_.png
+!logo.png
+!logo-light.png
+!placeholder.jpg
+!users/
+!languages/
+!tickets/
+!coin-icons/
+!dashboard-icons/
+!cart-icons/
+!deposit/receipts
+!posts/
+!regular_site/

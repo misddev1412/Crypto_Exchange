@@ -1,7 +1,5 @@
 /db/dbdata
 /storage
 /docker/nginx/log
-/app/.env
-/app/vendor
-/app/storage
+
 /vikione.com/.env
