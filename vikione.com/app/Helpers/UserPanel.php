@@ -791,7 +791,8 @@ class UserPanel
         </div>';
         // $return .= self::user_account_point_status();
         $return .= '<a  onclick="pushOneExchange('.(round($user->one_exchange,2) ?? 0).')" class="btn btn-sm btn-auto btn-info mr-1 " ><em class="fas fa-paper-plane"></em><span>Push Exchange</span></a>';
-        $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary " data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
+        // $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary " data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
+        $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary " data-toggle="modal" data-target="#selectMethodSell"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
         $return .= '</div></div>';
 
         return $return;

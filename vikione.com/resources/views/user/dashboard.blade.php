@@ -277,4 +277,121 @@ $base_currency = base_currency();
     </div>
     {{-- .modal-dialog --}}
 </div>
+
+<div class="modal fade" id="selectMethodSell" tabindex="-1">
+    <div class="modal-dialog modal-dialog-lg modal-dialog-centered">
+        <div class="modal-content">
+            <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close"><em class="ti ti-close"></em></a>
+            <div class="panel pricing-table">
+                <div class="pricing-plan">
+                    <img src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png" alt="" class="pricing-img">
+                    <h2 class="pricing-header">Invest</h2>
+                    <ul class="pricing-features">
+                        <li class="pricing-features-item">Custom domains</li>
+                        <li class="pricing-features-item">Sleeps after 30 mins of inactivity</li>
+                    </ul>
+                    <span class="pricing-price">Free</span>
+                    <a data-toggle="modal" data-target="#addTnx" class="pricing-button">SELECT</a>
+                </div>
+                <div class="pricing-plan">
+                    <img src="https://s28.postimg.cc/ju5bnc3x9/plane.png" alt="" class="pricing-img">
+                    <h2 class="pricing-header">Sell One</h2>
+                    <ul class="pricing-features">
+                        <li class="pricing-features-item">Never sleeps</li>
+                        <li class="pricing-features-item">Multiple workers for more powerful apps</li>
+                    </ul>
+                    <span class="pricing-price">$150</span>
+                    <a data-toggle="modal" data-target="#sellOne" class="pricing-button is-featured">SELECT</a>
+                </div>
+                <div class="pricing-plan">
+                    <img src="https://s21.postimg.cc/tpm0cge4n/space-ship.png" alt="" class="pricing-img">
+                    <h2 class="pricing-header">Enterprise</h2>
+                    <ul class="pricing-features">
+                        <li class="pricing-features-item">Dedicated</li>
+                        <li class="pricing-features-item">Simple horizontal scalability</li>
+                    </ul>
+                    <span class="pricing-price">$400</span>
+                    <a href="#/" class="pricing-button">Free trial</a>
+                </div>
+            </div>
+        </div>
+        {{-- .modal-content --}}
+    </div>
+    {{-- .modal-dialog --}}
+</div>
+
+
+<div class="modal fade" id="sellOne" tabindex="-1">
+    <div class="modal-dialog modal-dialog-md modal-dialog-centered">
+        <div class="modal-content">
+            <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close"><em class="ti ti-close"></em></a>
+            <div class="popup-body popup-body-md">
+                <h3 class="popup-title">Receiver's information</h3>
+                <form action="{{ route('user.ajax.transactions.send') }}" method="POST" class="adduser-form validate-modern" id="addTranForm" autocomplete="false">
+                    @csrf
+                    <div class="row user">
+                        <div class="col-sm-6">
+                            <div class="input-item input-with-label">
+                                <label class="input-item-label">Email Address</label>
+                                <div class="input-wrap">
+                                    <input class="input-bordered" required="required" name="email" type="email" placeholder="Email address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-item input-with-label">
+                                <label class="input-item-label">Last 4 digits of the phone</label>
+                                <div class="input-wrap">
+                                    <input name="phone" class="input-bordered" minlength="4" maxlength="4" placeholder="Phone number" type="text">
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="col-sm-12 d-none">
+                            <div class="alert alert-warning"></div>
+                        </div>
+                    </div>    
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-6 token">
+                            <div class="input-item input-with-label">
+                                <label class="input-item-label">Number of One Blue</label>
+                                <div class="input-wrap">
+                                    <input class="input-bordered" required="required" oninput="incrementValue()" type="number" min="0" placeholder="0.1">
+                                </div>
+                                <div class="note note-plane note-info pdb-1x">
+									<em class="fas fa-info-circle"></em>
+									<p>You will have to transfer with a value of 125%.</p>
+								</div>
+                            </div>
+                            <div class="alert alert-warning d-none"></div>
+                        </div>    
+                        <div class="col-sm-6 actually-token">
+                            <div class="input-item input-with-label">
+                                <label class="input-item-label">Actually you will send.</label>
+                                <div class="input-wrap">
+                                    <input class="input-bordered" required="required" name="token" readonly type="number" min="0" placeholder="0.1">
+                                </div>
+                                
+                            </div>
+                            <div class="alert alert-warning d-none"></div>
+                        </div>    
+                        <div class="col-sm-12 d-none otp">
+                            <div class="input-item input-with-label">
+                                <label class="input-item-label">OTP code</label>
+                                <div class="input-wrap">
+                                    <input name="otp" class="input-bordered" minlength="5" maxlength="5" placeholder="OTP Code" type="text">
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>    
+                    <div class="gaps-1x"></div>
+                    <button class="btn btn-md btn-primary" type="submit">Send</button>                    
+                </form>
+            </div>
+        </div>
+        {{-- .modal-content --}}
+    </div>
+    {{-- .modal-dialog --}}
+</div>
 @endsection
