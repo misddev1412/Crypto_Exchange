@@ -70,7 +70,9 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
     Route::get('token/push/exchange', 'User\UserController@depositOneBlueToExchange')->name('one.exchange.deposit');
 
     //Thien Dev 19/11/2020
-    Route::get('/invests', 'User\InvestController@index')->name('invests');
+    Route::get('/buy-sell', 'User\BuySellController@index')->name('buysell');
+    Route::get('/sell_goods/show', 'User\SellGoodController@show')->name('sell_goods.show');
+    Route::post('/sell_goods/update', 'User\SellGoodController@update')->name('sell_goods.update');
 
     // User Ajax Request
     Route::name('ajax.')->prefix('ajax')->group(function () {
@@ -86,11 +88,12 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
         Route::post('/account/activity', 'User\UserController@account_activity_delete')->name('account.activity.delete')->middleware('demo_user');
         Route::post('/account/point', 'User\UserController@point')->name('account.point.multiply')->middleware('demo_user');
 
+        Route::post('/buy-sell/send', 'User\BuySellController@send')->name('buysell.send');
+        Route::post('/buy-sell/sell', 'User\BuySellController@sell')->name('buysell.sell');
+        Route::post('/buy-sell/view', 'User\BuySellController@view')->name('buysell.view');
+        Route::post('/buy-sell/cancel', 'User\BuySellController@cancel')->name('buysell.cancel');
+        Route::post('/sell_goods/send', 'User\SellGoodController@send')->name('sell_goods.send');
 
-        Route::post('/invest/send', 'User\InvestController@send')->name('invest.send');
-        Route::post('/invest/sell', 'User\InvestController@sell')->name('invest.sell');
-        Route::post('/invest/view', 'User\InvestController@view')->name('invest.view');
-        Route::post('/invest/cancel', 'User\InvestController@cancel')->name('invest.cancel');
     });
 });
 
@@ -126,6 +129,9 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'g2fa', 'ico'])->name('admi
     Route::get('/export/{table?}/{format?}', 'ExportController@export')->middleware(['ico', 'demo_user', 'super_admin'])->name('export'); // v1.1.0
     Route::get('/languages', 'Admin\LanguageController@index')->middleware(['ico'])->name('lang.manage'); // v1.1.3
     Route::get('/languages/translate/{code}', 'Admin\LanguageController@translator')->middleware(['ico'])->name('lang.translate'); // v1.1.3
+
+    Route::get('/sellgoods/{status?}', 'Admin\SellGoodController@index')->middleware('ico')->name('sellgoods');
+    Route::post('/sellgoods/update', 'Admin\SellGoodController@update')->middleware('ico')->name('sellgoods.update');
 
     /* Admin Ajax Route */
     Route::name('ajax.')->prefix('ajax')->middleware(['ico'])->group(function () {

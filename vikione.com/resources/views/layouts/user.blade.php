@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset(style_theme('vendor')) }}">
     <link rel="stylesheet" href="{{ asset(style_theme('user')) }}">
     <link rel="stylesheet" href="{{ asset(style_theme('custom')) }}">
-    <link rel="stylesheet" href="{{ asset('assets/plugins/swal/sweetalert2.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/plugins/swal/sweetalert2.min.css') }}"> -->
     {{-- <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css') }}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
     @stack('header')
@@ -78,7 +78,8 @@
                         @if(gws('main_website_url') != NULL)
                         <li><a href="{{gws('main_website_url')}}" target="_blank"><em class="ikon ikon-home-link"></em> {{__('Main Site')}}</a></li>
                         @endif
-                        <li><a href="{{route('user.invests')}}"><em class="fa fa-handshake mr-1"></em> {{__('Invests')}} <span class="badge badge-info ml-1" style="min-width: 0px;">{{App\Http\Controllers\User\InvestController::count()}}</span></a></li>
+                        <li><a href="{{route('user.buysell')}}"><em class="fa fa-handshake mr-1"></em> {{__('Buy/Sell')}} <span class="badge badge-info ml-1" style="min-width: 0px;">{{App\Http\Controllers\User\BuySellController::count()}}</span></a></li>
+                        <li><a href="{{  route('user.sell_goods.show') }}"><em class="fas fa-hand-holding-usd"></em> {{__('Sell Goods')}}</a></li>
                     </ul>
                    
                     <ul class="navbar-btns">
@@ -194,7 +195,7 @@
     <script src="{{ asset('assets/js/app.js').css_js_ver() }}"></script>
     <script src="{{ asset('assets/js/tree.js').css_js_ver() }}"></script>
     <script src="{{ asset('assets/js/custom.js').css_js_ver() }}"></script>
-    <script src="{{ asset('assets/plugins/swal/sweetalert2.all.min.js').css_js_ver() }}"></script>
+    <!-- <script src="{{ asset('assets/plugins/swal/sweetalert2.all.min.js').css_js_ver() }}"></script> -->
     {{-- <script src="{{ asset('assets/js/sweetalert2.all.min.js').css_js_ver() }}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
     @yield('script')

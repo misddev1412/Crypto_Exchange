@@ -793,6 +793,9 @@ class UserPanel
         $return .= '<a  onclick="pushOneExchange('.(round($user->one_exchange,2) ?? 0).')" class="btn btn-sm btn-auto btn-info mr-1 " ><em class="fas fa-paper-plane"></em><span>Push Exchange</span></a>';
         // $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary " data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
         $return .= '<a href="#" class="btn btn-sm btn-auto btn-primary " data-toggle="modal" data-target="#selectMethodSell"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a>';
+        $return .= '<div class="one-blue-button"><a  onclick="pushOneExchange('.(round($user->one_exchange,2) ?? 0).')" class="btn btn-sm btn-auto btn-info mr-1 " ><em class="fas fa-paper-plane"></em><span>Push Exchange</span></a></div>';
+        $return .= '<div class="one-blue-button"><a href="#" class="btn btn-sm btn-auto btn-primary" data-toggle="modal" data-target="#addTnx"><em class="fas fa-paper-plane"></em><span>Send ONE</span></a></div>';
+        $return .= '<div class="one-blue-button"><a href="#" class="btn btn-sm btn-auto btn-danger " data-toggle="modal" data-target="#addSellGoods"><em class="fas fa-hand-holding-usd"></em><span>Sell Goods</span></a></div>';
         $return .= '</div></div>';
 
         return $return;

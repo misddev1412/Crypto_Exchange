@@ -400,6 +400,7 @@
     align-self: flex-start;
 }
 
+<<<<<<< HEAD
 
 .panel {
   background-color: #fff;
@@ -509,4 +510,9 @@
 .pricing-button.is-featured:hover,
 .pricing-button.is-featured:active {
   background-color: #269aff;
+=======
+.one-blue-button{
+  text-align: right; 
+  padding:10px 0px;
+>>>>>>> origin/dev-linh
 }

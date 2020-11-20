@@ -52,6 +52,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 // dd(env('DB_DATABASE'));
+
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );

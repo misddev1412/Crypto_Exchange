@@ -208,6 +208,43 @@ $base_currency = base_currency();
              }
         })
     })
+
+
+    //Sell Good 
+
+
+    $(".allownumericwithdecimal").on("keypress keyup blur",function (event) {
+            //this.value = this.value.replace(/[^0-9\.]/g,'');
+     $(this).val($(this).val().replace(/[^0-9\.]/g,''));
+            if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
+        $(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) {    
+           $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
+    $("form#addSellGoodForm").submit(function(e){
+        e.preventDefault();
+        $.post('{{ route('user.ajax.sell_goods.send') }}',  $(this).serialize()).done(i => {
+            cl(i)
+            if(i.msg === 'error') {
+                $('#addSellGoodForm .user .alert').text(i.message).parent().removeClass('d-none');
+            }
+             if(i.msg === 'success') {
+                swal(i.message, "", "success").then( i => {
+					 $('#addSellGoodForm').find('input').val('');	
+                    setTimeout(function() {
+                        window.location.reload()
+                    }, 150)
+                });
+             }
+        })
+    })
 </script>
 @endsection
 
@@ -321,13 +358,17 @@ $base_currency = base_currency();
 </div>
 
 
-<div class="modal fade" id="sellOne" tabindex="-1">
+{{-- <div class="modal fade" id="sellOne" tabindex="-1"> --}}
+
+
+<div class="modal fade" id="addSellGoods" tabindex="-1">
     <div class="modal-dialog modal-dialog-md modal-dialog-centered">
         <div class="modal-content">
             <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close"><em class="ti ti-close"></em></a>
             <div class="popup-body popup-body-md">
                 <h3 class="popup-title">Receiver's information</h3>
-                <form action="{{ route('user.ajax.transactions.send') }}" method="POST" class="adduser-form validate-modern" id="addTranForm" autocomplete="false">
+                {{-- <form action="{{ route('user.ajax.transactions.send') }}" method="POST" class="adduser-form validate-modern" id="addTranForm" autocomplete="false"> --}}
+                <form action="{{ route('user.ajax.sell_goods.send') }}" method="POST" class="adduser-form validate-modern" id="addSellGoodForm" autocomplete="false">
                     @csrf
                     <div class="row user">
                         <div class="col-sm-6">
@@ -342,13 +383,13 @@ $base_currency = base_currency();
                             <div class="input-item input-with-label">
                                 <label class="input-item-label">Last 4 digits of the phone</label>
                                 <div class="input-wrap">
-                                    <input name="phone" class="input-bordered" minlength="4" maxlength="4" placeholder="Phone number" type="text">
+                                    <input name="phone" class="input-bordered allownumericwithoutdecimal" minlength="4" maxlength="4" placeholder="Phone number" type="text">
                                 </div>
                                
                             </div>
                         </div>
                         <div class="col-sm-12 d-none">
-                            <div class="alert alert-warning"></div>
+                            <div class="alert alert-danger"></div>
                         </div>
                     </div>    
                     <hr />
@@ -381,12 +422,28 @@ $base_currency = base_currency();
                                 <label class="input-item-label">OTP code</label>
                                 <div class="input-wrap">
                                     <input name="otp" class="input-bordered" minlength="5" maxlength="5" placeholder="OTP Code" type="text">
+                                <label class="input-item-label">Amount</label>
+                                <div class="input-wrap">
+                                    <input class="input-bordered allownumericwithdecimal" required="required" name="amount" type="text" placeholder="Amout">
+                                </div>
+                                <!-- <div class="note note-plane note-info pdb-1x">
+									<em class="fas fa-info-circle"></em>
+									<p>We will charge you a 0.4% transaction fee per transaction.</p>
+								</div> -->
+                            </div>
+                            <div class="alert alert-success d-none"></div>
+                        </div>    
+                        <div class="col-sm-6 ">
+                            <div class="input-item input-with-label">
+                                <label class="input-item-label">Detail</label>
+                                <div class="input-wrap">
+                                    <input name="detail" class="input-bordered"  placeholder="Detail" type="text">
                                 </div>
                             </div>
                         </div>                    
                     </div>    
                     <div class="gaps-1x"></div>
-                    <button class="btn btn-md btn-primary" type="submit">Send</button>                    
+                    <button class="btn btn-md btn-primary" type="submit">Send request</button>                    
                 </form>
             </div>
         </div>
