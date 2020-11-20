@@ -28,10 +28,10 @@ class LoginRequest extends FormRequest
             'password' => 'required|between:1,255',
         ];
 
-        if( env('APP_ENV') != 'local' && settings('display_google_captcha') == ACTIVE )
-        {
-            $validation['g-recaptcha-response'] = 'required|captcha';
-        }
+        // if( env('APP_ENV') != 'local' && settings('display_google_captcha') == ACTIVE )
+        // {
+        //     $validation['g-recaptcha-response'] = 'required|captcha';
+        // }
 
         return $validation;
     }
