@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 use App\Models\BuySell;
@@ -191,7 +192,7 @@ class BuySellController extends Controller
                         </div>               
                         ';
                     } else if($case->status == 'canceled') {
-                        return "<div class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> This coversations is closed!</h4>";
+                        return "<div class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> This coversation is closed!</h4>";
                     }
                 } else {
                     if($case->verify_file == null && $case->status == 'progress') {
@@ -320,6 +321,7 @@ class BuySellController extends Controller
          } else {
                         
          }
+
         return back()->with([$ret['msg'] => $ret['message']]);
     }
 
@@ -351,7 +353,7 @@ class BuySellController extends Controller
                         ]);  
 
                         $ret['msg'] = 'success';
-                        $ret['message'] = 'Canceled case: #'.$case->id.' successfully! we refunded Freeze Balance to your account.';
+                        $ret['message'] = 'Canceled case: #'.$case->id.' successfully.';
 
                     } catch (\Exception $e) {
                         $ret['msg'] = 'error';

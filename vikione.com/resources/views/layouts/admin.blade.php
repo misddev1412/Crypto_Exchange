@@ -112,9 +112,13 @@
                             </ul>
                         </li>
                         @endif
-                        <li{!! ((is_page('sellgoods/*'))? ' class="active"' : '') !!}>
-                            <a href="{{ route('admin.sellgoods') }}"><em class="fas fa-hand-holding-usd"></em> Sell goods</a>
-                        </li>
+                        <li class="has-dropdown {!! ((is_page('sellgoods/*'))? 'active' : '') !!}{!! ((is_page('buysell/*'))? 'active' : '') !!}">
+                            <a class="drop-toggle" href="javascript:void(0)"><em class="ikon ikon-settings"></em> Others</a>
+                            <ul class="navbar-dropdown">
+                                <li><a href="{{ route('admin.buysell') }}">Buy / Sell</a></li>
+                                <li><a href="{{ route('admin.sellgoods') }}">Sell goodss</a></li>
+                            </ul>
+                        </li>                          
                     </ul>
                     @if(is_super_admin())
                     <ul class="navbar-btns">
