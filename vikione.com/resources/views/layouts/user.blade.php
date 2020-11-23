@@ -19,6 +19,7 @@
 @if(get_setting('site_header_code', false))
     {{ html_string(get_setting('site_header_code')) }}
 @endif
+    @yield('customStyle')
 </head>
 <body class="user-dashboard page-user theme-modern">
     <div class="topbar-wrap">

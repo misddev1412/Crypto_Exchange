@@ -92,6 +92,7 @@ Route::prefix('user')->middleware(['auth', 'user', 'verify_user', 'g2fa'])->name
         Route::post('/buy-sell/sell', 'User\BuySellController@sell')->name('buysell.sell');
         Route::post('/buy-sell/view', 'User\BuySellController@view')->name('buysell.view');
         Route::post('/buy-sell/cancel', 'User\BuySellController@cancel')->name('buysell.cancel');
+        Route::post('/buy-sell/message', 'User\BuySellController@message')->name('buysell.message');
         Route::post('/sell_goods/send', 'User\SellGoodController@send')->name('sell_goods.send');
 
     });
