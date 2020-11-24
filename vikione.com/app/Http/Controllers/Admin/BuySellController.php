@@ -37,13 +37,18 @@ class BuySellController extends Controller
         $buyer_receive =  $buysell->amount + (($buysell->amount * 20) / 100);
         $seller_decrease = $buysell->amount + (($buysell->amount * 25) / 100);
         $admin_receive = (($buysell->amount * 5) / 100);
+        $method_fee = 0;
+
+        if($buysell->method == 'safety') {
+            $method_fee = (($buysell->amount * 6) / 100);
+        }
 
         if($buysell && $buyer && $seller){
             $data['status']= $request->status;
             BuySell::find($id)->update($data);
             if($request->status == 'approved'){
                 User::where('id',$buyer->id)
-                ->update(['tokenBalance2'=>($buyer->tokenBalance2 + $buyer_receive )]);
+                ->update(['tokenBalance2'=>($buyer->tokenBalance2 + $buyer_receive - $method_fee )]);
 
                 User::where('id',$seller->id)
                 ->update(['tokenBalance2'=>($seller->tokenBalance2 - $seller_decrease )]);
@@ -54,6 +59,15 @@ class BuySellController extends Controller
                     'amount' => $admin_receive,
                     'created_at' => Carbon::now()
                 ]);
+
+                if($buysell->method == 'safety') {
+                    Logs::insert([
+                        'transaction_id' => $buysell->id,
+                        'desc' => 'Method Fee 5%',
+                        'amount' => $method_fee,
+                        'created_at' => Carbon::now()
+                    ]);
+                }
 
             }elseif($request->status == 'canceled'){
                 User::where('id',$seller->id)

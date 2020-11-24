@@ -135,7 +135,7 @@ Route::prefix('admin')->middleware(['auth', 'admin', 'g2fa', 'ico'])->name('admi
     Route::post('/sellgoods/update', 'Admin\SellGoodController@update')->middleware('ico')->name('sellgoods.update');
 
     Route::get('/buysell/{status?}', 'Admin\BuySellController@index')->middleware('ico')->name('buysell');
-    Route::post('/buysell/update', 'Admin\SellGoodController@update')->middleware('ico')->name('buysell.update');
+    Route::post('/buysell/update', 'Admin\BuySellController@update')->middleware('ico')->name('buysell.update');
 
     /* Admin Ajax Route */
     Route::name('ajax.')->prefix('ajax')->middleware(['ico'])->group(function () {
